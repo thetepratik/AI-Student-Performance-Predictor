@@ -1,0 +1,501 @@
+StudentID,Name,Age,Gender,Course,Semester,Attendance,StudyHours,ClassParticipation,HomeworkCompletion,QuizScore,AssignmentScore,MidtermScore,FinalScore,InternalScore,GPA,Performance
+STU1000,John Smith,18,Male,Physics,4,86.2,3.2,8.4,67.6,71.9,94.2,84.7,71.3,85.8,8.0,Excellent
+STU1001,Nikhil Tiwari,19,Female,Data Science,7,77.2,2.0,0.8,33.4,50.7,51.0,58.9,45.5,43.8,5.11,Average
+STU1002,Rohan Mehta,17,Male,Mathematics,1,80.4,3.8,3.2,65.7,88.3,84.7,91.9,81.5,85.1,8.59,Excellent
+STU1003,Rekha Shetty,20,Female,Biotechnology,4,73.0,5.3,2.4,83.7,44.3,66.7,33.3,43.7,56.5,4.52,Average
+STU1004,Harish Pandey,21,Female,Computer Science,3,75.5,3.8,5.0,43.8,69.4,77.4,89.6,80.5,64.6,8.15,Excellent
+STU1005,James Wilson,23,Male,Electronics,4,65.8,2.7,6.5,92.1,78.9,71.9,65.6,72.6,80.3,7.1,Good
+STU1006,Daniel Thomas,22,Male,Biotechnology,2,57.0,2.4,2.2,84.1,69.1,62.6,66.0,56.8,62.6,6.2,Good
+STU1007,Abhishek Mishra,22,Female,Computer Science,8,75.5,5.6,8.4,19.2,81.2,76.5,71.2,76.5,68.9,7.54,Good
+STU1008,Sumit Chauhan,18,Other,Biotechnology,2,96.5,3.4,3.8,52.8,57.8,75.8,67.6,58.7,69.4,6.47,Good
+STU1009,Rekha Shetty,21,Female,Business Administration,4,64.8,4.5,4.4,62.6,51.9,75.3,69.8,66.8,62.4,6.79,Good
+STU1010,Emma Martinez,18,Male,Mathematics,5,65.6,1.3,2.3,60.4,45.4,61.7,41.9,41.6,53.2,4.61,Average
+STU1011,Sneha Reddy,20,Female,Biotechnology,5,70.1,1.5,8.5,57.5,39.1,41.5,22.0,47.4,44.1,3.78,At Risk
+STU1012,Nisha Malhotra,22,Male,Business Administration,4,98.4,2.2,2.8,85.3,99.0,77.8,70.5,78.4,85.9,7.8,Good
+STU1013,Michael Brown,21,Female,Data Science,3,54.4,1.9,4.8,44.6,55.3,37.4,34.6,46.0,40.2,4.18,Average
+STU1014,Sumit Chauhan,20,Male,Biotechnology,5,51.6,5.1,5.5,76.2,76.3,66.2,52.6,73.7,72.7,6.61,Good
+STU1015,John Smith,25,Male,Business Administration,1,65.6,3.7,5.7,77.0,61.7,91.5,74.5,57.0,79.8,6.96,Good
+STU1016,Nikhil Tiwari,17,Female,Biotechnology,5,89.5,3.4,2.6,84.9,54.9,66.0,73.9,48.8,56.7,6.04,Good
+STU1017,Vikram Joshi,20,Female,Business Administration,4,71.2,1.1,5.0,71.5,58.6,57.1,66.8,46.3,71.4,5.58,Average
+STU1018,Emily Johnson,24,Male,Civil Engineering,3,60.8,2.2,6.4,68.3,80.6,83.8,72.0,64.1,74.6,7.21,Good
+STU1019,Rahul Dubey,19,Male,Physics,7,76.9,3.9,2.2,71.5,62.0,58.2,59.9,58.6,54.4,5.92,Average
+STU1020,Anjali Bhatt,23,Male,Electronics,8,92.3,4.1,7.4,44.1,63.4,82.1,80.6,80.4,92.0,7.91,Good
+STU1021,Sneha Reddy,17,Female,Electronics,3,91.0,5.1,6.7,66.3,83.9,77.7,75.3,74.2,81.2,7.62,Good
+STU1022,Sarah Davis,23,Female,Biotechnology,7,92.2,1.9,3.5,71.0,100.0,100.0,86.7,92.5,100.0,9.3,Excellent
+STU1023,Piyush Chopra,24,Female,Computer Science,2,73.5,2.8,3.1,100.0,59.6,46.8,55.0,45.9,57.5,5.02,Average
+STU1024,Sarah Davis,25,Female,Business Administration,2,80.2,2.2,6.1,42.4,50.0,53.8,45.6,71.2,53.9,5.79,Average
+STU1025,Manish Yadav,23,Male,Computer Science,5,100.0,3.4,6.1,33.9,43.3,62.4,41.1,54.7,56.7,5.1,Average
+STU1026,Gaurav Saxena,19,Female,Data Science,5,30.0,2.2,2.3,60.8,34.6,64.9,27.3,38.7,50.4,4.01,Average
+STU1027,John Smith,25,Female,Electronics,6,96.8,1.9,6.1,56.9,92.2,95.2,81.1,89.3,91.8,8.83,Excellent
+STU1028,Daniel Thomas,19,Female,Computer Science,6,99.1,4.1,2.6,100.0,48.6,77.3,76.1,72.3,59.8,7.2,Good
+STU1029,Preethi Subramaniam,17,Male,Business Administration,5,65.5,2.1,6.5,76.2,54.3,75.8,64.5,68.7,68.2,6.74,Good
+STU1030,Aisha Khan,17,Male,Data Science,2,83.7,1.5,5.6,65.9,53.6,69.1,45.2,57.7,60.3,5.58,Average
+STU1031,David Anderson,24,Female,Electronics,3,86.7,4.5,6.5,95.1,64.0,79.4,61.4,69.0,71.0,6.83,Good
+STU1032,Michael Brown,24,Female,Electronics,5,63.0,4.0,9.3,50.3,55.5,82.3,77.9,75.0,72.0,7.53,Good
+STU1033,Latha Venkatesh,23,Other,Mathematics,5,76.1,1.6,3.6,89.4,62.2,65.6,59.0,66.6,61.1,6.37,Good
+STU1034,Meera Krishnan,22,Male,Civil Engineering,2,76.2,2.7,3.4,56.9,54.4,46.0,34.8,44.3,49.1,4.28,Average
+STU1035,Aisha Khan,20,Male,Computer Science,4,88.8,5.4,4.9,71.0,61.9,79.6,70.0,77.4,66.6,7.41,Good
+STU1036,Anjali Bhatt,20,Male,Computer Science,4,74.9,5.7,6.2,86.1,70.7,85.8,76.2,77.7,74.4,7.82,Good
+STU1037,Vikram Joshi,17,Female,Data Science,4,96.8,3.8,6.9,100.0,60.0,85.5,71.5,92.0,68.7,8.13,Excellent
+STU1038,Simran Kaur,24,Male,Electronics,8,40.6,1.5,3.3,51.0,50.4,55.6,69.1,54.9,50.1,5.89,Average
+STU1039,Aisha Khan,24,Female,Mathematics,2,52.5,3.1,8.0,89.5,46.4,46.2,67.1,49.5,52.5,5.38,Average
+STU1040,Arjun Kumar,23,Male,Biotechnology,8,70.3,0.9,3.9,53.8,45.4,35.4,36.3,38.5,43.0,3.79,At Risk
+STU1041,David Anderson,17,Female,Data Science,1,54.1,1.8,8.1,79.8,67.2,94.7,75.4,85.4,81.3,8.24,Excellent
+STU1042,Meera Krishnan,22,Female,Data Science,4,77.4,7.2,8.5,92.2,100.0,100.0,100.0,100.0,91.2,10.0,Excellent
+STU1043,Suresh Pillai,20,Female,Electronics,7,67.4,0.5,5.5,94.7,46.2,67.4,27.7,26.6,56.5,3.71,At Risk
+STU1044,Riya Gupta,21,Male,Data Science,8,45.1,3.2,5.1,45.6,75.8,76.1,56.8,62.4,70.7,6.48,Good
+STU1045,Rekha Shetty,18,Male,Computer Science,2,60.0,4.4,6.0,59.1,56.4,69.4,52.0,59.0,56.9,5.87,Average
+STU1046,Daniel Thomas,20,Male,Civil Engineering,8,70.4,4.5,6.9,76.6,93.5,100.0,100.0,91.6,93.9,9.6,Excellent
+STU1047,Kavya Rao,23,Female,Electronics,7,51.4,0.5,7.5,100.0,56.2,72.6,61.0,87.4,70.0,7.34,Good
+STU1048,Aarav Shah,23,Male,Civil Engineering,5,50.5,1.5,5.3,54.3,46.6,60.3,46.3,75.4,57.8,6.07,Good
+STU1049,Swati Agarwal,25,Female,Civil Engineering,3,76.1,5.2,3.3,100.0,71.1,67.8,64.1,57.9,62.5,6.3,Good
+STU1050,Suresh Pillai,21,Male,Computer Science,1,56.8,6.6,6.8,61.2,75.6,82.4,71.2,82.6,74.8,7.84,Good
+STU1051,Olivia Taylor,22,Male,Civil Engineering,3,72.2,3.1,3.4,59.7,76.0,78.3,56.4,68.9,80.9,6.77,Good
+STU1052,Ananya Singh,25,Male,Electronics,2,60.1,2.6,4.9,47.2,20.7,30.1,38.5,40.2,20.9,3.57,At Risk
+STU1053,Piyush Chopra,18,Female,Mathematics,7,75.9,1.0,3.1,59.8,73.3,71.4,67.1,81.2,69.5,7.42,Good
+STU1054,Pooja Nair,20,Female,Computer Science,2,85.5,1.9,8.5,24.3,70.6,86.0,76.8,83.3,75.3,8.06,Excellent
+STU1055,Rajesh Bose,25,Male,Physics,4,92.8,2.8,5.6,77.1,63.3,71.6,63.0,72.5,65.4,6.86,Good
+STU1056,Michael Brown,22,Male,Biotechnology,3,88.9,6.3,4.6,95.3,68.0,66.2,61.8,56.0,65.3,6.1,Good
+STU1057,Michael Brown,21,Male,Data Science,1,80.0,5.5,4.6,86.7,44.9,78.1,77.3,53.9,67.2,6.48,Good
+STU1058,Nisha Malhotra,18,Male,Mathematics,5,85.5,2.6,9.8,75.2,74.4,76.4,63.0,82.1,71.1,7.44,Good
+STU1059,Karan Sharma,22,Female,Mathematics,6,82.4,2.3,5.7,91.1,61.2,73.4,54.8,62.2,69.2,6.21,Good
+STU1060,Manish Yadav,19,Male,Physics,1,90.3,2.2,8.3,81.7,96.5,80.2,63.8,61.4,95.9,6.94,Good
+STU1061,Michael Brown,25,Male,Data Science,3,81.2,3.4,3.2,100.0,76.2,85.8,83.7,79.8,82.1,8.18,Excellent
+STU1062,Rahul Dubey,18,Female,Electronics,5,100.0,3.1,7.1,98.3,50.2,58.0,55.3,58.1,59.6,5.64,Average
+STU1063,Manish Yadav,20,Female,Mathematics,5,67.6,4.0,2.9,42.1,22.6,49.8,39.7,25.8,29.7,3.44,At Risk
+STU1064,Gaurav Saxena,24,Male,Computer Science,2,70.1,5.3,1.7,63.6,57.3,44.9,59.4,57.8,54.6,5.57,Average
+STU1065,John Smith,23,Female,Computer Science,1,76.5,6.1,4.2,100.0,95.0,100.0,95.3,98.1,96.8,9.73,Excellent
+STU1066,Tanvi Desai,19,Female,Physics,3,72.8,1.7,3.5,53.2,56.1,57.9,72.2,27.2,62.5,4.97,Average
+STU1067,Olivia Taylor,24,Female,Biotechnology,1,73.6,0.8,5.2,47.5,74.6,77.8,100.0,90.4,82.5,8.92,Excellent
+STU1068,Pooja Nair,18,Female,Electronics,1,69.3,1.8,6.5,48.8,82.4,78.0,70.4,81.8,82.4,7.77,Good
+STU1069,Shreya Jain,25,Male,Electronics,1,57.7,4.5,6.0,80.2,56.6,70.4,44.8,69.1,62.6,6.08,Good
+STU1070,Deepa Menon,22,Female,Computer Science,6,62.9,4.2,1.8,36.5,62.2,49.3,76.6,34.4,64.2,5.28,Average
+STU1071,Kavya Rao,20,Female,Business Administration,7,67.5,3.0,6.0,70.2,79.0,75.9,69.7,64.2,77.2,6.97,Good
+STU1072,Sunita Tripathi,19,Female,Mathematics,3,55.7,0.7,6.7,74.8,65.7,74.5,70.4,60.1,66.2,6.66,Good
+STU1073,Riya Gupta,23,Male,Business Administration,7,81.7,1.7,1.7,91.5,71.3,77.3,77.5,81.9,79.4,7.86,Good
+STU1074,Michael Brown,20,Male,Data Science,7,60.1,0.5,3.7,72.1,27.3,42.4,23.7,25.7,27.8,2.86,At Risk
+STU1075,Rohan Mehta,24,Male,Civil Engineering,6,57.6,0.5,6.4,46.9,75.4,57.0,49.8,38.3,69.7,4.92,Average
+STU1076,Deepa Menon,20,Male,Mathematics,7,100.0,2.8,4.4,90.4,50.5,66.7,79.6,52.4,67.6,6.32,Good
+STU1077,Tanvi Desai,21,Female,Physics,6,86.6,2.7,7.5,85.6,61.2,80.0,74.7,77.4,73.7,7.55,Good
+STU1078,Emily Johnson,25,Male,Business Administration,1,81.2,1.1,6.4,82.0,78.1,82.1,72.6,66.3,71.8,7.25,Good
+STU1079,Pooja Nair,21,Male,Physics,1,80.4,3.6,2.8,50.3,82.0,76.2,79.7,71.8,79.3,7.61,Good
+STU1080,Arjun Kumar,23,Male,Business Administration,7,79.3,2.9,4.8,65.5,76.1,87.6,73.6,91.9,77.4,8.4,Excellent
+STU1081,Piyush Chopra,25,Male,Mathematics,5,96.1,2.2,5.3,89.8,48.2,74.5,74.3,64.7,66.7,6.79,Good
+STU1082,Rohan Mehta,23,Male,Mathematics,6,100.0,4.7,3.9,58.8,74.0,78.7,54.6,57.4,74.9,6.25,Good
+STU1083,Swati Agarwal,18,Female,Business Administration,6,55.9,0.6,2.5,63.3,43.8,59.1,27.3,48.0,50.4,4.36,Average
+STU1084,Michael Brown,18,Female,Physics,5,58.0,4.0,5.7,73.1,69.0,73.6,93.4,57.4,68.6,7.26,Good
+STU1085,Michael Brown,23,Male,Physics,3,63.6,1.7,6.9,95.6,49.1,57.4,59.8,48.3,56.4,5.37,Average
+STU1086,Suresh Pillai,23,Female,Biotechnology,3,98.8,0.9,8.7,58.7,65.4,77.9,74.2,77.2,81.7,7.53,Good
+STU1087,Sunita Tripathi,21,Male,Computer Science,5,53.8,1.7,3.4,68.5,77.7,61.7,60.8,57.1,75.6,6.12,Good
+STU1088,Manish Yadav,20,Male,Business Administration,8,75.2,4.1,9.0,95.0,100.0,100.0,100.0,100.0,100.0,10.0,Excellent
+STU1089,Harish Pandey,24,Female,Civil Engineering,3,93.5,4.4,8.0,100.0,86.6,89.7,83.8,95.0,84.1,8.97,Excellent
+STU1090,Michael Brown,18,Male,Business Administration,2,76.5,2.7,7.8,75.5,71.7,68.2,80.7,78.5,80.8,7.64,Good
+STU1091,Daniel Thomas,20,Female,Mathematics,4,77.8,3.1,7.9,66.7,64.3,73.4,64.5,58.1,69.8,6.37,Good
+STU1092,Divya Iyer,17,Male,Civil Engineering,2,80.2,2.3,4.4,98.7,65.6,86.1,85.1,96.1,75.5,8.78,Excellent
+STU1093,Nisha Malhotra,23,Female,Mathematics,7,51.6,5.4,0.2,76.3,50.2,54.3,62.8,56.3,49.4,5.72,Average
+STU1094,Preethi Subramaniam,23,Male,Computer Science,2,80.9,3.3,3.8,100.0,35.3,43.9,37.9,45.8,40.8,4.2,Average
+STU1095,Sophia Jackson,23,Male,Civil Engineering,1,55.5,3.3,7.7,67.3,72.4,70.7,66.6,66.8,73.8,6.81,Good
+STU1096,Rekha Shetty,20,Female,Data Science,8,79.9,5.5,6.9,71.1,91.4,79.5,100.0,78.9,78.3,8.66,Excellent
+STU1097,Karan Sharma,24,Female,Business Administration,8,88.0,2.1,3.8,61.7,47.9,69.3,37.6,50.8,62.4,5.02,Average
+STU1098,Sunita Tripathi,25,Male,Civil Engineering,3,62.9,4.2,5.5,73.5,65.4,96.4,87.6,74.9,81.0,8.2,Excellent
+STU1099,Olivia Taylor,24,Male,Mathematics,5,71.9,0.5,3.8,50.9,63.3,84.9,72.4,58.3,76.9,6.83,Good
+STU1100,Sophia Jackson,25,Female,Mathematics,5,80.1,5.4,4.8,90.3,91.6,100.0,96.4,99.9,93.1,9.8,Excellent
+STU1101,Harish Pandey,18,Female,Mathematics,5,100.0,4.3,4.6,100.0,88.9,92.4,82.5,85.9,92.8,8.65,Excellent
+STU1102,Tanvi Desai,22,Female,Data Science,3,76.2,2.5,9.7,100.0,78.4,84.7,76.3,81.4,76.5,8.02,Excellent
+STU1103,Divya Iyer,20,Male,Electronics,4,80.2,0.5,6.1,59.2,76.0,56.1,42.1,61.7,71.3,5.61,Average
+STU1104,Vikram Joshi,23,Male,Civil Engineering,7,96.2,3.6,6.2,74.1,100.0,100.0,74.6,100.0,100.0,9.24,Excellent
+STU1105,Ananya Singh,20,Female,Biotechnology,1,80.5,3.1,5.1,56.2,49.3,61.6,70.4,61.9,53.6,6.31,Good
+STU1106,Daniel Thomas,23,Male,Business Administration,5,94.5,0.5,2.1,66.2,64.2,71.2,88.5,69.5,69.4,7.5,Good
+STU1107,Daniel Thomas,23,Female,Biotechnology,4,76.0,3.7,2.4,89.7,59.0,60.4,58.6,78.7,64.0,6.7,Good
+STU1108,Preethi Subramaniam,20,Male,Civil Engineering,1,69.1,2.2,8.9,76.1,64.4,76.1,63.2,57.9,69.3,6.38,Good
+STU1109,Vivek Nambiar,22,Female,Biotechnology,3,85.7,2.9,5.1,84.3,63.7,73.8,40.9,74.3,70.5,6.31,Good
+STU1110,Nisha Malhotra,19,Other,Computer Science,7,100.0,0.5,5.5,96.7,69.7,94.7,67.6,74.0,91.8,7.58,Good
+STU1111,Anjali Bhatt,17,Male,Biotechnology,3,87.5,3.2,5.8,72.2,66.9,90.1,63.3,66.4,83.7,7.02,Good
+STU1112,Nisha Malhotra,19,Male,Biotechnology,6,87.9,5.6,3.5,100.0,72.0,96.5,75.7,84.7,85.9,8.31,Excellent
+STU1113,Kavya Rao,24,Male,Biotechnology,5,100.0,3.9,6.1,66.6,81.8,89.2,59.0,80.5,89.0,7.59,Good
+STU1114,Daniel Thomas,23,Male,Data Science,8,71.9,4.8,5.0,65.2,61.6,59.5,44.8,78.3,56.3,6.28,Good
+STU1115,Priya Patel,25,Male,Business Administration,4,62.4,0.5,1.6,98.4,57.0,50.1,71.7,53.4,51.9,5.86,Average
+STU1116,Emily Johnson,18,Female,Computer Science,1,46.7,4.6,0.0,79.2,49.6,43.5,30.5,28.9,50.8,3.44,At Risk
+STU1117,Aisha Khan,20,Female,Electronics,4,78.8,4.0,5.4,58.3,74.5,70.0,76.8,68.4,66.7,7.18,Good
+STU1118,Karan Sharma,24,Female,Mathematics,8,89.3,5.2,2.0,51.0,78.4,66.7,67.2,75.8,67.7,7.16,Good
+STU1119,James Wilson,21,Female,Electronics,2,66.3,1.1,5.7,38.6,69.5,68.3,70.8,65.9,75.8,6.82,Good
+STU1120,Sophia Jackson,19,Other,Data Science,1,77.2,2.4,6.2,71.5,67.4,68.6,59.2,53.2,76.8,5.95,Average
+STU1121,Deepa Menon,23,Male,Mathematics,2,60.5,1.0,5.9,58.5,57.0,44.4,46.7,34.4,61.4,4.24,Average
+STU1122,Anjali Bhatt,20,Male,Physics,2,80.9,2.6,4.9,61.0,46.0,53.7,45.6,57.0,60.9,5.18,Average
+STU1123,Mohit Bansal,17,Male,Biotechnology,6,72.0,0.5,9.7,51.4,72.8,74.9,49.6,61.8,82.0,6.19,Good
+STU1124,Vikram Joshi,25,Female,Computer Science,7,65.1,2.4,2.7,55.3,45.4,62.9,47.3,58.4,46.4,5.47,Average
+STU1125,Preethi Subramaniam,18,Male,Business Administration,8,46.1,4.5,6.0,96.0,57.3,92.2,74.1,61.8,74.5,7.11,Good
+STU1126,Emma Martinez,19,Male,Physics,8,84.8,3.5,3.6,75.9,59.7,80.7,63.3,67.0,76.4,6.79,Good
+STU1127,Nisha Malhotra,23,Female,Physics,6,61.9,4.7,5.2,99.2,83.1,100.0,86.6,83.9,90.0,8.79,Excellent
+STU1128,Aisha Khan,18,Male,Civil Engineering,4,86.0,2.9,7.0,54.9,54.9,59.4,75.1,58.3,46.4,6.32,Good
+STU1129,Daniel Thomas,24,Female,Biotechnology,6,76.1,7.0,7.0,73.4,72.9,89.6,72.5,79.6,82.9,7.88,Good
+STU1130,Priya Patel,24,Female,Electronics,8,70.4,4.0,3.0,77.7,45.7,62.6,54.4,65.3,56.5,5.95,Average
+STU1131,Kavya Rao,22,Female,Business Administration,5,95.8,4.2,6.1,70.1,53.8,66.2,64.8,63.1,59.1,6.33,Good
+STU1132,Piyush Chopra,21,Female,Mathematics,2,74.1,3.8,6.0,71.5,46.8,66.5,65.4,55.3,59.7,5.97,Average
+STU1133,Aisha Khan,23,Female,Mathematics,8,76.4,6.0,9.1,79.9,87.7,95.2,89.5,90.3,92.3,9.08,Excellent
+STU1134,Emily Johnson,24,Male,Computer Science,2,82.0,3.1,7.5,89.7,53.8,57.6,80.7,56.2,54.6,6.36,Good
+STU1135,Manish Yadav,20,Male,Mathematics,5,79.6,0.5,5.6,53.2,20.5,47.0,50.4,30.6,34.7,3.88,At Risk
+STU1136,Michael Brown,22,Male,Business Administration,7,76.7,3.9,3.0,93.9,63.2,74.0,53.6,60.4,64.2,6.14,Good
+STU1137,Olivia Taylor,25,Male,Civil Engineering,5,53.9,5.4,1.6,98.6,59.5,65.8,73.5,54.7,71.8,6.31,Good
+STU1138,Deepa Menon,21,Male,Mathematics,6,100.0,2.8,4.3,87.9,79.3,95.9,95.8,77.8,83.8,8.7,Excellent
+STU1139,Pooja Nair,25,Female,Electronics,4,100.0,2.3,5.6,64.8,75.0,69.3,62.4,86.5,68.9,7.47,Good
+STU1140,Kavya Rao,24,Male,Physics,2,89.6,3.0,5.7,85.2,42.8,47.9,69.1,48.2,44.1,5.39,Average
+STU1141,Suresh Pillai,21,Male,Electronics,5,85.8,4.8,10.0,63.1,97.4,96.0,93.6,100.0,99.3,9.7,Excellent
+STU1142,Aarav Shah,25,Male,Computer Science,1,71.1,5.0,3.7,51.5,54.0,95.5,60.8,72.0,73.4,7.16,Good
+STU1143,Rekha Shetty,21,Female,Electronics,8,88.8,4.5,4.1,68.0,73.9,76.3,91.3,77.4,78.8,8.1,Excellent
+STU1144,Arjun Kumar,17,Female,Civil Engineering,8,79.7,5.3,2.9,81.0,69.4,80.2,83.7,89.3,74.9,8.38,Excellent
+STU1145,Harish Pandey,22,Male,Computer Science,5,79.5,5.8,10.0,82.7,55.5,88.5,79.9,89.4,75.4,8.3,Excellent
+STU1146,Aryan Kapoor,18,Female,Biotechnology,8,71.4,1.1,3.2,57.8,66.9,79.5,64.5,47.1,75.4,6.08,Good
+STU1147,Vikram Joshi,17,Male,Physics,2,76.6,3.0,5.9,59.7,89.8,88.4,88.6,74.8,86.9,8.32,Excellent
+STU1148,Aisha Khan,18,Female,Biotechnology,4,100.0,3.0,4.7,77.7,86.6,74.1,57.1,63.4,86.7,6.6,Good
+STU1149,Sophia Jackson,25,Male,Civil Engineering,5,64.9,6.4,5.0,98.4,78.2,85.0,73.6,69.8,84.6,7.48,Good
+STU1150,Anjali Bhatt,23,Male,Computer Science,2,65.1,2.8,5.6,70.1,71.6,88.5,87.2,76.4,87.4,8.16,Excellent
+STU1151,Daniel Thomas,20,Female,Physics,2,60.8,1.9,0.4,63.2,43.7,62.4,50.6,31.8,62.3,4.48,Average
+STU1152,Amit Verma,20,Male,Data Science,3,75.3,4.8,4.0,68.1,95.0,100.0,100.0,80.0,91.9,9.15,Excellent
+STU1153,Aarav Shah,23,Male,Civil Engineering,5,80.3,0.5,4.8,61.3,49.9,75.7,58.7,52.9,48.5,5.89,Average
+STU1154,Rohan Mehta,20,Male,Physics,8,99.8,5.6,4.1,57.8,72.1,66.1,72.9,77.8,75.2,7.34,Good
+STU1155,Vikram Joshi,20,Female,Mathematics,7,61.5,2.6,3.3,65.0,65.6,75.2,51.3,75.3,69.1,6.71,Good
+STU1156,Pooja Nair,25,Male,Electronics,5,38.6,1.9,6.8,84.6,59.5,70.6,67.0,44.4,62.4,5.79,Average
+STU1157,Divya Iyer,18,Male,Physics,5,81.8,1.7,2.9,82.9,75.6,71.0,89.2,67.6,69.2,7.55,Good
+STU1158,Harish Pandey,18,Male,Physics,7,60.4,4.9,5.3,79.5,75.3,77.8,64.2,60.4,77.0,6.65,Good
+STU1159,Simran Kaur,25,Female,Civil Engineering,2,78.3,0.5,6.0,17.9,37.8,54.3,71.9,47.1,42.4,5.51,Average
+STU1160,Piyush Chopra,17,Female,Business Administration,5,64.8,4.9,3.3,59.5,52.7,69.2,81.8,65.5,59.7,6.99,Good
+STU1161,Priya Patel,18,Male,Computer Science,5,87.4,0.5,4.6,65.1,91.7,68.4,50.2,54.6,85.8,5.97,Average
+STU1162,Mohit Bansal,17,Female,Electronics,8,89.1,0.9,3.7,100.0,76.7,72.1,80.8,65.8,78.7,7.27,Good
+STU1163,Latha Venkatesh,24,Female,Electronics,7,66.8,2.1,7.4,65.5,67.9,70.8,76.8,92.3,64.0,8.09,Excellent
+STU1164,John Smith,24,Other,Civil Engineering,6,73.9,5.1,5.9,48.9,71.1,70.7,79.7,80.2,83.9,7.73,Good
+STU1165,Rajesh Bose,22,Male,Data Science,3,79.7,3.9,4.7,79.4,71.5,84.0,90.8,65.1,83.4,7.72,Good
+STU1166,Tanvi Desai,23,Female,Physics,7,47.1,3.8,4.8,100.0,83.3,85.1,76.6,90.7,86.9,8.46,Excellent
+STU1167,Daniel Thomas,25,Male,Data Science,6,68.4,2.3,3.0,100.0,56.8,79.2,77.3,68.5,65.8,7.21,Good
+STU1168,Rahul Dubey,22,Male,Biotechnology,1,62.7,3.3,6.0,48.2,82.6,71.8,73.0,73.3,75.9,7.38,Good
+STU1169,Michael Brown,25,Male,Computer Science,4,89.8,2.7,2.7,75.2,93.2,73.4,65.8,79.0,84.2,7.53,Good
+STU1170,Latha Venkatesh,22,Female,Civil Engineering,8,85.6,4.0,7.5,79.8,69.8,86.3,96.4,72.9,73.2,8.23,Excellent
+STU1171,Daniel Thomas,17,Male,Electronics,5,45.7,3.6,7.5,64.3,80.1,89.9,82.9,87.5,82.8,8.58,Excellent
+STU1172,Harish Pandey,24,Male,Mathematics,3,87.6,3.0,6.6,53.6,84.8,75.4,84.5,78.8,89.3,8.04,Excellent
+STU1173,Deepa Menon,25,Male,Biotechnology,2,74.0,2.3,4.2,85.0,44.8,60.8,47.7,69.7,61.3,5.88,Average
+STU1174,Nikhil Tiwari,18,Male,Data Science,3,75.7,2.7,7.2,51.0,66.3,77.0,70.3,66.4,76.7,6.97,Good
+STU1175,Preethi Subramaniam,21,Female,Physics,7,57.1,2.0,0.0,68.1,35.0,25.9,30.6,34.2,37.0,3.15,At Risk
+STU1176,Aryan Kapoor,24,Male,Electronics,7,81.1,5.3,3.0,72.5,82.3,100.0,89.5,93.2,93.9,9.23,Excellent
+STU1177,Suresh Pillai,25,Female,Electronics,2,65.8,5.6,5.4,55.3,53.6,67.8,67.1,63.6,57.2,6.45,Good
+STU1178,Simran Kaur,23,Male,Physics,1,48.2,1.8,5.5,65.3,27.2,45.1,31.3,42.7,42.8,3.82,At Risk
+STU1179,Manish Yadav,21,Female,Civil Engineering,3,67.0,1.8,4.9,65.8,28.1,39.2,25.3,45.2,33.8,3.63,At Risk
+STU1180,Harish Pandey,25,Female,Business Administration,7,70.1,4.3,3.4,42.5,77.7,99.9,99.7,77.8,93.3,8.88,Excellent
+STU1181,Nisha Malhotra,22,Female,Mathematics,7,97.7,2.9,6.4,62.5,50.6,49.1,52.0,59.1,44.9,5.41,Average
+STU1182,Nikhil Tiwari,23,Male,Civil Engineering,7,71.2,3.0,3.6,72.8,66.8,60.7,78.9,60.8,63.9,6.68,Good
+STU1183,Vivek Nambiar,19,Female,Computer Science,3,91.4,3.9,6.1,60.9,81.1,75.0,80.0,79.0,77.0,7.87,Good
+STU1184,Gaurav Saxena,22,Female,Civil Engineering,2,66.4,0.5,5.1,72.6,50.8,77.8,49.4,68.8,66.4,6.3,Good
+STU1185,Latha Venkatesh,24,Male,Electronics,7,55.2,5.2,6.4,87.1,49.1,75.9,53.2,59.2,63.8,5.97,Average
+STU1186,Emily Johnson,19,Male,Physics,6,86.5,4.1,1.4,95.5,46.6,81.2,77.0,52.6,61.8,6.5,Good
+STU1187,Sunita Tripathi,23,Female,Business Administration,7,67.1,1.8,5.7,91.2,61.4,51.8,44.3,29.7,52.6,4.17,Average
+STU1188,Siddharth Roy,24,Female,Computer Science,2,59.4,6.1,4.5,73.8,83.1,81.5,85.9,76.4,82.2,8.09,Excellent
+STU1189,Aisha Khan,21,Other,Data Science,7,70.1,3.4,5.2,70.7,69.5,78.2,92.4,78.8,72.4,8.18,Excellent
+STU1190,Arjun Kumar,18,Male,Physics,1,94.7,3.0,6.3,71.0,81.5,72.1,64.6,66.7,77.5,6.86,Good
+STU1191,Rohan Mehta,22,Female,Physics,6,89.8,7.6,7.3,41.8,89.9,94.7,90.8,98.0,89.9,9.44,Excellent
+STU1192,Shreya Jain,23,Male,Biotechnology,3,53.0,2.6,4.0,100.0,24.3,22.6,28.8,42.6,33.2,3.26,At Risk
+STU1193,Amit Verma,19,Male,Biotechnology,4,64.3,2.8,3.9,100.0,30.4,57.1,50.4,55.2,44.3,5.17,Average
+STU1194,Preethi Subramaniam,19,Male,Physics,8,80.0,2.6,4.5,83.8,65.9,80.9,69.2,80.8,73.2,7.58,Good
+STU1195,Rahul Dubey,17,Female,Civil Engineering,5,56.1,3.6,2.4,50.1,50.6,24.2,73.4,45.8,38.5,5.02,Average
+STU1196,Sarah Davis,25,Male,Civil Engineering,6,82.7,3.4,6.2,80.9,66.1,72.1,64.1,64.4,74.8,6.6,Good
+STU1197,Anjali Bhatt,21,Female,Biotechnology,5,86.6,0.5,5.8,72.3,69.5,89.4,84.4,65.1,81.5,7.62,Good
+STU1198,Nisha Malhotra,21,Male,Biotechnology,8,62.7,0.5,6.0,84.7,53.6,62.1,53.4,40.1,60.0,4.99,Average
+STU1199,Arjun Kumar,20,Male,Business Administration,5,95.2,4.7,7.0,80.6,90.6,88.7,71.2,81.1,85.9,8.06,Excellent
+STU1200,James Wilson,21,Male,Biotechnology,5,61.1,2.3,3.9,29.1,55.4,55.7,42.4,58.3,60.2,5.27,Average
+STU1201,Aarav Shah,17,Female,Civil Engineering,5,58.6,0.7,1.9,79.4,35.6,42.3,11.3,40.6,32.8,3.17,At Risk
+STU1202,Sophia Jackson,20,Female,Business Administration,4,95.6,3.5,2.4,9.9,68.5,82.3,82.0,69.5,72.9,7.57,Good
+STU1203,John Smith,20,Female,Electronics,2,84.6,2.1,6.6,94.8,100.0,90.5,71.9,77.9,86.4,8.08,Excellent
+STU1204,John Smith,17,Male,Civil Engineering,1,65.1,1.9,4.8,50.4,64.4,57.8,52.2,48.6,61.9,5.31,Average
+STU1205,Anjali Bhatt,22,Female,Data Science,5,67.6,2.3,5.0,46.8,68.3,77.1,86.5,78.3,73.7,7.95,Good
+STU1206,Siddharth Roy,23,Male,Electronics,6,83.4,3.4,5.4,79.1,72.8,67.4,77.6,93.8,74.7,8.16,Excellent
+STU1207,Latha Venkatesh,25,Female,Electronics,5,79.2,5.6,6.1,62.0,78.5,93.5,97.5,82.4,83.7,8.87,Excellent
+STU1208,Aryan Kapoor,21,Female,Business Administration,2,53.3,3.9,0.4,59.0,50.7,64.0,59.7,56.2,64.6,5.82,Average
+STU1209,Nisha Malhotra,18,Male,Mathematics,7,85.3,3.7,3.0,92.3,69.6,85.1,57.7,55.2,81.4,6.34,Good
+STU1210,Rekha Shetty,22,Male,Biotechnology,1,63.1,1.9,7.5,47.9,86.5,67.4,77.3,66.2,80.0,7.18,Good
+STU1211,Rahul Dubey,25,Male,Business Administration,5,74.0,2.3,2.6,82.4,50.5,61.7,42.9,28.9,55.1,4.18,Average
+STU1212,Anjali Bhatt,23,Female,Business Administration,2,81.9,6.0,6.3,81.3,100.0,100.0,100.0,100.0,100.0,10.0,Excellent
+STU1213,Sarah Davis,20,Male,Business Administration,4,86.4,3.4,6.5,64.9,67.2,80.7,92.4,61.9,66.6,7.53,Good
+STU1214,Emily Johnson,18,Female,Civil Engineering,5,78.1,3.2,5.6,66.3,82.9,61.9,58.3,67.4,64.2,6.51,Good
+STU1215,Emily Johnson,23,Male,Computer Science,1,74.8,5.4,5.3,44.0,57.7,65.8,61.1,78.2,64.5,6.85,Good
+STU1216,Deepa Menon,24,Male,Mathematics,3,79.1,2.5,6.4,96.6,38.6,52.0,33.9,46.8,47.6,4.32,Average
+STU1217,Vivek Nambiar,24,Male,Biotechnology,3,73.2,3.6,6.0,57.7,100.0,73.5,83.0,100.0,86.8,8.96,Excellent
+STU1218,Rajesh Bose,18,Female,Biotechnology,5,71.7,2.3,7.6,24.9,77.7,53.5,59.2,58.2,68.5,5.95,Average
+STU1219,Rohan Mehta,22,Male,Civil Engineering,4,100.0,2.5,1.1,66.6,34.4,51.1,41.3,34.7,45.2,3.99,At Risk
+STU1220,Shreya Jain,18,Other,Business Administration,6,91.2,4.1,3.8,59.0,98.0,100.0,98.4,91.4,99.0,9.59,Excellent
+STU1221,Ananya Singh,23,Male,Data Science,8,84.5,3.0,3.2,55.0,48.9,48.2,45.4,67.2,47.3,5.51,Average
+STU1222,Sneha Reddy,20,Female,Computer Science,1,85.1,1.8,4.4,55.4,72.5,76.1,51.9,40.3,79.3,5.42,Average
+STU1223,Tanvi Desai,20,Other,Mathematics,2,43.4,3.7,6.3,42.7,60.9,57.6,41.4,48.4,62.7,4.94,Average
+STU1224,Daniel Thomas,25,Male,Mathematics,4,100.0,4.0,2.0,100.0,68.8,70.9,52.6,67.0,74.5,6.36,Good
+STU1225,Tanvi Desai,19,Female,Computer Science,5,52.8,5.2,4.9,44.4,66.7,74.5,57.9,36.9,71.6,5.37,Average
+STU1226,Divya Iyer,19,Female,Electronics,2,94.8,3.9,3.2,85.6,84.7,67.5,77.4,68.9,75.7,7.28,Good
+STU1227,Michael Brown,17,Male,Business Administration,4,65.9,2.5,5.3,49.8,58.6,79.7,55.2,75.4,71.5,6.85,Good
+STU1228,Anjali Bhatt,22,Male,Physics,1,87.7,0.7,1.7,52.9,42.1,48.5,33.4,29.9,52.4,3.59,At Risk
+STU1229,Karan Sharma,23,Female,Data Science,8,81.5,5.8,4.7,61.2,98.3,100.0,100.0,100.0,91.6,9.98,Excellent
+STU1230,Harish Pandey,22,Female,Data Science,8,72.4,2.3,6.3,100.0,100.0,95.4,78.3,85.7,100.0,8.68,Excellent
+STU1231,Gaurav Saxena,20,Female,Computer Science,5,77.5,5.5,5.8,81.9,66.3,77.6,55.9,58.3,66.4,6.22,Good
+STU1232,Nisha Malhotra,17,Male,Civil Engineering,7,83.2,4.5,8.7,71.9,80.8,73.4,71.1,83.5,81.3,7.75,Good
+STU1233,Swati Agarwal,18,Female,Civil Engineering,2,51.3,2.7,4.1,86.5,64.4,70.7,58.0,56.9,64.3,6.07,Good
+STU1234,Sneha Reddy,22,Female,Data Science,3,84.5,4.2,4.5,30.1,87.6,76.1,67.0,84.6,79.9,7.79,Good
+STU1235,Simran Kaur,25,Female,Biotechnology,5,88.4,4.7,3.1,99.0,84.8,89.5,84.7,65.7,89.2,7.81,Good
+STU1236,Nisha Malhotra,25,Female,Data Science,2,49.1,0.5,6.5,52.8,62.3,47.1,24.7,33.2,60.8,3.63,At Risk
+STU1237,Emily Johnson,25,Female,Mathematics,7,76.9,2.1,5.9,91.6,77.0,68.7,46.4,58.2,74.1,5.86,Average
+STU1238,Harish Pandey,20,Male,Civil Engineering,7,77.3,0.8,4.2,66.3,41.6,53.5,37.1,56.6,52.7,4.86,Average
+STU1239,Rajesh Bose,18,Male,Business Administration,5,47.0,0.5,2.3,60.0,18.8,30.6,18.6,31.4,25.1,2.62,At Risk
+STU1240,Shreya Jain,19,Female,Civil Engineering,2,64.6,2.7,3.9,100.0,66.5,52.3,62.3,60.1,53.6,5.98,Average
+STU1241,Sneha Reddy,18,Male,Data Science,6,60.6,5.9,3.8,94.0,80.5,91.8,82.2,82.2,79.5,8.4,Excellent
+STU1242,Karan Sharma,25,Male,Business Administration,2,74.7,5.5,5.7,44.1,87.6,92.0,82.8,95.4,88.1,9.02,Excellent
+STU1243,Rajesh Bose,22,Female,Biotechnology,1,76.3,1.9,5.1,77.0,69.2,79.4,82.4,68.0,66.3,7.47,Good
+STU1244,Manish Yadav,21,Male,Mathematics,3,60.9,6.4,7.7,67.8,95.9,100.0,91.7,87.4,94.5,9.21,Excellent
+STU1245,Michael Brown,24,Male,Data Science,6,71.2,1.1,2.9,79.5,64.1,51.9,50.8,52.2,60.4,5.29,Average
+STU1246,Rekha Shetty,22,Male,Physics,4,82.5,4.2,2.6,87.7,75.4,69.4,67.3,73.8,71.4,7.11,Good
+STU1247,Swati Agarwal,25,Other,Computer Science,5,66.4,7.4,3.0,80.9,89.8,89.4,100.0,70.7,93.0,8.51,Excellent
+STU1248,Priya Patel,19,Male,Physics,6,100.0,5.1,3.0,56.3,66.7,61.3,59.0,60.5,54.4,6.08,Good
+STU1249,Abhishek Mishra,17,Male,Electronics,7,67.6,2.0,7.9,44.8,72.7,66.8,61.1,72.3,71.4,6.79,Good
+STU1250,Vikram Joshi,19,Female,Computer Science,2,71.7,4.9,4.2,50.9,66.0,100.0,89.7,61.4,76.4,7.81,Good
+STU1251,Olivia Taylor,25,Male,Biotechnology,8,84.7,4.2,4.9,69.7,76.8,81.5,47.7,72.4,74.9,6.73,Good
+STU1252,Tanvi Desai,19,Male,Business Administration,2,81.0,7.6,4.5,89.2,75.4,83.9,79.9,94.2,74.0,8.59,Excellent
+STU1253,Ananya Singh,19,Male,Computer Science,2,84.8,2.0,3.5,63.8,68.7,85.6,82.3,58.7,77.4,7.22,Good
+STU1254,Simran Kaur,24,Female,Civil Engineering,8,69.6,0.6,3.9,100.0,56.6,50.5,44.0,60.3,64.0,5.31,Average
+STU1255,Rajesh Bose,21,Male,Data Science,6,98.3,0.5,4.6,45.5,46.3,24.4,40.9,44.0,40.0,3.94,At Risk
+STU1256,Swati Agarwal,18,Male,Civil Engineering,5,58.1,2.4,4.8,47.5,44.2,44.6,55.2,55.4,43.3,5.21,Average
+STU1257,Rohan Mehta,20,Male,Computer Science,1,70.6,0.9,4.9,100.0,52.9,85.2,74.9,65.2,77.8,7.09,Good
+STU1258,Kavya Rao,21,Female,Electronics,5,75.3,3.9,7.7,93.6,65.7,71.2,70.4,65.3,68.1,6.8,Good
+STU1259,Manish Yadav,22,Male,Civil Engineering,7,78.1,3.2,6.0,92.5,61.7,88.8,87.2,96.8,72.8,8.88,Excellent
+STU1260,Riya Gupta,19,Male,Mathematics,6,59.8,2.5,1.2,49.1,32.7,33.8,6.5,41.2,39.6,2.84,At Risk
+STU1261,Vikram Joshi,23,Female,Computer Science,7,73.9,1.8,5.5,84.9,80.8,76.5,74.7,78.0,85.9,7.7,Good
+STU1262,Priya Patel,24,Female,Business Administration,7,78.4,4.7,8.3,81.4,69.2,97.9,87.7,75.6,81.2,8.3,Excellent
+STU1263,Mohit Bansal,23,Female,Biotechnology,5,78.8,3.9,5.8,100.0,81.2,82.4,82.5,61.2,83.8,7.38,Good
+STU1264,Pooja Nair,23,Male,Business Administration,3,67.7,4.0,5.1,56.3,84.5,95.1,75.6,92.7,94.3,8.72,Excellent
+STU1265,Sunita Tripathi,24,Female,Business Administration,2,79.9,4.6,6.4,52.8,61.6,50.1,64.8,56.4,58.6,5.82,Average
+STU1266,Swati Agarwal,18,Male,Biotechnology,2,80.4,0.8,2.2,74.0,31.9,59.1,29.5,49.2,48.6,4.35,Average
+STU1267,Meera Krishnan,21,Female,Mathematics,6,76.8,3.4,3.4,46.7,34.8,61.8,35.5,55.2,47.0,4.86,Average
+STU1268,Sophia Jackson,19,Male,Data Science,4,72.1,3.1,7.0,79.8,78.8,87.5,57.5,83.7,86.2,7.61,Good
+STU1269,Sophia Jackson,22,Male,Electronics,4,71.4,1.9,4.0,72.1,62.9,64.0,32.0,53.6,70.1,5.01,Average
+STU1270,Arjun Kumar,19,Male,Electronics,3,100.0,4.9,7.3,76.7,84.6,84.1,76.7,74.0,92.2,7.79,Good
+STU1271,Daniel Thomas,18,Male,Civil Engineering,8,80.0,4.7,1.6,73.7,32.0,65.5,63.8,47.4,49.4,5.44,Average
+STU1272,Daniel Thomas,24,Female,Business Administration,6,65.0,3.7,9.4,100.0,95.5,100.0,100.0,89.2,95.3,9.52,Excellent
+STU1273,Divya Iyer,24,Male,Civil Engineering,5,87.1,6.5,4.2,100.0,80.7,94.2,91.8,100.0,91.7,9.45,Excellent
+STU1274,Simran Kaur,17,Male,Data Science,5,76.9,4.0,6.4,21.3,69.4,76.8,59.3,77.4,72.1,7.1,Good
+STU1275,Nisha Malhotra,24,Male,Business Administration,5,73.3,6.7,6.0,76.4,89.2,100.0,86.2,84.8,97.7,8.87,Excellent
+STU1276,Vikram Joshi,18,Female,Biotechnology,8,90.3,2.3,4.2,77.9,82.9,82.3,80.3,69.8,81.6,7.67,Good
+STU1277,Anjali Bhatt,25,Female,Computer Science,8,71.7,1.7,1.7,59.3,57.1,63.2,55.8,57.4,62.6,5.81,Average
+STU1278,Mohit Bansal,20,Male,Civil Engineering,3,59.6,2.7,3.6,64.2,73.1,76.3,60.0,70.5,75.6,6.88,Good
+STU1279,Ananya Singh,24,Male,Business Administration,2,70.6,2.6,3.6,72.0,64.5,84.5,51.0,68.5,76.0,6.6,Good
+STU1280,Gaurav Saxena,19,Male,Civil Engineering,8,80.8,7.2,3.1,68.9,52.3,77.1,61.6,81.5,61.9,7.17,Good
+STU1281,Latha Venkatesh,25,Female,Business Administration,6,100.0,2.0,4.3,100.0,72.0,78.0,68.8,68.5,65.4,7.08,Good
+STU1282,Manish Yadav,23,Male,Business Administration,1,73.4,4.1,2.0,67.7,77.5,77.1,59.5,69.6,75.5,6.88,Good
+STU1283,John Smith,22,Male,Data Science,7,93.3,0.5,3.2,57.5,35.5,59.2,57.4,59.7,46.5,5.65,Average
+STU1284,Manish Yadav,21,Female,Electronics,6,98.0,0.9,2.9,75.7,58.0,71.6,58.6,62.4,62.1,6.27,Good
+STU1285,Sneha Reddy,19,Female,Physics,7,56.8,3.8,5.0,91.9,51.1,59.4,53.0,67.4,56.2,5.99,Average
+STU1286,Karan Sharma,18,Male,Biotechnology,6,56.9,3.3,6.0,75.8,53.4,57.1,45.4,61.2,61.4,5.48,Average
+STU1287,Karan Sharma,25,Male,Biotechnology,6,41.8,3.2,3.4,66.5,44.0,51.5,43.5,53.6,46.8,4.92,Average
+STU1288,Priya Patel,22,Male,Mathematics,6,59.2,0.5,4.2,5.0,23.8,24.1,43.6,22.2,25.9,2.92,At Risk
+STU1289,Sophia Jackson,24,Male,Electronics,3,86.9,0.5,5.5,80.8,100.0,57.7,86.8,63.0,80.3,7.28,Good
+STU1290,Vikram Joshi,21,Female,Data Science,1,66.3,2.3,5.6,39.5,71.1,64.0,49.5,58.3,73.8,5.81,Average
+STU1291,Michael Brown,22,Female,Electronics,7,62.4,3.1,6.1,81.3,75.1,63.2,64.4,57.3,75.7,6.24,Good
+STU1292,Divya Iyer,19,Male,Electronics,8,69.9,3.6,4.3,68.6,56.6,59.9,56.5,69.7,63.2,6.25,Good
+STU1293,Rohan Mehta,23,Male,Mathematics,8,64.3,3.0,7.6,91.4,92.9,82.5,75.5,61.9,85.7,7.32,Good
+STU1294,Sunita Tripathi,21,Female,Civil Engineering,4,87.6,3.0,5.4,81.0,69.4,89.9,45.5,79.9,71.5,7.05,Good
+STU1295,Sumit Chauhan,20,Male,Civil Engineering,4,85.6,5.1,8.9,56.4,100.0,100.0,85.4,100.0,94.5,9.56,Excellent
+STU1296,Shreya Jain,24,Male,Physics,7,64.6,1.5,2.3,90.8,47.7,61.4,41.9,29.7,55.9,4.15,Average
+STU1297,Gaurav Saxena,25,Male,Electronics,4,48.7,1.5,7.5,79.6,35.6,52.1,23.3,38.3,44.9,3.63,At Risk
+STU1298,Piyush Chopra,19,Female,Computer Science,8,86.8,5.1,5.8,38.1,61.6,74.7,73.8,62.1,80.2,6.81,Good
+STU1299,Shreya Jain,25,Female,Data Science,5,80.6,5.0,5.7,57.8,90.3,98.0,75.8,94.6,93.3,8.92,Excellent
+STU1300,Sneha Reddy,19,Male,Electronics,7,63.1,0.5,7.3,72.5,21.5,45.5,15.3,44.2,31.2,3.35,At Risk
+STU1301,Sneha Reddy,20,Female,Business Administration,1,55.4,4.9,2.1,57.9,73.1,56.1,28.1,57.3,67.3,4.99,Average
+STU1302,Rajesh Bose,17,Male,Business Administration,4,72.4,3.2,8.2,38.0,80.1,89.6,89.9,79.8,85.0,8.48,Excellent
+STU1303,Vivek Nambiar,18,Male,Computer Science,6,74.3,0.5,1.2,60.0,29.5,27.3,25.2,12.7,27.4,2.11,At Risk
+STU1304,Arjun Kumar,22,Female,Electronics,1,68.0,3.7,5.9,87.0,53.9,92.5,70.6,78.9,79.2,7.66,Good
+STU1305,Manish Yadav,24,Female,Electronics,8,66.6,0.9,2.4,98.5,33.3,46.4,42.6,27.3,37.9,3.63,At Risk
+STU1306,Harish Pandey,17,Female,Computer Science,5,74.6,2.7,4.2,41.1,72.5,87.3,69.3,71.2,83.4,7.4,Good
+STU1307,Kavya Rao,19,Female,Biotechnology,2,74.2,4.6,7.3,49.6,65.7,59.3,55.3,51.5,61.3,5.56,Average
+STU1308,Sophia Jackson,21,Male,Data Science,1,49.1,4.1,3.7,71.7,84.8,88.0,95.5,60.9,87.1,7.91,Good
+STU1309,Aisha Khan,23,Female,Civil Engineering,2,68.1,2.8,4.5,44.5,49.8,49.6,43.6,35.0,52.6,4.2,Average
+STU1310,Pooja Nair,24,Female,Computer Science,4,97.6,3.8,6.6,52.2,60.3,52.3,65.1,63.5,47.0,6.14,Good
+STU1311,Emma Martinez,19,Male,Computer Science,6,67.0,1.7,1.7,72.6,47.8,50.3,34.8,53.6,57.3,4.67,Average
+STU1312,Aisha Khan,23,Male,Data Science,6,80.9,1.7,3.9,65.0,64.4,48.0,72.3,57.0,54.1,6.05,Good
+STU1313,Vikram Joshi,25,Female,Computer Science,7,48.8,2.9,7.9,70.4,67.3,77.3,50.1,66.9,71.0,6.4,Good
+STU1314,Aryan Kapoor,17,Female,Business Administration,5,76.1,0.5,4.4,82.5,80.8,78.1,66.5,73.4,75.0,7.3,Good
+STU1315,Olivia Taylor,17,Male,Data Science,6,33.9,3.1,4.9,53.0,58.9,69.8,74.9,86.0,65.9,7.67,Good
+STU1316,Aisha Khan,18,Female,Business Administration,3,66.3,3.2,3.2,44.2,37.4,56.0,56.2,53.1,44.6,5.3,Average
+STU1317,Rohan Mehta,22,Female,Electronics,8,52.4,3.2,5.8,45.7,42.3,42.3,43.2,58.6,44.9,4.91,Average
+STU1318,James Wilson,24,Female,Electronics,2,61.4,4.5,5.1,58.8,93.1,76.1,90.6,88.8,93.8,8.72,Excellent
+STU1319,Emma Martinez,24,Male,Mathematics,1,100.0,3.8,3.5,37.5,41.5,70.3,38.7,58.1,58.1,5.31,Average
+STU1320,Suresh Pillai,17,Male,Physics,7,78.9,3.8,7.7,51.8,62.5,68.8,80.3,79.8,67.9,7.6,Good
+STU1321,Sumit Chauhan,24,Male,Mathematics,5,100.0,2.1,8.9,90.0,100.0,81.4,80.0,79.7,94.3,8.22,Excellent
+STU1322,Abhishek Mishra,17,Female,Business Administration,5,92.4,3.3,5.6,70.9,40.8,51.5,66.6,59.9,45.9,5.83,Average
+STU1323,Pooja Nair,22,Male,Biotechnology,8,57.7,0.5,8.5,42.5,59.1,69.1,41.2,57.6,68.8,5.51,Average
+STU1324,Vivek Nambiar,22,Other,Civil Engineering,8,50.0,7.3,7.1,66.6,74.6,77.7,59.3,70.9,66.9,6.92,Good
+STU1325,Shreya Jain,25,Male,Data Science,7,86.4,3.9,7.6,80.1,77.5,77.7,68.8,89.9,84.8,7.99,Good
+STU1326,Sneha Reddy,23,Female,Electronics,5,60.7,2.9,7.2,82.2,80.6,62.3,56.4,63.2,74.6,6.27,Good
+STU1327,Siddharth Roy,18,Male,Physics,5,87.6,1.5,6.3,50.7,75.6,76.5,63.8,63.1,78.8,6.72,Good
+STU1328,Harish Pandey,23,Male,Civil Engineering,6,40.1,2.4,6.1,34.9,65.0,50.1,46.0,41.6,56.1,4.69,Average
+STU1329,Harish Pandey,17,Female,Business Administration,7,98.4,0.5,6.7,52.2,76.0,100.0,75.6,75.6,93.7,8.05,Excellent
+STU1330,Simran Kaur,17,Male,Biotechnology,6,79.3,1.8,3.2,93.5,79.7,82.4,72.8,85.7,81.1,8.06,Excellent
+STU1331,Gaurav Saxena,19,Female,Electronics,8,100.0,2.8,2.1,57.5,51.9,53.2,36.3,59.5,64.2,5.05,Average
+STU1332,Rohan Mehta,19,Male,Business Administration,6,52.4,1.8,5.7,93.0,70.8,74.7,57.7,53.2,76.9,6.06,Good
+STU1333,Vivek Nambiar,17,Female,Civil Engineering,6,100.0,1.4,6.8,100.0,66.4,79.2,78.7,85.9,81.8,8.04,Excellent
+STU1334,Shreya Jain,24,Female,Electronics,6,61.7,3.2,8.0,53.9,92.1,79.0,95.0,82.8,84.8,8.66,Excellent
+STU1335,Meera Krishnan,22,Female,Mathematics,2,79.9,2.1,4.8,55.8,55.2,63.0,31.1,61.2,54.2,5.19,Average
+STU1336,Priya Patel,19,Female,Biotechnology,2,44.6,0.5,1.4,50.6,62.8,42.7,42.5,42.9,53.4,4.47,Average
+STU1337,Rahul Dubey,21,Female,Mathematics,5,96.5,1.1,8.6,36.0,54.8,66.9,54.3,71.4,57.2,6.37,Good
+STU1338,James Wilson,24,Male,Electronics,2,84.7,6.4,8.7,100.0,95.6,100.0,100.0,100.0,98.5,9.96,Excellent
+STU1339,Harish Pandey,19,Female,Civil Engineering,2,69.2,0.6,3.7,100.0,25.3,52.5,55.6,59.7,36.9,5.36,Average
+STU1340,Sarah Davis,22,Female,Data Science,5,79.4,4.2,5.2,80.9,48.1,87.3,75.6,72.2,77.9,7.39,Good
+STU1341,Deepa Menon,19,Female,Electronics,6,100.0,1.9,2.8,56.0,53.6,67.4,57.7,42.3,57.9,5.31,Average
+STU1342,Gaurav Saxena,20,Male,Mathematics,3,79.6,2.4,5.4,31.7,66.6,61.1,72.6,60.4,69.4,6.48,Good
+STU1343,Aisha Khan,24,Male,Business Administration,8,84.2,5.4,5.2,100.0,82.9,89.3,60.1,63.2,87.6,6.94,Good
+STU1344,Rekha Shetty,19,Female,Data Science,2,77.6,2.2,8.3,84.6,56.4,75.6,58.6,64.6,64.0,6.42,Good
+STU1345,Deepa Menon,23,Other,Civil Engineering,7,71.7,0.8,3.5,9.3,76.4,64.8,50.0,54.0,64.7,5.72,Average
+STU1346,Sophia Jackson,23,Female,Data Science,3,82.4,7.1,8.3,81.1,81.0,100.0,98.5,93.7,89.4,9.51,Excellent
+STU1347,Siddharth Roy,18,Male,Business Administration,3,75.5,2.8,2.8,55.2,50.0,76.0,37.1,73.7,69.9,6.08,Good
+STU1348,Sophia Jackson,25,Female,Electronics,3,68.7,0.5,4.6,48.4,53.3,74.9,65.1,47.2,56.1,5.88,Average
+STU1349,Swati Agarwal,25,Female,Computer Science,2,81.5,2.4,3.7,78.8,79.1,74.0,58.9,57.6,74.8,6.34,Good
+STU1350,Latha Venkatesh,19,Male,Electronics,6,79.2,2.9,6.0,65.3,69.5,92.5,82.8,88.7,78.3,8.58,Excellent
+STU1351,Emma Martinez,20,Male,Physics,2,100.0,2.6,2.4,84.2,88.6,86.0,89.2,97.1,76.2,9.17,Excellent
+STU1352,Rahul Dubey,20,Female,Physics,3,62.0,0.5,8.6,60.6,59.6,75.4,95.4,51.8,62.3,7.04,Good
+STU1353,John Smith,21,Female,Data Science,3,77.9,6.9,3.6,100.0,100.0,100.0,81.2,91.2,99.2,9.09,Excellent
+STU1354,Anjali Bhatt,19,Male,Business Administration,1,89.2,5.4,3.1,99.0,74.8,87.7,90.5,62.3,81.1,7.71,Good
+STU1355,Priya Patel,18,Male,Physics,4,78.6,0.5,9.6,30.8,56.8,65.4,58.7,56.1,54.6,5.88,Average
+STU1356,Sophia Jackson,23,Female,Computer Science,8,42.8,2.0,7.6,90.2,67.3,77.0,78.5,67.3,76.7,7.26,Good
+STU1357,John Smith,25,Male,Physics,8,78.9,4.7,5.2,43.3,64.7,60.0,55.1,55.0,57.0,5.7,Average
+STU1358,Aisha Khan,23,Male,Data Science,1,100.0,6.6,4.1,81.0,87.3,100.0,91.5,100.0,91.7,9.62,Excellent
+STU1359,Amit Verma,24,Male,Civil Engineering,4,100.0,4.7,2.8,100.0,94.4,85.7,96.2,88.1,88.9,9.07,Excellent
+STU1360,Tanvi Desai,19,Male,Business Administration,6,100.0,1.3,4.4,81.9,45.0,55.0,66.1,39.7,47.9,5.12,Average
+STU1361,Meera Krishnan,19,Female,Data Science,6,72.4,3.2,5.8,84.0,73.1,66.3,62.4,77.9,74.2,7.04,Good
+STU1362,Aisha Khan,24,Male,Civil Engineering,4,41.2,2.5,4.1,100.0,32.3,44.3,49.2,23.8,35.1,3.64,At Risk
+STU1363,Divya Iyer,18,Male,Biotechnology,7,73.2,2.5,6.9,81.1,76.8,79.6,78.7,73.1,80.5,7.64,Good
+STU1364,Aisha Khan,19,Female,Business Administration,4,58.7,2.4,4.6,51.5,44.9,62.8,57.6,62.4,51.7,5.93,Average
+STU1365,Daniel Thomas,19,Female,Civil Engineering,8,82.9,4.1,3.7,74.8,75.5,79.7,47.3,74.2,88.6,6.74,Good
+STU1366,Deepa Menon,24,Male,Biotechnology,8,79.5,1.6,5.4,92.2,46.6,74.1,66.0,57.3,62.0,6.22,Good
+STU1367,Aisha Khan,20,Female,Computer Science,1,60.9,5.1,7.4,73.3,82.3,89.9,80.5,94.6,85.7,8.82,Excellent
+STU1368,Manish Yadav,24,Female,Civil Engineering,5,74.3,1.6,6.6,77.0,39.3,75.2,50.7,60.1,56.5,5.82,Average
+STU1369,Sumit Chauhan,17,Female,Biotechnology,3,94.9,4.7,7.5,89.8,72.8,81.3,81.9,88.2,75.9,8.34,Excellent
+STU1370,Rahul Dubey,22,Female,Business Administration,1,64.5,6.0,4.1,72.0,84.9,85.2,98.7,87.0,85.3,8.99,Excellent
+STU1371,Meera Krishnan,17,Female,Mathematics,6,74.9,0.5,0.0,83.8,38.9,73.8,66.1,35.6,55.8,5.27,Average
+STU1372,Rekha Shetty,21,Male,Civil Engineering,5,53.4,6.3,2.2,62.0,85.6,89.9,92.5,67.6,76.2,8.13,Excellent
+STU1373,Sunita Tripathi,18,Male,Data Science,7,47.3,2.4,5.9,89.7,74.9,80.9,73.1,70.7,71.1,7.39,Good
+STU1374,Shreya Jain,22,Female,Business Administration,3,77.7,3.2,4.8,46.9,52.7,41.9,56.8,69.1,39.9,5.83,Average
+STU1375,Suresh Pillai,25,Male,Computer Science,1,92.0,3.1,3.7,53.5,37.2,63.3,81.8,60.3,50.1,6.5,Good
+STU1376,Rohan Mehta,19,Female,Civil Engineering,8,63.8,3.2,6.9,76.0,70.0,69.7,85.5,76.5,67.1,7.72,Good
+STU1377,Divya Iyer,25,Male,Business Administration,3,66.3,3.0,4.2,39.1,84.0,68.3,64.0,57.8,75.7,6.44,Good
+STU1378,Meera Krishnan,21,Female,Civil Engineering,5,58.9,2.4,2.5,78.6,55.2,70.4,48.7,60.4,69.3,5.84,Average
+STU1379,Aryan Kapoor,17,Male,Data Science,7,80.6,2.8,5.0,72.8,70.8,80.0,76.7,64.3,70.3,7.18,Good
+STU1380,Anjali Bhatt,21,Female,Computer Science,8,52.6,0.5,4.3,45.9,46.2,45.0,15.4,44.6,49.7,3.61,At Risk
+STU1381,Rahul Dubey,20,Female,Civil Engineering,3,59.2,2.9,4.4,40.2,31.0,49.5,46.6,43.7,34.3,4.45,Average
+STU1382,Latha Venkatesh,23,Male,Mathematics,1,73.1,3.1,5.1,54.8,70.7,55.0,64.8,70.8,65.3,6.58,Good
+STU1383,Mohit Bansal,18,Male,Civil Engineering,6,89.9,2.1,2.0,49.7,57.4,76.1,65.6,51.1,65.2,6.11,Good
+STU1384,Rajesh Bose,19,Male,Mathematics,7,87.8,1.5,1.8,99.4,63.0,73.0,48.4,52.1,60.8,5.62,Average
+STU1385,Gaurav Saxena,24,Female,Computer Science,3,92.9,3.3,2.4,60.3,56.1,52.7,65.1,50.9,53.4,5.6,Average
+STU1386,Latha Venkatesh,20,Female,Civil Engineering,7,73.5,1.5,4.2,60.5,49.7,65.2,76.0,57.2,62.4,6.37,Good
+STU1387,Siddharth Roy,19,Male,Business Administration,6,54.4,2.2,1.0,49.0,53.1,52.7,42.2,23.0,52.0,3.77,At Risk
+STU1388,Sarah Davis,21,Female,Mathematics,4,48.2,3.5,3.4,70.1,73.1,56.6,64.6,67.4,69.1,6.5,Good
+STU1389,Simran Kaur,25,Male,Physics,5,65.1,4.4,1.7,65.3,84.7,92.1,82.7,78.2,90.3,8.3,Excellent
+STU1390,Emma Martinez,20,Female,Civil Engineering,6,98.4,2.4,2.7,99.8,53.8,77.7,40.3,63.2,62.1,5.83,Average
+STU1391,Aryan Kapoor,22,Female,Physics,5,85.9,2.3,2.2,33.7,42.2,45.6,49.3,52.0,43.6,4.9,Average
+STU1392,Pooja Nair,25,Male,Biotechnology,6,75.4,4.7,3.2,73.1,90.0,100.0,99.2,82.1,95.9,9.16,Excellent
+STU1393,Sophia Jackson,19,Male,Physics,2,90.3,5.8,7.0,74.2,82.2,96.8,64.4,78.0,85.6,7.81,Good
+STU1394,Abhishek Mishra,24,Female,Civil Engineering,4,67.2,5.1,0.5,63.5,79.3,80.6,74.9,66.8,73.6,7.33,Good
+STU1395,Suresh Pillai,25,Male,Physics,3,100.0,2.1,6.5,60.7,68.1,80.0,72.3,86.8,74.9,7.92,Good
+STU1396,Arjun Kumar,20,Male,Mathematics,4,73.5,5.3,6.0,54.5,59.2,64.1,34.0,77.3,68.1,5.99,Average
+STU1397,Ananya Singh,18,Male,Civil Engineering,2,79.0,1.0,4.9,75.3,60.0,69.3,74.8,62.8,59.4,6.74,Good
+STU1398,Sarah Davis,19,Male,Electronics,7,100.0,6.5,3.8,81.0,67.8,100.0,84.2,100.0,80.0,9.21,Excellent
+STU1399,Emily Johnson,24,Male,Mathematics,5,40.3,1.0,5.2,21.1,36.8,20.9,30.5,49.7,30.6,3.69,At Risk
+STU1400,Siddharth Roy,21,Female,Data Science,4,72.7,2.3,5.3,38.8,57.5,33.7,43.7,46.2,48.8,4.41,Average
+STU1401,Sumit Chauhan,17,Female,Electronics,7,60.3,0.9,5.4,68.5,57.5,65.7,70.3,56.1,61.2,6.24,Good
+STU1402,Riya Gupta,17,Other,Biotechnology,8,53.7,2.5,8.2,66.2,93.7,97.1,93.4,100.0,99.4,9.68,Excellent
+STU1403,Riya Gupta,21,Female,Computer Science,5,60.3,1.5,0.0,57.7,84.2,83.5,69.8,71.2,80.4,7.45,Good
+STU1404,Mohit Bansal,18,Female,Business Administration,5,51.4,4.3,5.8,89.6,63.5,82.1,100.0,66.2,74.8,7.93,Good
+STU1405,Nisha Malhotra,25,Female,Electronics,8,79.7,2.7,4.8,46.3,56.1,70.3,59.4,63.7,62.0,6.3,Good
+STU1406,Simran Kaur,20,Female,Business Administration,3,63.0,4.0,6.2,53.5,70.1,83.4,80.2,64.8,82.1,7.37,Good
+STU1407,David Anderson,24,Female,Electronics,1,53.7,2.4,5.1,63.7,73.1,74.9,46.8,66.5,72.5,6.29,Good
+STU1408,Olivia Taylor,22,Female,Mathematics,3,100.0,2.4,1.7,99.1,72.4,91.5,75.7,86.2,80.0,8.27,Excellent
+STU1409,Sunita Tripathi,23,Female,Business Administration,2,70.0,4.3,4.6,89.8,38.6,62.8,42.1,47.9,51.0,4.82,Average
+STU1410,Meera Krishnan,18,Male,Electronics,8,90.8,0.7,5.6,62.0,44.7,46.0,58.4,40.0,46.5,4.72,Average
+STU1411,Siddharth Roy,20,Male,Biotechnology,4,100.0,2.7,2.8,100.0,79.1,91.1,60.6,79.0,79.9,7.59,Good
+STU1412,Harish Pandey,21,Female,Physics,1,87.5,2.3,5.0,73.4,45.3,56.6,78.0,49.2,59.2,5.9,Average
+STU1413,Rahul Dubey,22,Female,Computer Science,2,90.3,2.8,7.4,66.7,59.0,69.6,67.9,73.3,64.3,6.95,Good
+STU1414,Nisha Malhotra,21,Male,Physics,2,82.6,5.9,6.1,42.4,50.5,85.0,77.4,74.2,69.0,7.49,Good
+STU1415,John Smith,21,Male,Mathematics,4,76.1,4.6,3.5,89.5,62.5,78.0,59.4,58.8,70.7,6.32,Good
+STU1416,Karan Sharma,24,Male,Business Administration,7,71.0,3.7,1.3,61.4,72.2,67.8,60.7,73.3,66.4,6.83,Good
+STU1417,James Wilson,25,Female,Mathematics,4,63.1,1.6,1.9,59.5,44.3,44.4,41.4,55.0,42.6,4.78,Average
+STU1418,Sarah Davis,18,Female,Business Administration,2,63.1,2.4,4.0,61.7,71.4,92.4,58.4,62.3,81.6,6.81,Good
+STU1419,Mohit Bansal,18,Male,Mathematics,3,95.4,3.7,0.4,24.0,66.3,82.5,52.6,41.4,77.2,5.55,Average
+STU1420,Amit Verma,22,Female,Civil Engineering,2,60.9,1.5,3.2,73.3,60.2,76.9,30.7,55.6,62.9,5.28,Average
+STU1421,Sarah Davis,20,Female,Civil Engineering,2,86.2,2.0,1.1,69.8,65.6,81.5,53.5,62.2,64.6,6.38,Good
+STU1422,Gaurav Saxena,24,Female,Civil Engineering,3,67.7,2.5,5.6,31.8,33.7,46.5,33.2,30.7,40.1,3.49,At Risk
+STU1423,Gaurav Saxena,23,Male,Computer Science,8,61.1,3.9,4.8,31.7,29.3,55.6,36.7,55.2,42.0,4.71,Average
+STU1424,Sarah Davis,21,Female,Biotechnology,5,60.6,3.0,5.0,62.2,21.1,43.7,62.3,40.5,32.1,4.57,Average
+STU1425,Aarav Shah,20,Female,Computer Science,7,81.4,4.1,3.6,79.5,92.1,83.3,99.3,81.5,83.2,8.83,Excellent
+STU1426,Abhishek Mishra,18,Female,Computer Science,2,89.4,3.3,5.2,73.3,86.0,91.1,57.9,71.0,93.2,7.26,Good
+STU1427,Aryan Kapoor,17,Male,Electronics,3,54.2,2.1,2.7,29.0,59.6,57.9,47.3,57.4,60.5,5.47,Average
+STU1428,Sophia Jackson,23,Male,Biotechnology,8,98.7,2.3,8.5,63.8,100.0,100.0,100.0,100.0,100.0,10.0,Excellent
+STU1429,Vivek Nambiar,23,Male,Electronics,6,54.3,2.7,5.0,96.4,55.9,71.9,71.8,60.0,60.0,6.55,Good
+STU1430,Pooja Nair,19,Other,Biotechnology,3,59.1,0.6,6.1,41.9,40.6,55.1,64.0,52.6,45.5,5.53,Average
+STU1431,David Anderson,20,Female,Computer Science,5,82.6,0.5,5.8,62.0,74.9,61.8,77.9,65.6,66.7,6.94,Good
+STU1432,Nisha Malhotra,25,Male,Biotechnology,4,93.2,2.8,2.8,54.7,75.4,65.9,76.1,82.4,68.6,7.65,Good
+STU1433,Aisha Khan,24,Male,Physics,4,88.4,1.8,5.9,82.5,69.1,70.6,81.8,55.3,68.3,6.77,Good
+STU1434,David Anderson,18,Male,Biotechnology,1,100.0,4.0,7.8,61.2,82.3,88.8,65.0,75.6,82.7,7.57,Good
+STU1435,Aisha Khan,20,Male,Computer Science,8,65.2,1.5,0.1,68.9,38.7,39.3,25.7,34.5,42.4,3.32,At Risk
+STU1436,Piyush Chopra,17,Male,Computer Science,7,80.1,2.0,7.6,59.5,91.1,72.0,70.8,63.9,82.7,7.03,Good
+STU1437,Harish Pandey,20,Female,Computer Science,3,53.4,0.9,4.0,82.0,42.4,24.3,58.6,36.1,29.5,4.11,Average
+STU1438,Gaurav Saxena,21,Male,Business Administration,6,65.5,3.4,5.5,58.6,63.1,67.5,49.9,68.4,68.2,6.21,Good
+STU1439,Aisha Khan,21,Female,Mathematics,7,81.4,4.6,4.3,89.1,60.3,76.0,63.1,85.8,72.8,7.45,Good
+STU1440,Deepa Menon,21,Male,Electronics,7,63.3,5.0,6.1,69.7,81.6,79.4,69.0,79.3,84.9,7.65,Good
+STU1441,Rekha Shetty,24,Male,Business Administration,7,57.1,2.4,0.0,71.0,58.1,60.3,26.7,45.6,48.1,4.41,Average
+STU1442,Latha Venkatesh,22,Female,Biotechnology,3,97.9,2.4,7.9,58.2,76.1,96.7,78.6,90.4,84.0,8.67,Excellent
+STU1443,Deepa Menon,23,Male,Civil Engineering,4,73.1,0.5,2.5,50.9,42.9,49.6,31.1,30.2,48.8,3.56,At Risk
+STU1444,Nikhil Tiwari,21,Female,Electronics,8,79.2,2.3,5.3,25.2,37.0,40.1,45.8,49.3,46.0,4.52,Average
+STU1445,Ananya Singh,25,Male,Biotechnology,3,90.8,1.9,5.2,93.1,60.8,58.1,42.1,42.7,62.8,4.74,Average
+STU1446,Vivek Nambiar,20,Male,Business Administration,2,91.2,6.7,8.2,63.7,75.4,100.0,94.7,92.2,89.6,9.28,Excellent
+STU1447,Harish Pandey,22,Male,Mathematics,1,95.4,5.2,6.3,88.4,77.9,78.9,83.8,61.8,83.7,7.34,Good
+STU1448,Simran Kaur,23,Female,Computer Science,2,58.7,2.5,5.2,63.9,29.9,55.3,38.2,53.5,42.6,4.69,Average
+STU1449,Suresh Pillai,25,Male,Mathematics,6,67.3,1.9,4.4,88.9,86.4,71.6,81.6,46.6,73.0,6.61,Good
+STU1450,Deepa Menon,17,Male,Mathematics,2,48.4,0.5,5.1,61.4,51.3,58.2,48.7,51.1,54.4,5.18,Average
+STU1451,Olivia Taylor,24,Female,Mathematics,7,62.6,3.7,2.2,61.1,36.9,48.4,49.4,48.4,38.2,4.75,Average
+STU1452,Aisha Khan,25,Male,Physics,7,81.0,4.2,8.8,91.4,71.4,58.7,70.6,61.6,62.3,6.47,Good
+STU1453,Nisha Malhotra,25,Female,Physics,5,83.0,4.5,3.4,85.6,62.1,79.0,65.4,67.2,74.4,6.85,Good
+STU1454,Shreya Jain,25,Female,Civil Engineering,2,44.6,5.1,3.0,72.7,54.1,54.4,46.8,51.2,53.1,5.08,Average
+STU1455,David Anderson,24,Female,Business Administration,4,92.3,5.3,4.1,74.7,85.0,88.2,93.8,84.8,89.9,8.82,Excellent
+STU1456,Shreya Jain,22,Male,Mathematics,3,58.3,4.8,4.6,81.0,43.2,63.8,34.1,63.4,53.6,5.27,Average
+STU1457,Priya Patel,21,Female,Biotechnology,5,85.3,2.1,3.4,52.3,53.4,51.3,77.2,49.6,56.5,5.86,Average
+STU1458,Divya Iyer,20,Male,Biotechnology,4,75.5,1.7,6.7,67.2,79.8,82.7,78.8,63.1,75.9,7.34,Good
+STU1459,Preethi Subramaniam,25,Female,Business Administration,5,81.3,2.8,0.2,67.1,56.2,58.7,69.4,57.7,64.0,6.13,Good
+STU1460,Daniel Thomas,24,Other,Civil Engineering,8,98.9,4.2,7.5,47.2,62.1,67.6,72.5,74.5,60.7,7.13,Good
+STU1461,Amit Verma,22,Male,Civil Engineering,3,96.8,0.5,4.0,71.4,62.4,81.7,31.2,64.9,71.5,5.79,Average
+STU1462,Sumit Chauhan,17,Female,Data Science,1,60.3,5.2,6.2,75.1,71.6,61.5,50.8,70.8,68.7,6.3,Good
+STU1463,Daniel Thomas,17,Male,Mathematics,2,76.2,1.0,5.5,49.5,11.7,49.7,25.6,19.7,16.5,2.67,At Risk
+STU1464,Emma Martinez,19,Male,Civil Engineering,6,74.1,3.8,8.4,86.4,94.8,76.6,79.2,63.9,84.6,7.41,Good
+STU1465,Ananya Singh,24,Female,Computer Science,1,74.9,3.8,6.1,83.0,83.6,68.1,51.3,65.3,71.8,6.35,Good
+STU1466,Sumit Chauhan,25,Male,Computer Science,5,71.0,3.7,5.2,91.0,85.9,91.5,100.0,79.1,88.9,8.85,Excellent
+STU1467,Sumit Chauhan,21,Male,Biotechnology,3,84.2,1.0,3.4,89.4,64.0,87.8,86.2,81.2,77.2,8.23,Excellent
+STU1468,Arjun Kumar,18,Female,Mathematics,4,96.4,2.0,3.4,48.2,68.4,60.2,50.4,47.5,61.9,5.3,Average
+STU1469,Sunita Tripathi,25,Male,Business Administration,5,89.0,3.3,6.0,65.8,63.1,76.2,81.2,67.7,67.3,7.3,Good
+STU1470,Meera Krishnan,18,Male,Biotechnology,8,82.0,0.5,5.4,77.1,47.9,67.8,42.7,57.7,57.6,5.43,Average
+STU1471,Mohit Bansal,20,Other,Mathematics,5,79.3,3.4,5.3,68.9,56.1,82.7,71.1,64.3,69.9,6.92,Good
+STU1472,Sarah Davis,18,Female,Computer Science,2,78.4,4.5,5.1,72.9,49.6,90.6,76.2,98.4,70.2,8.53,Excellent
+STU1473,Meera Krishnan,23,Male,Civil Engineering,1,55.7,2.0,5.1,70.5,55.0,45.6,44.7,30.1,53.8,4.01,Average
+STU1474,John Smith,17,Female,Data Science,8,76.6,4.1,6.2,100.0,71.1,85.4,61.6,66.4,78.7,6.92,Good
+STU1475,Swati Agarwal,22,Female,Data Science,1,74.8,3.4,5.0,64.3,84.8,76.4,97.4,75.4,84.2,8.31,Excellent
+STU1476,Nikhil Tiwari,20,Female,Civil Engineering,5,81.3,3.1,4.8,44.4,48.8,41.4,43.5,56.9,49.1,4.9,Average
+STU1477,Rohan Mehta,18,Female,Physics,1,84.7,1.5,5.1,23.7,72.8,67.0,79.2,53.7,54.0,6.59,Good
+STU1478,Riya Gupta,22,Male,Mathematics,3,50.5,3.6,3.3,100.0,64.5,82.9,58.7,45.1,72.9,5.87,Average
+STU1479,Daniel Thomas,23,Female,Physics,3,72.5,2.2,5.3,65.8,47.8,70.8,36.7,39.4,63.0,4.57,Average
+STU1480,Mohit Bansal,20,Female,Biotechnology,6,55.6,3.3,4.0,67.0,55.3,71.7,78.3,84.3,61.4,7.71,Good
+STU1481,Vivek Nambiar,19,Female,Data Science,6,87.2,0.7,4.0,79.6,72.9,93.6,64.2,80.7,81.8,7.76,Good
+STU1482,Ananya Singh,18,Male,Data Science,6,61.8,2.6,4.9,68.0,64.0,68.7,70.4,69.7,61.1,6.91,Good
+STU1483,Piyush Chopra,23,Other,Business Administration,1,86.4,1.9,6.9,35.7,79.5,78.6,69.9,92.7,75.8,8.17,Excellent
+STU1484,John Smith,21,Female,Civil Engineering,8,82.9,2.5,4.1,89.7,58.1,44.3,46.4,47.1,53.6,4.74,Average
+STU1485,Nikhil Tiwari,22,Female,Biotechnology,7,75.1,4.9,3.3,81.8,49.7,41.6,38.0,28.2,44.9,3.6,At Risk
+STU1486,Riya Gupta,23,Male,Physics,4,63.3,1.4,1.9,66.3,38.4,62.6,53.1,54.2,47.9,5.4,Average
+STU1487,Emma Martinez,18,Male,Electronics,7,65.6,7.3,7.8,71.7,100.0,100.0,100.0,100.0,100.0,10.0,Excellent
+STU1488,Emma Martinez,19,Female,Business Administration,6,65.2,5.8,6.7,87.1,76.8,84.6,100.0,85.4,83.9,8.87,Excellent
+STU1489,Arjun Kumar,18,Male,Physics,8,64.0,0.6,4.1,45.0,50.2,40.5,35.2,54.6,48.4,4.55,Average
+STU1490,Shreya Jain,21,Male,Data Science,3,58.4,1.2,4.0,81.1,66.0,60.1,41.3,57.0,58.9,5.38,Average
+STU1491,Swati Agarwal,24,Female,Biotechnology,2,85.9,4.6,4.9,42.2,60.9,72.1,55.4,73.9,73.0,6.67,Good
+STU1492,Priya Patel,18,Male,Data Science,6,88.8,4.7,9.1,86.4,88.0,99.1,97.9,83.2,92.8,9.13,Excellent
+STU1493,Vivek Nambiar,17,Male,Biotechnology,2,100.0,0.5,8.1,65.7,87.8,89.3,97.8,93.2,81.6,9.32,Excellent
+STU1494,David Anderson,25,Female,Mathematics,3,78.0,3.1,4.0,100.0,84.2,77.8,57.7,69.9,83.2,6.92,Good
+STU1495,Sarah Davis,23,Male,Physics,5,87.6,5.1,7.1,77.6,57.3,78.3,85.7,73.3,70.3,7.64,Good
+STU1496,Simran Kaur,24,Male,Electronics,7,72.2,1.2,5.4,55.5,56.7,56.7,71.8,55.0,64.0,6.06,Good
+STU1497,Simran Kaur,23,Male,Data Science,6,64.5,4.0,2.0,47.4,73.3,100.0,87.8,90.0,75.5,8.97,Excellent
+STU1498,Rahul Dubey,20,Female,Civil Engineering,4,75.7,3.4,3.8,75.9,63.3,52.8,47.8,48.8,70.0,5.08,Average
+STU1499,Nisha Malhotra,18,Male,Computer Science,7,67.0,2.5,4.6,47.4,32.1,42.7,69.3,39.7,33.1,4.84,Average
