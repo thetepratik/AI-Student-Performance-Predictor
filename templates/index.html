@@ -1,935 +1,2394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EduPredict AI – Student Performance Predictor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Outfit:wght@200;400;600;800&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <style>
-    :root {
-      --bg: #0a0e1a;
-      --surface: #111827;
-      --surface2: #1a2235;
-      --surface3: #1f2d44;
-      --border: rgba(99,179,237,0.12);
-      --accent: #3b82f6;
-      --accent2: #06b6d4;
-      --accent3: #8b5cf6;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --text: #e2e8f0;
-      --text2: #94a3b8;
-      --text3: #64748b;
-      --radius: 12px;
-      --glow: 0 0 30px rgba(59,130,246,0.15);
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-    
-    /* AUTH */
-    #auth-screen { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px;
-      background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.08) 0%, transparent 60%), var(--bg); }
-    .auth-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-      padding: 48px 40px; width: 100%; max-width: 420px; box-shadow: var(--glow); }
-    .auth-logo { text-align:center; margin-bottom:32px; }
-    .auth-logo .logo-icon { width:56px; height:56px; background: linear-gradient(135deg, var(--accent), var(--accent3));
-      border-radius:16px; display:inline-flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:12px; }
-    .auth-logo h1 { font-family:'Outfit',sans-serif; font-weight:800; font-size:26px;
-      background: linear-gradient(135deg, #fff, var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .auth-logo p { color: var(--text2); font-size:13px; margin-top:4px; }
-    .auth-tabs { display:flex; gap:4px; background:var(--surface2); border-radius:10px; padding:4px; margin-bottom:28px; }
-    .auth-tab { flex:1; padding:8px; text-align:center; border-radius:8px; cursor:pointer; font-size:14px;
-      color:var(--text2); transition:all .2s; font-weight:500; }
-    .auth-tab.active { background:var(--accent); color:#fff; }
-    .form-group { margin-bottom:16px; }
-    .form-group label { display:block; font-size:12px; color:var(--text2); margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; font-weight:500; }
-    .form-group input, .form-group select { width:100%; padding:12px 14px; background:var(--surface2);
-      border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:inherit; font-size:14px;
-      transition:border .2s; outline:none; }
-    .form-group input:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
-    .form-group select option { background:var(--surface2); }
-    .btn { width:100%; padding:13px; background:linear-gradient(135deg,var(--accent),var(--accent3));
-      border:none; border-radius:10px; color:#fff; font-size:15px; font-weight:600; cursor:pointer;
-      transition:opacity .2s, transform .1s; font-family:inherit; letter-spacing:.3px; }
-    .btn:hover { opacity:.9; transform:translateY(-1px); }
-    .btn:active { transform:translateY(0); }
-    .btn-secondary { background:var(--surface2); border:1px solid var(--border); }
-    .btn-secondary:hover { background:var(--surface3); }
-    .btn-danger { background:linear-gradient(135deg,var(--danger),#dc2626); }
-    .btn-success { background:linear-gradient(135deg,var(--success),#059669); }
-    .btn-sm { width:auto; padding:8px 16px; font-size:13px; border-radius:8px; }
-    .btn-xs { padding:5px 12px; font-size:12px; border-radius:6px; }
-    .role-hint { font-size:12px; color:var(--text3); text-align:center; margin-top:12px; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduPredict AI – Student Performance Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Outfit:wght@200;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --surface2: #1a2235;
+        --surface3: #1f2d44;
+        --border: rgba(99, 179, 237, 0.12);
+        --accent: #3b82f6;
+        --accent2: #06b6d4;
+        --accent3: #8b5cf6;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --radius: 12px;
+        --glow: 0 0 30px rgba(59, 130, 246, 0.15);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
 
-    /* MAIN APP */
-    #app { display:none; flex-direction:row; min-height:100vh; }
-    
-    /* SIDEBAR */
-    .sidebar { width:240px; min-height:100vh; background:var(--surface); border-right:1px solid var(--border);
-      display:flex; flex-direction:column; position:fixed; left:0; top:0; bottom:0; z-index:100; }
-    .sidebar-brand { padding:24px 20px 16px; border-bottom:1px solid var(--border); }
-    .sidebar-brand .logo { display:flex; align-items:center; gap:10px; }
-    .sidebar-brand .logo-icon { width:36px; height:36px; background:linear-gradient(135deg,var(--accent),var(--accent3));
-      border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
-    .sidebar-brand h2 { font-weight:800; font-size:16px; background:linear-gradient(135deg,#fff,var(--accent2));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .sidebar-brand p { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:1px; }
-    .sidebar-nav { flex:1; padding:16px 12px; overflow-y:auto; }
-    .nav-section { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:1px;
-      padding:12px 8px 6px; font-weight:600; }
-    .nav-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px;
-      cursor:pointer; color:var(--text2); font-size:14px; transition:all .2s; margin-bottom:2px; font-weight:500; }
-    .nav-item:hover { background:var(--surface2); color:var(--text); }
-    .nav-item.active { background:rgba(59,130,246,0.15); color:var(--accent); }
-    .nav-item .icon { width:20px; text-align:center; font-size:16px; }
-    .sidebar-user { padding:16px; border-top:1px solid var(--border); }
-    .user-card { display:flex; align-items:center; gap:10px; }
-    .user-avatar { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent3));
-      display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; }
-    .user-info { flex:1; overflow:hidden; }
-    .user-info .name { font-size:13px; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .user-info .role-badge { font-size:10px; padding:2px 8px; border-radius:20px; display:inline-block; margin-top:2px; font-weight:600; }
-    .role-badge.faculty { background:rgba(139,92,246,0.2); color:var(--accent3); }
-    .role-badge.student { background:rgba(6,182,212,0.2); color:var(--accent2); }
-    .logout-btn { width:28px; height:28px; border-radius:8px; background:transparent; border:1px solid var(--border);
-      cursor:pointer; color:var(--text3); display:flex; align-items:center; justify-content:center; font-size:14px; }
-    .logout-btn:hover { background:var(--danger); color:#fff; border-color:var(--danger); }
+      /* AUTH */
+      #auth-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        background:
+          radial-gradient(
+            ellipse at 20% 50%,
+            rgba(59, 130, 246, 0.08) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 80% 20%,
+            rgba(139, 92, 246, 0.08) 0%,
+            transparent 60%
+          ),
+          var(--bg);
+      }
+      .auth-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 48px 40px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: var(--glow);
+      }
+      .auth-logo {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      .auth-logo .logo-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+      .auth-logo h1 {
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        background: linear-gradient(135deg, #fff, var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .auth-logo p {
+        color: var(--text2);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      .auth-tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--surface2);
+        border-radius: 10px;
+        padding: 4px;
+        margin-bottom: 28px;
+      }
+      .auth-tab {
+        flex: 1;
+        padding: 8px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        color: var(--text2);
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .auth-tab.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .form-group {
+        margin-bottom: 16px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 12px;
+        color: var(--text2);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 12px 14px;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 14px;
+        transition: border 0.2s;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .form-group select option {
+        background: var(--surface2);
+      }
+      .btn {
+        width: 100%;
+        padding: 13px;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.1s;
+        font-family: inherit;
+        letter-spacing: 0.3px;
+      }
+      .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .btn-secondary {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+      }
+      .btn-secondary:hover {
+        background: var(--surface3);
+      }
+      .btn-danger {
+        background: linear-gradient(135deg, var(--danger), #dc2626);
+      }
+      .btn-success {
+        background: linear-gradient(135deg, var(--success), #059669);
+      }
+      .btn-sm {
+        width: auto;
+        padding: 8px 16px;
+        font-size: 13px;
+        border-radius: 8px;
+      }
+      .btn-xs {
+        padding: 5px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+      }
+      .role-hint {
+        font-size: 12px;
+        color: var(--text3);
+        text-align: center;
+        margin-top: 12px;
+      }
 
-    /* MAIN CONTENT */
-    .main-content { margin-left:240px; flex:1; padding:32px; overflow-x:hidden; }
-    .page { display:none; }
-    .page.active { display:block; }
-    .page-header { margin-bottom:28px; }
-    .page-header h1 { font-weight:800; font-size:28px; }
-    .page-header p { color:var(--text2); margin-top:4px; font-size:14px; }
+      /* MAIN APP */
+      #app {
+        display: none;
+        flex-direction: row;
+        min-height: 100vh;
+      }
 
-    /* STATS CARDS */
-    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:28px; }
-    .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; position:relative; overflow:hidden; }
-    .stat-card::after { content:''; position:absolute; top:0; right:0; width:80px; height:80px;
-      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); }
-    .stat-card .label { font-size:12px; color:var(--text3); text-transform:uppercase; letter-spacing:.5px; font-weight:600; }
-    .stat-card .value { font-size:32px; font-weight:800; margin:6px 0 4px; font-family:'Outfit',sans-serif; }
-    .stat-card .change { font-size:12px; color:var(--text2); }
-    .stat-card.blue .value { color: var(--accent); }
-    .stat-card.purple .value { color: var(--accent3); }
-    .stat-card.green .value { color: var(--success); }
-    .stat-card.red .value { color: var(--danger); }
-    .stat-card.cyan .value { color: var(--accent2); }
+      /* SIDEBAR */
+      .sidebar {
+        width: 240px;
+        min-height: 100vh;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+      }
+      .sidebar-brand {
+        padding: 24px 20px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .sidebar-brand .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sidebar-brand .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .sidebar-brand h2 {
+        font-weight: 800;
+        font-size: 16px;
+        background: linear-gradient(135deg, #fff, var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .sidebar-brand p {
+        font-size: 10px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .sidebar-nav {
+        flex: 1;
+        padding: 16px 12px;
+        overflow-y: auto;
+      }
+      .nav-section {
+        font-size: 10px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 12px 8px 6px;
+        font-weight: 600;
+      }
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        color: var(--text2);
+        font-size: 14px;
+        transition: all 0.2s;
+        margin-bottom: 2px;
+        font-weight: 500;
+      }
+      .nav-item:hover {
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-item.active {
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--accent);
+      }
+      .nav-item .icon {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
+      }
+      .sidebar-user {
+        padding: 16px;
+        border-top: 1px solid var(--border);
+      }
+      .user-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .user-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .user-info {
+        flex: 1;
+        overflow: hidden;
+      }
+      .user-info .name {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .user-info .role-badge {
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 2px;
+        font-weight: 600;
+      }
+      .role-badge.faculty {
+        background: rgba(139, 92, 246, 0.2);
+        color: var(--accent3);
+      }
+      .role-badge.student {
+        background: rgba(6, 182, 212, 0.2);
+        color: var(--accent2);
+      }
+      .logout-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: transparent;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+      }
+      .logout-btn:hover {
+        background: var(--danger);
+        color: #fff;
+        border-color: var(--danger);
+      }
 
-    /* CARDS */
-    .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
-    .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-    .card-title { font-size:16px; font-weight:700; }
-    .card-subtitle { font-size:12px; color:var(--text2); margin-top:2px; }
-    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+      /* MAIN CONTENT */
+      .main-content {
+        margin-left: 240px;
+        flex: 1;
+        padding: 32px;
+        overflow-x: hidden;
+      }
+      .page {
+        display: none;
+      }
+      .page.active {
+        display: block;
+      }
+      .page-header {
+        margin-bottom: 28px;
+      }
+      .page-header h1 {
+        font-weight: 800;
+        font-size: 28px;
+      }
+      .page-header p {
+        color: var(--text2);
+        margin-top: 4px;
+        font-size: 14px;
+      }
 
-    /* TABLE */
-    .table-wrap { overflow-x:auto; }
-    table { width:100%; border-collapse:collapse; font-size:14px; }
-    th { padding:12px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.5px;
-      color:var(--text3); border-bottom:1px solid var(--border); font-weight:600; background:var(--surface2); }
-    td { padding:13px 16px; border-bottom:1px solid rgba(99,179,237,0.06); color:var(--text); }
-    tr:hover td { background:rgba(59,130,246,0.04); }
-    tr:last-child td { border-bottom:none; }
+      /* STATS CARDS */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .stat-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.1) 0%,
+          transparent 70%
+        );
+      }
+      .stat-card .label {
+        font-size: 12px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+      }
+      .stat-card .value {
+        font-size: 32px;
+        font-weight: 800;
+        margin: 6px 0 4px;
+        font-family: "Outfit", sans-serif;
+      }
+      .stat-card .change {
+        font-size: 12px;
+        color: var(--text2);
+      }
+      .stat-card.blue .value {
+        color: var(--accent);
+      }
+      .stat-card.purple .value {
+        color: var(--accent3);
+      }
+      .stat-card.green .value {
+        color: var(--success);
+      }
+      .stat-card.red .value {
+        color: var(--danger);
+      }
+      .stat-card.cyan .value {
+        color: var(--accent2);
+      }
 
-    /* BADGES */
-    .badge { display:inline-flex; align-items:center; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:600; }
-    .badge-excellent { background:rgba(16,185,129,0.15); color:var(--success); }
-    .badge-good { background:rgba(59,130,246,0.15); color:var(--accent); }
-    .badge-average { background:rgba(245,158,11,0.15); color:var(--warning); }
-    .badge-atrisk { background:rgba(239,68,68,0.15); color:var(--danger); }
-    .badge-high { background:rgba(239,68,68,0.15); color:var(--danger); }
-    .badge-medium { background:rgba(245,158,11,0.15); color:var(--warning); }
-    .badge-low { background:rgba(16,185,129,0.15); color:var(--success); }
+      /* CARDS */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .card-title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .card-subtitle {
+        font-size: 12px;
+        color: var(--text2);
+        margin-top: 2px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+      }
 
-    /* FORM */
-    .form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
-    .form-group-inline { margin-bottom:0; }
-    .section-title { font-size:13px; color:var(--text3); text-transform:uppercase; letter-spacing:1px;
-      font-weight:700; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+      /* TABLE */
+      .table-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th {
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text3);
+        border-bottom: 1px solid var(--border);
+        font-weight: 600;
+        background: var(--surface2);
+      }
+      td {
+        padding: 13px 16px;
+        border-bottom: 1px solid rgba(99, 179, 237, 0.06);
+        color: var(--text);
+      }
+      tr:hover td {
+        background: rgba(59, 130, 246, 0.04);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
 
-    /* CHART */
-    .chart-container { position:relative; height:260px; }
+      /* BADGES */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge-excellent {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--success);
+      }
+      .badge-good {
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--accent);
+      }
+      .badge-average {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--warning);
+      }
+      .badge-atrisk {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+      .badge-high {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+      .badge-medium {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--warning);
+      }
+      .badge-low {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--success);
+      }
 
-    /* PREDICTION RESULT */
-    .prediction-card { background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));
-      border:1px solid rgba(59,130,246,0.25); border-radius:16px; padding:28px; text-align:center; }
-    .prediction-label { font-size:13px; color:var(--text2); text-transform:uppercase; letter-spacing:1px; }
-    .prediction-value { font-size:48px; font-weight:800; margin:8px 0;
-      background:linear-gradient(135deg,var(--accent),var(--accent3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .prediction-conf { font-size:14px; color:var(--text2); }
+      /* FORM */
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+      .form-group-inline {
+        margin-bottom: 0;
+      }
+      .section-title {
+        font-size: 13px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
 
-    /* PROB BARS */
-    .prob-bars { margin-top:20px; }
-    .prob-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-    .prob-label { width:70px; font-size:13px; color:var(--text2); }
-    .prob-track { flex:1; height:8px; background:var(--surface2); border-radius:4px; overflow:hidden; }
-    .prob-fill { height:100%; border-radius:4px; transition:width .6s ease; }
-    .prob-fill.excellent { background:var(--success); }
-    .prob-fill.good { background:var(--accent); }
-    .prob-fill.average { background:var(--warning); }
-    .prob-fill.atrisk { background:var(--danger); }
-    .prob-pct { width:40px; font-size:12px; color:var(--text2); text-align:right; font-family:'DM Mono',monospace; }
+      /* CHART */
+      .chart-container {
+        position: relative;
+        height: 260px;
+      }
 
-    /* RISK */
-    .risk-banner { border-radius:10px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; margin-bottom:16px; }
-    .risk-banner.high { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); }
-    .risk-banner.medium { background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); }
-    .risk-banner.low { background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.25); }
-    .risk-icon { font-size:20px; flex-shrink:0; }
-    .risk-title { font-weight:700; font-size:14px; }
-    .risk-title.high { color:var(--danger); }
-    .risk-title.medium { color:var(--warning); }
-    .risk-title.low { color:var(--success); }
-    .risk-reasons { font-size:12px; color:var(--text2); margin-top:4px; }
+      /* PREDICTION RESULT */
+      .prediction-card {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        border-radius: 16px;
+        padding: 28px;
+        text-align: center;
+      }
+      .prediction-label {
+        font-size: 13px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .prediction-value {
+        font-size: 48px;
+        font-weight: 800;
+        margin: 8px 0;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .prediction-conf {
+        font-size: 14px;
+        color: var(--text2);
+      }
 
-    /* RECOMMENDATIONS */
-    .rec-item { background:var(--surface2); border-radius:10px; padding:14px; margin-bottom:10px; 
-      border-left:3px solid var(--accent); }
-    .rec-cat { font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
-    .rec-text { font-size:13px; color:var(--text); margin-top:4px; }
-    .rec-priority { font-size:11px; border-radius:4px; padding:2px 6px; float:right; margin-top:-2px; font-weight:600; }
+      /* PROB BARS */
+      .prob-bars {
+        margin-top: 20px;
+      }
+      .prob-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .prob-label {
+        width: 70px;
+        font-size: 13px;
+        color: var(--text2);
+      }
+      .prob-track {
+        flex: 1;
+        height: 8px;
+        background: var(--surface2);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .prob-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+      }
+      .prob-fill.excellent {
+        background: var(--success);
+      }
+      .prob-fill.good {
+        background: var(--accent);
+      }
+      .prob-fill.average {
+        background: var(--warning);
+      }
+      .prob-fill.atrisk {
+        background: var(--danger);
+      }
+      .prob-pct {
+        width: 40px;
+        font-size: 12px;
+        color: var(--text2);
+        text-align: right;
+        font-family: "DM Mono", monospace;
+      }
 
-    /* PROGRESS */
-    .progress-bar { height:6px; background:var(--surface2); border-radius:3px; overflow:hidden; margin-top:6px; }
-    .progress-fill { height:100%; border-radius:3px; }
+      /* RISK */
+      .risk-banner {
+        border-radius: 10px;
+        padding: 14px 18px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .risk-banner.high {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.25);
+      }
+      .risk-banner.medium {
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+      }
+      .risk-banner.low {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
+      .risk-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+      .risk-title {
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .risk-title.high {
+        color: var(--danger);
+      }
+      .risk-title.medium {
+        color: var(--warning);
+      }
+      .risk-title.low {
+        color: var(--success);
+      }
+      .risk-reasons {
+        font-size: 12px;
+        color: var(--text2);
+        margin-top: 4px;
+      }
 
-    /* NOTIFICATION */
-    .toast { position:fixed; bottom:24px; right:24px; background:var(--surface); border:1px solid var(--border);
-      border-radius:12px; padding:14px 18px; font-size:14px; z-index:9999; box-shadow:0 10px 40px rgba(0,0,0,0.4);
-      transform:translateY(100px); opacity:0; transition:all .3s; max-width:320px; }
-    .toast.show { transform:translateY(0); opacity:1; }
-    .toast.success { border-left:4px solid var(--success); }
-    .toast.error { border-left:4px solid var(--danger); }
+      /* RECOMMENDATIONS */
+      .rec-item {
+        background: var(--surface2);
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 10px;
+        border-left: 3px solid var(--accent);
+      }
+      .rec-cat {
+        font-size: 11px;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+      }
+      .rec-text {
+        font-size: 13px;
+        color: var(--text);
+        margin-top: 4px;
+      }
+      .rec-priority {
+        font-size: 11px;
+        border-radius: 4px;
+        padding: 2px 6px;
+        float: right;
+        margin-top: -2px;
+        font-weight: 600;
+      }
 
-    /* MODAL */
-    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:500;
-      align-items:center; justify-content:center; padding:20px; }
-    .modal-overlay.active { display:flex; }
-    .modal { background:var(--surface); border:1px solid var(--border); border-radius:20px;
-      padding:32px; width:100%; max-width:600px; max-height:90vh; overflow-y:auto; }
-    .modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
-    .modal-close { width:32px; height:32px; border-radius:8px; background:var(--surface2); border:none;
-      cursor:pointer; color:var(--text2); font-size:16px; display:flex; align-items:center; justify-content:center; }
-    .modal-close:hover { background:var(--danger); color:#fff; }
+      /* PROGRESS */
+      .progress-bar {
+        height: 6px;
+        background: var(--surface2);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 6px;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+      }
 
-    /* RANGE SLIDER */
-    input[type=range] { width:100%; -webkit-appearance:none; height:4px; border-radius:2px;
-      background:var(--surface2); outline:none; }
-    input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px;
-      border-radius:50%; background:var(--accent); cursor:pointer; }
-    .slider-group { margin-bottom:20px; }
-    .slider-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-    .slider-label label { font-size:13px; color:var(--text2); }
-    .slider-val { font-family:'DM Mono',monospace; font-size:14px; color:var(--accent); font-weight:500; }
+      /* NOTIFICATION */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 18px;
+        font-size: 14px;
+        z-index: 9999;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s;
+        max-width: 320px;
+      }
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .toast.success {
+        border-left: 4px solid var(--success);
+      }
+      .toast.error {
+        border-left: 4px solid var(--danger);
+      }
 
-    /* TABS */
-    .tabs { display:flex; gap:4px; background:var(--surface2); border-radius:10px; padding:4px; margin-bottom:20px; }
-    .tab { padding:8px 16px; border-radius:8px; cursor:pointer; font-size:13px; color:var(--text2);
-      transition:all .2s; font-weight:500; }
-    .tab.active { background:var(--accent); color:#fff; }
+      /* MODAL */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 500;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-overlay.active {
+        display: flex;
+      }
+      .modal {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 32px;
+        width: 100%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+      .modal-close {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: var(--surface2);
+        border: none;
+        cursor: pointer;
+        color: var(--text2);
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        background: var(--danger);
+        color: #fff;
+      }
 
-    /* FEATURE IMPORTANCE */
-    .fi-row { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-    .fi-label { width:160px; font-size:13px; color:var(--text2); flex-shrink:0; }
-    .fi-track { flex:1; height:10px; background:var(--surface2); border-radius:5px; overflow:hidden; }
-    .fi-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent3)); border-radius:5px; }
-    .fi-pct { width:45px; font-size:13px; font-family:'DM Mono',monospace; text-align:right; color:var(--accent); }
+      /* RANGE SLIDER */
+      input[type="range"] {
+        width: 100%;
+        -webkit-appearance: none;
+        height: 4px;
+        border-radius: 2px;
+        background: var(--surface2);
+        outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+      }
+      .slider-group {
+        margin-bottom: 20px;
+      }
+      .slider-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .slider-label label {
+        font-size: 13px;
+        color: var(--text2);
+      }
+      .slider-val {
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        color: var(--accent);
+        font-weight: 500;
+      }
 
-    /* STUDENT PROFILE */
-    .profile-header { background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));
-      border:1px solid var(--border); border-radius:16px; padding:24px; margin-bottom:20px; display:flex; gap:20px; align-items:center; }
-    .profile-avatar { width:64px; height:64px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent3));
-      display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:800; flex-shrink:0; }
-    .profile-info h2 { font-size:22px; font-weight:800; }
-    .profile-meta { display:flex; gap:16px; margin-top:6px; flex-wrap:wrap; }
-    .profile-meta span { font-size:13px; color:var(--text2); display:flex; align-items:center; gap:4px; }
+      /* TABS */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--surface2);
+        border-radius: 10px;
+        padding: 4px;
+        margin-bottom: 20px;
+      }
+      .tab {
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--text2);
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+      .tab.active {
+        background: var(--accent);
+        color: #fff;
+      }
 
-    /* EMPTY STATE */
-    .empty-state { text-align:center; padding:60px 20px; color:var(--text2); }
-    .empty-state .icon { font-size:48px; margin-bottom:12px; }
-    .empty-state p { font-size:14px; }
+      /* FEATURE IMPORTANCE */
+      .fi-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .fi-label {
+        width: 160px;
+        font-size: 13px;
+        color: var(--text2);
+        flex-shrink: 0;
+      }
+      .fi-track {
+        flex: 1;
+        height: 10px;
+        background: var(--surface2);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .fi-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent3));
+        border-radius: 5px;
+      }
+      .fi-pct {
+        width: 45px;
+        font-size: 13px;
+        font-family: "DM Mono", monospace;
+        text-align: right;
+        color: var(--accent);
+      }
 
-    /* SEARCH */
-    .search-bar { position:relative; }
-    .search-bar input { padding-left:36px; }
-    .search-bar .icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text3); font-size:14px; }
+      /* STUDENT PROFILE */
+      .profile-header {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .profile-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+      .profile-info h2 {
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .profile-meta {
+        display: flex;
+        gap: 16px;
+        margin-top: 6px;
+        flex-wrap: wrap;
+      }
+      .profile-meta span {
+        font-size: 13px;
+        color: var(--text2);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
 
-    /* FILE UPLOAD */
-    .upload-zone { border:2px dashed var(--border); border-radius:12px; padding:40px; text-align:center;
-      cursor:pointer; transition:all .2s; }
-    .upload-zone:hover { border-color:var(--accent); background:rgba(59,130,246,0.04); }
-    .upload-zone .icon { font-size:36px; margin-bottom:10px; }
-    .upload-zone p { color:var(--text2); font-size:14px; }
+      /* EMPTY STATE */
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--text2);
+      }
+      .empty-state .icon {
+        font-size: 48px;
+        margin-bottom: 12px;
+      }
+      .empty-state p {
+        font-size: 14px;
+      }
 
-    @media (max-width:768px) {
-      .sidebar { transform:translateX(-100%); }
-      .main-content { margin-left:0; padding:20px; }
-      .grid-2, .grid-3 { grid-template-columns:1fr; }
-    }
+      /* SEARCH */
+      .search-bar {
+        position: relative;
+      }
+      .search-bar input {
+        padding-left: 36px;
+      }
+      .search-bar .icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text3);
+        font-size: 14px;
+      }
 
-    .loading { text-align:center; padding:40px; color:var(--text2); }
-    .spinner { display:inline-block; width:32px; height:32px; border:3px solid var(--border);
-      border-top-color:var(--accent); border-radius:50%; animation:spin .8s linear infinite; }
-    @keyframes spin { to { transform:rotate(360deg); } }
+      /* FILE UPLOAD */
+      .upload-zone {
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .upload-zone:hover {
+        border-color: var(--accent);
+        background: rgba(59, 130, 246, 0.04);
+      }
+      .upload-zone .icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      .upload-zone p {
+        color: var(--text2);
+        font-size: 14px;
+      }
 
-    .gpa-ring { position:relative; display:inline-flex; align-items:center; justify-content:center; }
-    .gpa-ring svg { transform:rotate(-90deg); }
-    .gpa-ring .gpa-text { position:absolute; text-align:center; }
-    .gpa-ring .gpa-val { font-size:24px; font-weight:800; color:var(--accent); display:block; font-family:'Outfit',sans-serif; }
-    .gpa-ring .gpa-lbl { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:.5px; }
-  </style>
-</head>
-<body>
+      @media (max-width: 768px) {
+        .sidebar {
+          transform: translateX(-100%);
+        }
+        .main-content {
+          margin-left: 0;
+          padding: 20px;
+        }
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen">
-  <div class="auth-card">
-    <div class="auth-logo">
-      <div class="logo-icon">🎓</div>
-      <h1>EduPredict AI</h1>
-      <p>Intelligent Student Performance System</p>
-    </div>
-    <div class="auth-tabs">
-      <div class="auth-tab active" onclick="switchAuthTab('login')">Sign In</div>
-      <div class="auth-tab" onclick="switchAuthTab('register')">Register</div>
-    </div>
-    
-    <!-- LOGIN FORM -->
-    <div id="login-form">
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" id="login-username" placeholder="Enter username" value="faculty"/>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="login-password" placeholder="Enter password" value="faculty123"/>
-      </div>
-      <button class="btn" onclick="doLogin()">Sign In</button>
-      <p class="role-hint">Demo: faculty / faculty123 &nbsp;|&nbsp; Register as student below</p>
-    </div>
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: var(--text2);
+      }
+      .spinner {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border: 3px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-    <!-- REGISTER FORM -->
-    <div id="register-form" style="display:none">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="reg-name" placeholder="Your full name"/>
-      </div>
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" id="reg-username" placeholder="Choose username"/>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="reg-password" placeholder="Choose password"/>
-      </div>
-      <div class="form-group">
-        <label>Role</label>
-        <select id="reg-role" onchange="toggleStudentId()">
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-        </select>
-      </div>
-      <div class="form-group" id="student-id-group">
-        <label>Student ID</label>
-        <input type="text" id="reg-student-id" placeholder="e.g. STU1001"/>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="reg-email" placeholder="email@university.edu"/>
-      </div>
-      <button class="btn" onclick="doRegister()">Create Account</button>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN APP -->
-<div id="app">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">
-        <div class="logo-icon">🎓</div>
-        <div>
-          <h2>EduPredict</h2>
-          <p>AI Performance System</p>
+      .gpa-ring {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gpa-ring svg {
+        transform: rotate(-90deg);
+      }
+      .gpa-ring .gpa-text {
+        position: absolute;
+        text-align: center;
+      }
+      .gpa-ring .gpa-val {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--accent);
+        display: block;
+        font-family: "Outfit", sans-serif;
+      }
+      .gpa-ring .gpa-lbl {
+        font-size: 10px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- AUTH SCREEN -->
+    <div id="auth-screen">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <div class="logo-icon">🎓</div>
+          <h1>EduPredict AI</h1>
+          <p>Intelligent Student Performance System</p>
         </div>
-      </div>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="nav-section">Overview</div>
-      <div class="nav-item active" onclick="navigateTo('dashboard')" id="nav-dashboard">
-        <span class="icon">📊</span> Dashboard
-      </div>
-      
-      <!-- Faculty only -->
-      <div class="nav-section faculty-only">Management</div>
-      <div class="nav-item faculty-only" onclick="navigateTo('students')" id="nav-students">
-        <span class="icon">👥</span> Students
-      </div>
-      <div class="nav-item faculty-only" onclick="navigateTo('import')" id="nav-import">
-        <span class="icon">📤</span> Import Data
-      </div>
-
-      <div class="nav-section">Analytics</div>
-      <div class="nav-item" onclick="navigateTo('predict')" id="nav-predict">
-        <span class="icon">🔮</span> AI Predictor
-      </div>
-      <div class="nav-item faculty-only" onclick="navigateTo('analytics')" id="nav-analytics">
-        <span class="icon">📈</span> Analytics
-      </div>
-      <div class="nav-item faculty-only" onclick="navigateTo('atrisk')" id="nav-atrisk">
-        <span class="icon">⚠️</span> At-Risk Students
-      </div>
-      
-      <!-- Student profile -->
-      <div class="nav-section student-only">My Profile</div>
-      <div class="nav-item student-only" onclick="navigateTo('myprofile')" id="nav-myprofile">
-        <span class="icon">👤</span> My Performance
-      </div>
-    </nav>
-    <div class="sidebar-user">
-      <div class="user-card">
-        <div class="user-avatar" id="user-avatar">?</div>
-        <div class="user-info">
-          <div class="name" id="user-name">User</div>
-          <span class="role-badge" id="user-role-badge">role</span>
-        </div>
-        <button class="logout-btn" onclick="doLogout()">↩</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
-
-    <!-- DASHBOARD PAGE -->
-    <div class="page active" id="page-dashboard">
-      <div class="page-header">
-        <h1>Dashboard</h1>
-        <p id="dashboard-subtitle">Welcome back! Here's your overview.</p>
-      </div>
-      <div class="stats-grid" id="stats-grid">
-        <div class="loading"><div class="spinner"></div></div>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header">
-            <div><div class="card-title">Performance Distribution</div></div>
+        <div class="auth-tabs">
+          <div class="auth-tab active" onclick="switchAuthTab('login')">
+            Sign In
           </div>
-          <div class="chart-container"><canvas id="chart-perf-dist"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <div><div class="card-title">Risk Level Overview</div></div>
+          <div class="auth-tab" onclick="switchAuthTab('register')">
+            Register
           </div>
-          <div class="chart-container"><canvas id="chart-risk"></canvas></div>
         </div>
-      </div>
-      <div class="card faculty-only">
-        <div class="card-header">
-          <div class="card-title">Top Performers</div>
-          <button class="btn btn-sm btn-secondary" onclick="navigateTo('analytics')">View All</button>
+
+        <!-- LOGIN FORM -->
+        <div id="login-form">
+          <div class="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="Enter username"
+              value="faculty"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Enter password"
+              value="faculty123"
+            />
+          </div>
+          <button class="btn" onclick="doLogin()">Sign In</button>
+          <p class="role-hint">
+            Demo: faculty / faculty123 &nbsp;|&nbsp; Register as student below
+          </p>
         </div>
-        <div id="top-performers-table"><div class="loading"><div class="spinner"></div></div></div>
+
+        <!-- REGISTER FORM -->
+        <div id="register-form" style="display: none">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="reg-name" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              id="reg-username"
+              placeholder="Choose username"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Choose password"
+            />
+          </div>
+          <div class="form-group">
+            <label>Role</label>
+            <select id="reg-role" onchange="toggleStudentId()">
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+            </select>
+          </div>
+          <div class="form-group" id="student-id-group">
+            <label>Student ID</label>
+            <input type="text" id="reg-student-id" placeholder="e.g. STU1001" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="email@university.edu"
+            />
+          </div>
+          <button class="btn" onclick="doRegister()">Create Account</button>
+        </div>
       </div>
     </div>
 
-    <!-- STUDENTS PAGE (faculty) -->
-    <div class="page" id="page-students">
-      <div class="page-header">
-        <h1>Students</h1>
-        <p>Manage student records and academic data</p>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="search-bar" style="flex:1;max-width:300px">
-            <span class="icon">🔍</span>
-            <input type="text" placeholder="Search students..." oninput="filterStudents(this.value)" style="width:100%;padding:10px 12px 10px 36px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:inherit;font-size:14px;outline:none;"/>
+    <!-- MAIN APP -->
+    <div id="app">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">
+            <div class="logo-icon">🎓</div>
+            <div>
+              <h2>EduPredict</h2>
+              <p>AI Performance System</p>
+            </div>
           </div>
-          <button class="btn btn-sm btn-success" onclick="openAddStudentModal()">+ Add Student</button>
         </div>
-        <div id="students-table"><div class="loading"><div class="spinner"></div></div></div>
-      </div>
-    </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Overview</div>
+          <div
+            class="nav-item active"
+            onclick="navigateTo('dashboard')"
+            id="nav-dashboard"
+          >
+            <span class="icon">📊</span> Dashboard
+          </div>
 
-    <!-- PREDICT PAGE -->
-    <div class="page" id="page-predict">
-      <div class="page-header">
-        <h1>AI Predictor</h1>
-        <p>Enter student data to predict performance using ML</p>
+          <!-- Faculty only -->
+          <div class="nav-section faculty-only">Management</div>
+          <div
+            class="nav-item faculty-only"
+            onclick="navigateTo('students')"
+            id="nav-students"
+          >
+            <span class="icon">👥</span> Students
+          </div>
+          <div
+            class="nav-item faculty-only"
+            onclick="navigateTo('import')"
+            id="nav-import"
+          >
+            <span class="icon">📤</span> Import Data
+          </div>
+
+          <div class="nav-section">Analytics</div>
+          <div
+            class="nav-item"
+            onclick="navigateTo('predict')"
+            id="nav-predict"
+          >
+            <span class="icon">🔮</span> AI Predictor
+          </div>
+          <div class="nav-item" onclick="navigateTo('alerts')" id="nav-alerts">
+            <span class="icon">🚨</span> Early Alerts
+          </div>
+          <div class="nav-item" onclick="navigateTo('future')" id="nav-future">
+            <span class="icon">📅</span> Future GPA
+          </div>
+          <div
+            class="nav-item"
+            onclick="navigateTo('studyplan')"
+            id="nav-studyplan"
+          >
+            <span class="icon">🧩</span> Study Plan
+          </div>
+          <div
+            class="nav-item"
+            onclick="navigateTo('peermatch')"
+            id="nav-peermatch"
+          >
+            <span class="icon">🤝</span> Peer Match
+          </div>
+          <div
+            class="nav-item"
+            onclick="navigateTo('attendanceForecast')"
+            id="nav-attendanceForecast"
+          >
+            <span class="icon">🧾</span> Attendance Forecast
+          </div>
+          <div
+            class="nav-item"
+            onclick="navigateTo('simulate')"
+            id="nav-simulate"
+          >
+            <span class="icon">🧪</span> What-If Simulator
+          </div>
+          <div
+            class="nav-item faculty-only"
+            onclick="navigateTo('analytics')"
+            id="nav-analytics"
+          >
+            <span class="icon">📈</span> Analytics
+          </div>
+          <div
+            class="nav-item faculty-only"
+            onclick="navigateTo('atrisk')"
+            id="nav-atrisk"
+          >
+            <span class="icon">⚠️</span> At-Risk Students
+          </div>
+
+          <!-- Student profile -->
+          <div class="nav-section student-only">My Profile</div>
+          <div
+            class="nav-item student-only"
+            onclick="navigateTo('myprofile')"
+            id="nav-myprofile"
+          >
+            <span class="icon">👤</span> My Performance
+          </div>
+        </nav>
+        <div class="sidebar-user">
+          <div class="user-card">
+            <div class="user-avatar" id="user-avatar">?</div>
+            <div class="user-info">
+              <div class="name" id="user-name">User</div>
+              <span class="role-badge" id="user-role-badge">role</span>
+            </div>
+            <button class="logout-btn" onclick="doLogout()">↩</button>
+          </div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div>
+
+      <!-- MAIN CONTENT -->
+      <div class="main-content">
+        <!-- DASHBOARD PAGE -->
+        <div class="page active" id="page-dashboard">
+          <div class="page-header">
+            <h1>Dashboard</h1>
+            <p id="dashboard-subtitle">Welcome back! Here's your overview.</p>
+          </div>
+          <div class="stats-grid" id="stats-grid">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Performance Distribution</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chart-perf-dist"></canvas>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div><div class="card-title">Risk Level Overview</div></div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chart-risk"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card faculty-only">
+            <div class="card-header">
+              <div class="card-title">Top Performers</div>
+              <button
+                class="btn btn-sm btn-secondary"
+                onclick="navigateTo('analytics')"
+              >
+                View All
+              </button>
+            </div>
+            <div id="top-performers-table">
+              <div class="loading"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STUDENTS PAGE (faculty) -->
+        <div class="page" id="page-students">
+          <div class="page-header">
+            <h1>Students</h1>
+            <p>Manage student records and academic data</p>
+          </div>
           <div class="card">
-            <div class="card-title" style="margin-bottom:20px">Input Parameters</div>
-            <div class="slider-group">
-              <div class="slider-label"><label>📅 Attendance (%)</label><span class="slider-val" id="v-att">75%</span></div>
-              <input type="range" min="0" max="100" value="75" oninput="updateSlider('att',this.value,'%')" id="s-att">
+            <div class="card-header">
+              <div class="search-bar" style="flex: 1; max-width: 300px">
+                <span class="icon">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Search students..."
+                  oninput="filterStudents(this.value)"
+                  style="
+                    width: 100%;
+                    padding: 10px 12px 10px 36px;
+                    background: var(--surface2);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    color: var(--text);
+                    font-family: inherit;
+                    font-size: 14px;
+                    outline: none;
+                  "
+                />
+              </div>
+              <button
+                class="btn btn-sm btn-success"
+                onclick="openAddStudentModal()"
+              >
+                + Add Student
+              </button>
             </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>📚 Study Hours/day</label><span class="slider-val" id="v-study">3.0 hrs</span></div>
-              <input type="range" min="0" max="10" step="0.5" value="3" oninput="updateSlider('study',this.value,' hrs')" id="s-study">
+            <div id="students-table">
+              <div class="loading"><div class="spinner"></div></div>
             </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>🙋 Class Participation (0-10)</label><span class="slider-val" id="v-part">5</span></div>
-              <input type="range" min="0" max="10" step="0.5" value="5" oninput="updateSlider('part',this.value,'')" id="s-part">
-            </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>✅ Homework Completion (%)</label><span class="slider-val" id="v-hw">70%</span></div>
-              <input type="range" min="0" max="100" value="70" oninput="updateSlider('hw',this.value,'%')" id="s-hw">
-            </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>📝 Quiz Score</label><span class="slider-val" id="v-quiz">60</span></div>
-              <input type="range" min="0" max="100" value="60" oninput="updateSlider('quiz',this.value,'')" id="s-quiz">
-            </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>📋 Assignment Score</label><span class="slider-val" id="v-assign">60</span></div>
-              <input type="range" min="0" max="100" value="60" oninput="updateSlider('assign',this.value,'')" id="s-assign">
-            </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>📖 Midterm Score</label><span class="slider-val" id="v-mid">60</span></div>
-              <input type="range" min="0" max="100" value="60" oninput="updateSlider('mid',this.value,'')" id="s-mid">
-            </div>
-            <div class="slider-group">
-              <div class="slider-label"><label>🔬 Internal Score</label><span class="slider-val" id="v-int">60</span></div>
-              <input type="range" min="0" max="100" value="60" oninput="updateSlider('int',this.value,'')" id="s-int">
-            </div>
-            <button class="btn" onclick="runPrediction()">🔮 Predict Performance</button>
           </div>
         </div>
-        <div id="prediction-result-panel">
-          <div class="card" style="text-align:center;padding:60px 20px;color:var(--text2)">
-            <div style="font-size:48px;margin-bottom:12px">🤖</div>
-            <p>Adjust parameters and click Predict to see the AI analysis</p>
+
+        <!-- PREDICT PAGE -->
+        <div class="page" id="page-predict">
+          <div class="page-header">
+            <h1>AI Predictor</h1>
+            <p>Enter student data to predict performance using ML</p>
+          </div>
+          <div class="grid-2">
+            <div>
+              <div class="card">
+                <div class="card-title" style="margin-bottom: 20px">
+                  Input Parameters
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>📅 Attendance (%)</label
+                    ><span class="slider-val" id="v-att">75%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="75"
+                    oninput="updateSlider('att',this.value,'%')"
+                    id="s-att"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>📚 Study Hours/day</label
+                    ><span class="slider-val" id="v-study">3.0 hrs</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value="3"
+                    oninput="updateSlider('study',this.value,' hrs')"
+                    id="s-study"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>🙋 Class Participation (0-10)</label
+                    ><span class="slider-val" id="v-part">5</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value="5"
+                    oninput="updateSlider('part',this.value,'')"
+                    id="s-part"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>✅ Homework Completion (%)</label
+                    ><span class="slider-val" id="v-hw">70%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="70"
+                    oninput="updateSlider('hw',this.value,'%')"
+                    id="s-hw"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>📝 Quiz Score</label
+                    ><span class="slider-val" id="v-quiz">60</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="60"
+                    oninput="updateSlider('quiz',this.value,'')"
+                    id="s-quiz"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>📋 Assignment Score</label
+                    ><span class="slider-val" id="v-assign">60</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="60"
+                    oninput="updateSlider('assign',this.value,'')"
+                    id="s-assign"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>📖 Midterm Score</label
+                    ><span class="slider-val" id="v-mid">60</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="60"
+                    oninput="updateSlider('mid',this.value,'')"
+                    id="s-mid"
+                  />
+                </div>
+                <div class="slider-group">
+                  <div class="slider-label">
+                    <label>🔬 Internal Score</label
+                    ><span class="slider-val" id="v-int">60</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="60"
+                    oninput="updateSlider('int',this.value,'')"
+                    id="s-int"
+                  />
+                </div>
+                <button class="btn" onclick="runPrediction()">
+                  🔮 Predict Performance
+                </button>
+              </div>
+            </div>
+            <div id="prediction-result-panel">
+              <div
+                class="card"
+                style="
+                  text-align: center;
+                  padding: 60px 20px;
+                  color: var(--text2);
+                "
+              >
+                <div style="font-size: 48px; margin-bottom: 12px">🤖</div>
+                <p>
+                  Adjust parameters and click Predict to see the AI analysis
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📊 Feature Importance Analysis</div>
+            </div>
+            <div id="feature-importance-panel">
+              <div class="loading"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANALYTICS PAGE (faculty) -->
+        <div class="page" id="page-analytics">
+          <div class="page-header">
+            <h1>Analytics</h1>
+            <p>Class-wide performance insights and trends</p>
+          </div>
+          <div class="stats-grid" id="analytics-stats"></div>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title" style="margin-bottom: 16px">
+                GPA Distribution
+              </div>
+              <div class="chart-container">
+                <canvas id="chart-gpa-dist"></canvas>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title" style="margin-bottom: 16px">
+                Attendance vs GPA Correlation
+              </div>
+              <div class="chart-container">
+                <canvas id="chart-att-gpa"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 16px">
+              Score Comparison by Category
+            </div>
+            <div class="chart-container">
+              <canvas id="chart-scores"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- AT RISK PAGE (faculty) -->
+        <div class="page" id="page-atrisk">
+          <div class="page-header">
+            <h1>⚠️ At-Risk Students</h1>
+            <p>Early warning system — students who need attention</p>
+          </div>
+          <div id="atrisk-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- MY PROFILE (student) -->
+        <div class="page" id="page-myprofile">
+          <div class="page-header">
+            <h1>My Performance</h1>
+            <p>Your academic journey and AI-powered insights</p>
+          </div>
+          <div id="my-profile-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- ALERTS PAGE -->
+        <div class="page" id="page-alerts">
+          <div class="page-header">
+            <h1>Early Warning Alerts</h1>
+            <p>Auto-detect risky patterns like attendance and GPA drop.</p>
+          </div>
+          <div id="alerts-content-selector"></div>
+          <div id="alerts-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- FUTURE GPA PAGE -->
+        <div class="page" id="page-future">
+          <div class="page-header">
+            <h1>Future GPA Prediction</h1>
+            <p>Predict next semester GPA and trend.</p>
+          </div>
+          <div id="future-content-selector"></div>
+          <div id="future-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- STUDY PLAN PAGE -->
+        <div class="page" id="page-studyplan">
+          <div class="page-header">
+            <h1>Study Plan Generator</h1>
+            <p>Personalized study plan from weak areas.</p>
+          </div>
+          <div id="studyplan-content-selector"></div>
+          <div id="studyplan-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- PEER MATCH PAGE -->
+        <div class="page" id="page-peermatch">
+          <div class="page-header">
+            <h1>Smart Peer Matching</h1>
+            <p>Match low-performing students with top performers.</p>
+          </div>
+          <div id="peermatch-content-selector"></div>
+          <div id="peermatch-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- ATTENDANCE FORECAST PAGE -->
+        <div class="page" id="page-attendanceForecast">
+          <div class="page-header">
+            <h1>Attendance Prediction</h1>
+            <p>Predict attendance trend and risk.</p>
+          </div>
+          <div id="attendanceForecast-content-selector"></div>
+          <div id="attendanceForecast-content">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- WHAT-IF SIMULATOR PAGE -->
+        <div class="page" id="page-simulate">
+          <div class="page-header">
+            <h1>What-If Simulator</h1>
+            <p>Simulate input changes and see prediction impact.</p>
+          </div>
+          <div class="card">
+            <div class="grid-2">
+              <div>
+                <div class="form-group">
+                  <label>Attendance (%)</label
+                  ><input
+                    type="number"
+                    id="sim-att"
+                    min="0"
+                    max="100"
+                    value="75"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Study Hours/day</label
+                  ><input
+                    type="number"
+                    id="sim-study"
+                    min="0"
+                    max="20"
+                    step="0.5"
+                    value="3"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Quiz Score</label
+                  ><input
+                    type="number"
+                    id="sim-quiz"
+                    min="0"
+                    max="100"
+                    value="60"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Midterm Score</label
+                  ><input
+                    type="number"
+                    id="sim-mid"
+                    min="0"
+                    max="100"
+                    value="60"
+                  />
+                </div>
+              </div>
+              <div>
+                <div class="form-group">
+                  <label>Class Participation</label
+                  ><input
+                    type="number"
+                    id="sim-part"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value="5"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Homework Completion (%)</label
+                  ><input
+                    type="number"
+                    id="sim-hw"
+                    min="0"
+                    max="100"
+                    value="75"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Assignment Score</label
+                  ><input
+                    type="number"
+                    id="sim-assign"
+                    min="0"
+                    max="100"
+                    value="60"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Internal Score</label
+                  ><input
+                    type="number"
+                    id="sim-int"
+                    min="0"
+                    max="100"
+                    value="60"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="btn"
+              style="margin-top: 16px"
+              onclick="runSimulation()"
+            >
+              Run Simulation
+            </button>
+            <div id="simulate-result" style="margin-top: 16px"></div>
+          </div>
+        </div>
+
+        <!-- IMPORT PAGE -->
+        <div class="page" id="page-import">
+          <div class="page-header">
+            <h1>Import Data</h1>
+            <p>Upload CSV files to bulk-import student records</p>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 8px">
+              Upload Student CSV
+            </div>
+            <p
+              style="font-size: 13px; color: var(--text2); margin-bottom: 20px"
+            >
+              Required columns: StudentID, Name, Age, Gender, Course, Semester,
+              Attendance, StudyHours, QuizScore, AssignmentScore, MidtermScore,
+              FinalScore, InternalScore
+            </p>
+            <div
+              class="upload-zone"
+              onclick="document.getElementById('csv-input').click()"
+            >
+              <div class="icon">📁</div>
+              <p>Click to select CSV file or drag & drop here</p>
+              <p style="font-size: 12px; color: var(--text3); margin-top: 4px">
+                Supports .csv format
+              </p>
+            </div>
+            <input
+              type="file"
+              id="csv-input"
+              accept=".csv"
+              style="display: none"
+              onchange="importCSV(this)"
+            />
+            <div id="import-result" style="margin-top: 16px"></div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom: 12px">
+              Download Sample CSV
+            </div>
+            <p
+              style="font-size: 13px; color: var(--text2); margin-bottom: 16px"
+            >
+              Use this template to format your data correctly
+            </p>
+            <button
+              class="btn btn-sm btn-secondary"
+              onclick="downloadSampleCSV()"
+            >
+              ⬇️ Download Template
+            </button>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🤖 Retrain AI Model</div>
+            </div>
+            <p
+              style="font-size: 13px; color: var(--text2); margin-bottom: 16px"
+            >
+              After importing new data, retrain the model to improve predictions
+            </p>
+            <button class="btn btn-sm" onclick="retrainModel()">
+              🔄 Retrain Model
+            </button>
+            <div id="retrain-result" style="margin-top: 12px"></div>
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">📊 Feature Importance Analysis</div>
+    </div>
+
+    <!-- MODALS -->
+    <div class="modal-overlay" id="modal-student">
+      <div class="modal">
+        <div class="modal-header">
+          <h2
+            id="modal-student-title"
+            style="font-size: 18px; font-weight: 700"
+          >
+            Add Student
+          </h2>
+          <button class="modal-close" onclick="closeModal('modal-student')">
+            ✕
+          </button>
         </div>
-        <div id="feature-importance-panel"><div class="loading"><div class="spinner"></div></div></div>
+        <div class="section-title">Basic Information</div>
+        <div class="form-grid" style="margin-bottom: 20px">
+          <div class="form-group form-group-inline">
+            <label>Student ID *</label>
+            <input type="text" id="f-sid" placeholder="STU1001" />
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Full Name *</label>
+            <input type="text" id="f-name" placeholder="Full name" />
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Age</label>
+            <input
+              type="number"
+              id="f-age"
+              placeholder="18"
+              min="15"
+              max="35"
+            />
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Gender</label>
+            <select id="f-gender">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Course</label>
+            <select id="f-course">
+              <option>Computer Science</option>
+              <option>Data Science</option>
+              <option>Electronics</option>
+              <option>Mathematics</option>
+              <option>Physics</option>
+              <option>Business Administration</option>
+              <option>Biotechnology</option>
+              <option>Civil Engineering</option>
+            </select>
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Semester</label>
+            <select id="f-semester">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="student@univ.edu" />
+          </div>
+          <div class="form-group form-group-inline">
+            <label>Phone</label>
+            <input type="tel" id="f-phone" placeholder="+91 9999999999" />
+          </div>
+        </div>
+        <div id="academic-form-section">
+          <div class="section-title">Academic Data (Semester)</div>
+          <div class="form-grid" style="margin-bottom: 20px">
+            <div class="form-group form-group-inline">
+              <label>Attendance (%)</label
+              ><input
+                type="number"
+                id="f-att"
+                placeholder="75"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Study Hours/day</label
+              ><input type="number" id="f-study" placeholder="3" step="0.5" />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Class Participation (0-10)</label
+              ><input
+                type="number"
+                id="f-part"
+                placeholder="5"
+                min="0"
+                max="10"
+                step="0.5"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Homework Completion (%)</label
+              ><input
+                type="number"
+                id="f-hw"
+                placeholder="70"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Quiz Score</label
+              ><input
+                type="number"
+                id="f-quiz"
+                placeholder="60"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Assignment Score</label
+              ><input
+                type="number"
+                id="f-assign"
+                placeholder="60"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Midterm Score</label
+              ><input
+                type="number"
+                id="f-mid"
+                placeholder="60"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Final Score</label
+              ><input
+                type="number"
+                id="f-final"
+                placeholder="60"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group form-group-inline">
+              <label>Internal Score</label
+              ><input
+                type="number"
+                id="f-internal"
+                placeholder="60"
+                min="0"
+                max="100"
+              />
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px">
+          <button
+            class="btn btn-secondary"
+            style="flex: 1"
+            onclick="closeModal('modal-student')"
+          >
+            Cancel
+          </button>
+          <button class="btn" style="flex: 2" onclick="saveStudent()">
+            Save Student
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- ANALYTICS PAGE (faculty) -->
-    <div class="page" id="page-analytics">
-      <div class="page-header">
-        <h1>Analytics</h1>
-        <p>Class-wide performance insights and trends</p>
-      </div>
-      <div class="stats-grid" id="analytics-stats"></div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px">GPA Distribution</div>
-          <div class="chart-container"><canvas id="chart-gpa-dist"></canvas></div>
+    <!-- STUDENT DETAIL MODAL -->
+    <div class="modal-overlay" id="modal-student-detail">
+      <div class="modal" style="max-width: 700px">
+        <div class="modal-header">
+          <h2 style="font-size: 18px; font-weight: 700">Student Details</h2>
+          <button
+            class="modal-close"
+            onclick="closeModal('modal-student-detail')"
+          >
+            ✕
+          </button>
         </div>
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px">Attendance vs GPA Correlation</div>
-          <div class="chart-container"><canvas id="chart-att-gpa"></canvas></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title" style="margin-bottom:16px">Score Comparison by Category</div>
-        <div class="chart-container"><canvas id="chart-scores"></canvas></div>
+        <div id="student-detail-content"></div>
       </div>
     </div>
 
-    <!-- AT RISK PAGE (faculty) -->
-    <div class="page" id="page-atrisk">
-      <div class="page-header">
-        <h1>⚠️ At-Risk Students</h1>
-        <p>Early warning system — students who need attention</p>
-      </div>
-      <div id="atrisk-content"><div class="loading"><div class="spinner"></div></div></div>
-    </div>
+    <div class="toast" id="toast"></div>
 
-    <!-- MY PROFILE (student) -->
-    <div class="page" id="page-myprofile">
-      <div class="page-header">
-        <h1>My Performance</h1>
-        <p>Your academic journey and AI-powered insights</p>
-      </div>
-      <div id="my-profile-content"><div class="loading"><div class="spinner"></div></div></div>
-    </div>
+    <script>
+      const API = "http://localhost:5000/api";
+      let currentUser = null;
+      let allStudents = [];
+      let charts = {};
 
-    <!-- IMPORT PAGE -->
-    <div class="page" id="page-import">
-      <div class="page-header">
-        <h1>Import Data</h1>
-        <p>Upload CSV files to bulk-import student records</p>
-      </div>
-      <div class="card">
-        <div class="card-title" style="margin-bottom:8px">Upload Student CSV</div>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:20px">Required columns: StudentID, Name, Age, Gender, Course, Semester, Attendance, StudyHours, QuizScore, AssignmentScore, MidtermScore, FinalScore, InternalScore</p>
-        <div class="upload-zone" onclick="document.getElementById('csv-input').click()">
-          <div class="icon">📁</div>
-          <p>Click to select CSV file or drag & drop here</p>
-          <p style="font-size:12px;color:var(--text3);margin-top:4px">Supports .csv format</p>
-        </div>
-        <input type="file" id="csv-input" accept=".csv" style="display:none" onchange="importCSV(this)"/>
-        <div id="import-result" style="margin-top:16px"></div>
-      </div>
-      <div class="card">
-        <div class="card-title" style="margin-bottom:12px">Download Sample CSV</div>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Use this template to format your data correctly</p>
-        <button class="btn btn-sm btn-secondary" onclick="downloadSampleCSV()">⬇️ Download Template</button>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">🤖 Retrain AI Model</div>
-        </div>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:16px">After importing new data, retrain the model to improve predictions</p>
-        <button class="btn btn-sm" onclick="retrainModel()">🔄 Retrain Model</button>
-        <div id="retrain-result" style="margin-top:12px"></div>
-      </div>
-    </div>
+      // ─── AUTH ───────────────────────────────────────────────────────────
+      function switchAuthTab(tab) {
+        document
+          .querySelectorAll(".auth-tab")
+          .forEach((t, i) =>
+            t.classList.toggle(
+              "active",
+              (tab === "login" && i === 0) || (tab === "register" && i === 1),
+            ),
+          );
+        document.getElementById("login-form").style.display =
+          tab === "login" ? "block" : "none";
+        document.getElementById("register-form").style.display =
+          tab === "register" ? "block" : "none";
+      }
 
-  </div>
-</div>
+      function toggleStudentId() {
+        const role = document.getElementById("reg-role").value;
+        document.getElementById("student-id-group").style.display =
+          role === "student" ? "block" : "none";
+      }
 
-<!-- MODALS -->
-<div class="modal-overlay" id="modal-student">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 id="modal-student-title" style="font-size:18px;font-weight:700">Add Student</h2>
-      <button class="modal-close" onclick="closeModal('modal-student')">✕</button>
-    </div>
-    <div class="section-title">Basic Information</div>
-    <div class="form-grid" style="margin-bottom:20px">
-      <div class="form-group form-group-inline">
-        <label>Student ID *</label>
-        <input type="text" id="f-sid" placeholder="STU1001"/>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Full Name *</label>
-        <input type="text" id="f-name" placeholder="Full name"/>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Age</label>
-        <input type="number" id="f-age" placeholder="18" min="15" max="35"/>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Gender</label>
-        <select id="f-gender"><option>Male</option><option>Female</option><option>Other</option></select>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Course</label>
-        <select id="f-course">
-          <option>Computer Science</option><option>Data Science</option>
-          <option>Electronics</option><option>Mathematics</option>
-          <option>Physics</option><option>Business Administration</option>
-          <option>Biotechnology</option><option>Civil Engineering</option>
-        </select>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Semester</label>
-        <select id="f-semester">
-          <option>1</option><option>2</option><option>3</option><option>4</option>
-          <option>5</option><option>6</option><option>7</option><option>8</option>
-        </select>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Email</label>
-        <input type="email" id="f-email" placeholder="student@univ.edu"/>
-      </div>
-      <div class="form-group form-group-inline">
-        <label>Phone</label>
-        <input type="tel" id="f-phone" placeholder="+91 9999999999"/>
-      </div>
-    </div>
-    <div id="academic-form-section">
-      <div class="section-title">Academic Data (Semester)</div>
-      <div class="form-grid" style="margin-bottom:20px">
-        <div class="form-group form-group-inline">
-          <label>Attendance (%)</label><input type="number" id="f-att" placeholder="75" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Study Hours/day</label><input type="number" id="f-study" placeholder="3" step="0.5"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Class Participation (0-10)</label><input type="number" id="f-part" placeholder="5" min="0" max="10" step="0.5"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Homework Completion (%)</label><input type="number" id="f-hw" placeholder="70" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Quiz Score</label><input type="number" id="f-quiz" placeholder="60" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Assignment Score</label><input type="number" id="f-assign" placeholder="60" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Midterm Score</label><input type="number" id="f-mid" placeholder="60" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Final Score</label><input type="number" id="f-final" placeholder="60" min="0" max="100"/>
-        </div>
-        <div class="form-group form-group-inline">
-          <label>Internal Score</label><input type="number" id="f-internal" placeholder="60" min="0" max="100"/>
-        </div>
-      </div>
-    </div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-secondary" style="flex:1" onclick="closeModal('modal-student')">Cancel</button>
-      <button class="btn" style="flex:2" onclick="saveStudent()">Save Student</button>
-    </div>
-  </div>
-</div>
+      async function doLogin() {
+        const username = document.getElementById("login-username").value.trim();
+        const password = document.getElementById("login-password").value;
+        if (!username || !password) {
+          showToast("Please fill all fields", "error");
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const data = await res.json();
+          if (!data.success) {
+            showToast(data.message, "error");
+            return;
+          }
+          currentUser = data.data;
+          startApp();
+        } catch (e) {
+          showToast(
+            "Cannot connect to server. Make sure the backend is running.",
+            "error",
+          );
+        }
+      }
 
-<!-- STUDENT DETAIL MODAL -->
-<div class="modal-overlay" id="modal-student-detail">
-  <div class="modal" style="max-width:700px">
-    <div class="modal-header">
-      <h2 style="font-size:18px;font-weight:700">Student Details</h2>
-      <button class="modal-close" onclick="closeModal('modal-student-detail')">✕</button>
-    </div>
-    <div id="student-detail-content"></div>
-  </div>
-</div>
+      async function doRegister() {
+        const body = {
+          username: document.getElementById("reg-username").value.trim(),
+          password: document.getElementById("reg-password").value,
+          full_name: document.getElementById("reg-name").value.trim(),
+          role: document.getElementById("reg-role").value,
+          student_id: document.getElementById("reg-student-id").value.trim(),
+          email: document.getElementById("reg-email").value.trim(),
+        };
+        if (!body.username || !body.password || !body.full_name) {
+          showToast("Please fill required fields", "error");
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/auth/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
+          const data = await res.json();
+          if (!data.success) {
+            showToast(data.message, "error");
+            return;
+          }
+          showToast("Account created! Please sign in.", "success");
+          switchAuthTab("login");
+          document.getElementById("login-username").value = body.username;
+        } catch (e) {
+          showToast("Server error", "error");
+        }
+      }
 
-<div class="toast" id="toast"></div>
+      function doLogout() {
+        currentUser = null;
+        document.getElementById("app").style.display = "none";
+        document.getElementById("auth-screen").style.display = "flex";
+      }
 
-<script>
-const API = 'http://localhost:5000/api';
-let currentUser = null;
-let allStudents = [];
-let charts = {};
+      function startApp() {
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("app").style.display = "flex";
+        const u = currentUser;
+        document.getElementById("user-name").textContent =
+          u.full_name || u.username;
+        document.getElementById("user-avatar").textContent = (u.full_name ||
+          u.username)[0].toUpperCase();
+        document.getElementById("user-role-badge").textContent = u.role;
+        document.getElementById("user-role-badge").className =
+          `role-badge ${u.role}`;
+        const isFaculty = u.role === "faculty";
+        document
+          .querySelectorAll(".faculty-only")
+          .forEach((el) => (el.style.display = isFaculty ? "" : "none"));
+        document
+          .querySelectorAll(".student-only")
+          .forEach((el) => (el.style.display = !isFaculty ? "" : "none"));
+        navigateTo("dashboard");
+      }
 
-// ─── AUTH ───────────────────────────────────────────────────────────
-function switchAuthTab(tab) {
-  document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('active', (tab==='login'&&i===0)||(tab==='register'&&i===1)));
-  document.getElementById('login-form').style.display = tab==='login'?'block':'none';
-  document.getElementById('register-form').style.display = tab==='register'?'block':'none';
-}
+      // ─── NAVIGATION ─────────────────────────────────────────────────────
+      function navigateTo(page) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-item")
+          .forEach((n) => n.classList.remove("active"));
+        document.getElementById(`page-${page}`).classList.add("active");
+        const navEl = document.getElementById(`nav-${page}`);
+        if (navEl) navEl.classList.add("active");
+        loadPage(page);
+      }
 
-function toggleStudentId() {
-  const role = document.getElementById('reg-role').value;
-  document.getElementById('student-id-group').style.display = role==='student'?'block':'none';
-}
+      function loadPage(page) {
+        if (page === "dashboard") loadDashboard();
+        else if (page === "students") loadStudents();
+        else if (page === "predict") loadPredict();
+        else if (page === "analytics") loadAnalytics();
+        else if (page === "atrisk") loadAtRisk();
+        else if (page === "myprofile") loadMyProfile();
+        else if (page === "alerts") loadAlerts();
+        else if (page === "future") loadFuturePrediction();
+        else if (page === "studyplan") loadStudyPlan();
+        else if (page === "peermatch") loadPeerMatch();
+        else if (page === "attendanceForecast") loadAttendanceForecast();
+        else if (page === "simulate") loadSimulator();
+      }
 
-async function doLogin() {
-  const username = document.getElementById('login-username').value.trim();
-  const password = document.getElementById('login-password').value;
-  if (!username || !password) { showToast('Please fill all fields','error'); return; }
-  try {
-    const res = await fetch(`${API}/auth/login`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
-    const data = await res.json();
-    if (!data.success) { showToast(data.message,'error'); return; }
-    currentUser = data.data;
-    startApp();
-  } catch(e) { showToast('Cannot connect to server. Make sure the backend is running.','error'); }
-}
+      // ─── DASHBOARD ──────────────────────────────────────────────────────
+      async function loadDashboard() {
+        try {
+          const [ovRes, topRes] = await Promise.all([
+            fetch(`${API}/analytics/overview`),
+            fetch(`${API}/analytics/top-performers`),
+          ]);
+          const [ov, top] = await Promise.all([ovRes.json(), topRes.json()]);
+          const d = ov.data;
+          const isFaculty = currentUser.role === "faculty";
+          document.getElementById("dashboard-subtitle").textContent = isFaculty
+            ? `Managing ${d.total_students} students · Avg GPA: ${d.avg_gpa}`
+            : "Your academic performance overview";
 
-async function doRegister() {
-  const body = {
-    username: document.getElementById('reg-username').value.trim(),
-    password: document.getElementById('reg-password').value,
-    full_name: document.getElementById('reg-name').value.trim(),
-    role: document.getElementById('reg-role').value,
-    student_id: document.getElementById('reg-student-id').value.trim(),
-    email: document.getElementById('reg-email').value.trim()
-  };
-  if (!body.username || !body.password || !body.full_name) { showToast('Please fill required fields','error'); return; }
-  try {
-    const res = await fetch(`${API}/auth/register`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const data = await res.json();
-    if (!data.success) { showToast(data.message,'error'); return; }
-    showToast('Account created! Please sign in.','success');
-    switchAuthTab('login');
-    document.getElementById('login-username').value = body.username;
-  } catch(e) { showToast('Server error','error'); }
-}
-
-function doLogout() {
-  currentUser = null;
-  document.getElementById('app').style.display='none';
-  document.getElementById('auth-screen').style.display='flex';
-}
-
-function startApp() {
-  document.getElementById('auth-screen').style.display='none';
-  document.getElementById('app').style.display='flex';
-  const u = currentUser;
-  document.getElementById('user-name').textContent = u.full_name || u.username;
-  document.getElementById('user-avatar').textContent = (u.full_name||u.username)[0].toUpperCase();
-  document.getElementById('user-role-badge').textContent = u.role;
-  document.getElementById('user-role-badge').className = `role-badge ${u.role}`;
-  const isFaculty = u.role === 'faculty';
-  document.querySelectorAll('.faculty-only').forEach(el => el.style.display = isFaculty?'':'none');
-  document.querySelectorAll('.student-only').forEach(el => el.style.display = !isFaculty?'':'none');
-  navigateTo('dashboard');
-}
-
-// ─── NAVIGATION ─────────────────────────────────────────────────────
-function navigateTo(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById(`page-${page}`).classList.add('active');
-  const navEl = document.getElementById(`nav-${page}`);
-  if (navEl) navEl.classList.add('active');
-  loadPage(page);
-}
-
-function loadPage(page) {
-  if (page==='dashboard') loadDashboard();
-  else if (page==='students') loadStudents();
-  else if (page==='predict') loadPredict();
-  else if (page==='analytics') loadAnalytics();
-  else if (page==='atrisk') loadAtRisk();
-  else if (page==='myprofile') loadMyProfile();
-}
-
-// ─── DASHBOARD ──────────────────────────────────────────────────────
-async function loadDashboard() {
-  try {
-    const [ovRes, topRes] = await Promise.all([
-      fetch(`${API}/analytics/overview`), fetch(`${API}/analytics/top-performers`)
-    ]);
-    const [ov, top] = await Promise.all([ovRes.json(), topRes.json()]);
-    const d = ov.data;
-    const isFaculty = currentUser.role==='faculty';
-    document.getElementById('dashboard-subtitle').textContent = isFaculty
-      ? `Managing ${d.total_students} students · Avg GPA: ${d.avg_gpa}` : 'Your academic performance overview';
-
-    const grid = document.getElementById('stats-grid');
-    grid.innerHTML = isFaculty ? `
+          const grid = document.getElementById("stats-grid");
+          grid.innerHTML = isFaculty
+            ? `
       <div class="stat-card blue"><div class="label">Total Students</div><div class="value">${d.total_students}</div><div class="change">Active enrollment</div></div>
       <div class="stat-card green"><div class="label">Average GPA</div><div class="value">${d.avg_gpa}</div><div class="change">Class average</div></div>
       <div class="stat-card red"><div class="label">At-Risk</div><div class="value">${d.at_risk_count}</div><div class="change">Need attention</div></div>
       <div class="stat-card purple"><div class="label">Records</div><div class="value">${d.total_records}</div><div class="change">Semester records</div></div>
-    ` : `<div class="stat-card blue"><div class="label">Your GPA</div><div class="value">--</div></div>`;
+    `
+            : `<div class="stat-card blue"><div class="label">Your GPA</div><div class="value">--</div></div>`;
 
-    renderPerfDist(d.performance_distribution);
-    if (isFaculty) renderTopPerformers(top.data || []);
-  } catch(e) { console.error(e); }
-}
+          renderPerfDist(d.performance_distribution);
+          if (isFaculty) renderTopPerformers(top.data || []);
+        } catch (e) {
+          console.error(e);
+        }
+      }
 
-function renderPerfDist(dist) {
-  const labels = ['Excellent','Good','Average','At Risk'];
-  const colors = ['#10b981','#3b82f6','#f59e0b','#ef4444'];
-  const vals = labels.map(l => dist?.[l] || 0);
-  const ctx = document.getElementById('chart-perf-dist');
-  if (charts['perf-dist']) charts['perf-dist'].destroy();
-  charts['perf-dist'] = new Chart(ctx, {
-    type:'doughnut', data:{labels,datasets:[{data:vals,backgroundColor:colors,borderWidth:0}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:12}}}}}
-  });
-  const riskCtx = document.getElementById('chart-risk');
-  if (charts['risk']) charts['risk'].destroy();
-  const total = vals.reduce((a,b)=>a+b,0);
-  charts['risk'] = new Chart(riskCtx, {
-    type:'bar', data:{labels,datasets:[{data:vals,backgroundColor:colors,borderRadius:8,borderSkipped:false}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{
-      x:{ticks:{color:'#94a3b8'},grid:{display:false}},
-      y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(99,179,237,0.06)'}}
-    }}
-  });
-}
+      function renderPerfDist(dist) {
+        const labels = ["Excellent", "Good", "Average", "At Risk"];
+        const colors = ["#10b981", "#3b82f6", "#f59e0b", "#ef4444"];
+        const vals = labels.map((l) => dist?.[l] || 0);
+        const ctx = document.getElementById("chart-perf-dist");
+        if (charts["perf-dist"]) charts["perf-dist"].destroy();
+        charts["perf-dist"] = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels,
+            datasets: [{ data: vals, backgroundColor: colors, borderWidth: 0 }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { labels: { color: "#94a3b8", font: { size: 12 } } },
+            },
+          },
+        });
+        const riskCtx = document.getElementById("chart-risk");
+        if (charts["risk"]) charts["risk"].destroy();
+        const total = vals.reduce((a, b) => a + b, 0);
+        charts["risk"] = new Chart(riskCtx, {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                data: vals,
+                backgroundColor: colors,
+                borderRadius: 8,
+                borderSkipped: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: "#94a3b8" }, grid: { display: false } },
+              y: {
+                ticks: { color: "#94a3b8" },
+                grid: { color: "rgba(99,179,237,0.06)" },
+              },
+            },
+          },
+        });
+      }
 
-function renderTopPerformers(data) {
-  const el = document.getElementById('top-performers-table');
-  if (!data.length) { el.innerHTML='<div class="empty-state"><div class="icon">📊</div><p>No data yet. Add students to see top performers.</p></div>'; return; }
-  el.innerHTML = `<div class="table-wrap"><table>
+      function renderTopPerformers(data) {
+        const el = document.getElementById("top-performers-table");
+        if (!data.length) {
+          el.innerHTML =
+            '<div class="empty-state"><div class="icon">📊</div><p>No data yet. Add students to see top performers.</p></div>';
+          return;
+        }
+        el.innerHTML = `<div class="table-wrap"><table>
     <tr><th>Student</th><th>Course</th><th>GPA</th><th>Performance</th><th>Attendance</th></tr>
-    ${data.map(s=>`<tr>
+    ${data
+      .map(
+        (s) => `<tr>
       <td><strong>${s.name}</strong><br><span style="font-size:12px;color:var(--text3)">${s.student_id}</span></td>
-      <td>${s.course||'—'}</td>
+      <td>${s.course || "—"}</td>
       <td style="font-family:'DM Mono',monospace;color:var(--accent)">${s.gpa}</td>
       <td>${badge(s.performance)}</td>
       <td>${s.attendance}%</td>
-    </tr>`).join('')}
+    </tr>`,
+      )
+      .join("")}
   </table></div>`;
-}
+      }
 
-// ─── STUDENTS ───────────────────────────────────────────────────────
-async function loadStudents() {
-  try {
-    const res = await fetch(`${API}/students`);
-    const data = await res.json();
-    allStudents = data.data || [];
-    renderStudentsTable(allStudents);
-  } catch(e) { showToast('Failed to load students','error'); }
-}
+      // ─── STUDENTS ───────────────────────────────────────────────────────
+      async function loadStudents() {
+        try {
+          const res = await fetch(`${API}/students`);
+          const data = await res.json();
+          allStudents = data.data || [];
+          renderStudentsTable(allStudents);
+        } catch (e) {
+          showToast("Failed to load students", "error");
+        }
+      }
 
-function renderStudentsTable(students) {
-  const el = document.getElementById('students-table');
-  if (!students.length) { el.innerHTML='<div class="empty-state"><div class="icon">👥</div><p>No students yet. Add some!</p></div>'; return; }
-  el.innerHTML = `<div class="table-wrap"><table>
+      function renderStudentsTable(students) {
+        const el = document.getElementById("students-table");
+        if (!students.length) {
+          el.innerHTML =
+            '<div class="empty-state"><div class="icon">👥</div><p>No students yet. Add some!</p></div>';
+          return;
+        }
+        el.innerHTML = `<div class="table-wrap"><table>
     <tr><th>ID</th><th>Name</th><th>Course</th><th>Semester</th><th>Age</th><th>Gender</th><th>Actions</th></tr>
-    ${students.map(s=>`<tr>
+    ${students
+      .map(
+        (s) => `<tr>
       <td><span style="font-family:'DM Mono',monospace;color:var(--accent2)">${s.student_id}</span></td>
       <td><strong>${s.name}</strong></td>
-      <td>${s.course||'—'}</td>
-      <td>Sem ${s.semester||1}</td>
-      <td>${s.age||'—'}</td>
-      <td>${s.gender||'—'}</td>
+      <td>${s.course || "—"}</td>
+      <td>Sem ${s.semester || 1}</td>
+      <td>${s.age || "—"}</td>
+      <td>${s.gender || "—"}</td>
       <td style="display:flex;gap:6px">
         <button class="btn btn-xs" onclick="viewStudentDetail('${s.student_id}')">👁 View</button>
         <button class="btn btn-xs btn-secondary" onclick="openEditStudentModal('${s.student_id}')">✏️ Edit</button>
         <button class="btn btn-xs btn-danger" onclick="deleteStudent('${s.student_id}')">🗑</button>
       </td>
-    </tr>`).join('')}
+    </tr>`,
+      )
+      .join("")}
   </table></div>`;
-}
+      }
 
-function filterStudents(q) {
-  const filtered = allStudents.filter(s =>
-    s.name.toLowerCase().includes(q.toLowerCase()) || s.student_id.toLowerCase().includes(q.toLowerCase()) ||
-    (s.course||'').toLowerCase().includes(q.toLowerCase()));
-  renderStudentsTable(filtered);
-}
+      function filterStudents(q) {
+        const filtered = allStudents.filter(
+          (s) =>
+            s.name.toLowerCase().includes(q.toLowerCase()) ||
+            s.student_id.toLowerCase().includes(q.toLowerCase()) ||
+            (s.course || "").toLowerCase().includes(q.toLowerCase()),
+        );
+        renderStudentsTable(filtered);
+      }
 
-async function viewStudentDetail(sid) {
-  const res = await fetch(`${API}/students/${sid}`);
-  const data = await res.json();
-  if (!data.success) { showToast('Failed to load','error'); return; }
-  const {student:s, records:recs} = data.data;
-  const latestRec = recs[recs.length-1] || {};
-  document.getElementById('student-detail-content').innerHTML = `
+      async function viewStudentDetail(sid) {
+        const res = await fetch(`${API}/students/${sid}`);
+        const data = await res.json();
+        if (!data.success) {
+          showToast("Failed to load", "error");
+          return;
+        }
+        const { student: s, records: recs } = data.data;
+        const latestRec = recs[recs.length - 1] || {};
+        document.getElementById("student-detail-content").innerHTML = `
     <div class="profile-header">
       <div class="profile-avatar">${s.name[0]}</div>
       <div class="profile-info">
         <h2>${s.name}</h2>
         <div class="profile-meta">
           <span>🆔 ${s.student_id}</span>
-          <span>📚 ${s.course||'—'}</span>
-          <span>📅 Sem ${s.semester||1}</span>
-          <span>👤 ${s.gender||'—'}</span>
+          <span>📚 ${s.course || "—"}</span>
+          <span>📅 Sem ${s.semester || 1}</span>
+          <span>👤 ${s.gender || "—"}</span>
         </div>
       </div>
-      ${latestRec.gpa ? `<div class="gpa-ring" style="margin-left:auto">
+      ${
+        latestRec.gpa
+          ? `<div class="gpa-ring" style="margin-left:auto">
         <svg width="90" height="90"><circle cx="45" cy="45" r="38" fill="none" stroke="rgba(99,179,237,0.1)" stroke-width="8"/>
         <circle cx="45" cy="45" r="38" fill="none" stroke="var(--accent)" stroke-width="8"
-          stroke-dasharray="${2*Math.PI*38}" stroke-dashoffset="${2*Math.PI*38*(1-latestRec.gpa/10)}" stroke-linecap="round"/></svg>
+          stroke-dasharray="${2 * Math.PI * 38}" stroke-dashoffset="${2 * Math.PI * 38 * (1 - latestRec.gpa / 10)}" stroke-linecap="round"/></svg>
         <div class="gpa-text"><span class="gpa-val">${latestRec.gpa}</span><span class="gpa-lbl">GPA</span></div>
-      </div>` : ''}
+      </div>`
+          : ""
+      }
     </div>
-    ${recs.length ? `
+    ${
+      recs.length
+        ? `
     <div class="tabs"><div class="tab active" onclick="switchDetailTab('scores',this)">Scores</div>
       <div class="tab" onclick="switchDetailTab('predict',this)">Prediction</div>
       <div class="tab" onclick="switchDetailTab('trend',this)">Trend</div></div>
     <div id="detail-scores">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
-        ${[['Quiz',latestRec.quiz_score],['Assignment',latestRec.assignment_score],['Midterm',latestRec.midterm_score],['Final',latestRec.final_score],['Internal',latestRec.internal_score],['Attendance',latestRec.attendance+'%']]
-          .map(([l,v])=>`<div style="background:var(--surface2);border-radius:10px;padding:12px;text-align:center">
+        ${[
+          ["Quiz", latestRec.quiz_score],
+          ["Assignment", latestRec.assignment_score],
+          ["Midterm", latestRec.midterm_score],
+          ["Final", latestRec.final_score],
+          ["Internal", latestRec.internal_score],
+          ["Attendance", latestRec.attendance + "%"],
+        ]
+          .map(
+            ([
+              l,
+              v,
+            ]) => `<div style="background:var(--surface2);border-radius:10px;padding:12px;text-align:center">
             <div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px">${l}</div>
-            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-top:4px">${typeof v==='number'?v.toFixed(1):v||'—'}</div>
-          </div>`).join('')}
+            <div style="font-size:22px;font-weight:700;color:var(--accent);margin-top:4px">${typeof v === "number" ? v.toFixed(1) : v || "—"}</div>
+          </div>`,
+          )
+          .join("")}
       </div>
     </div>
     <div id="detail-predict" style="display:none">
       <div class="prediction-card">
         <div class="prediction-label">AI Predicted Performance</div>
-        <div class="prediction-value">${latestRec.predicted_performance||'—'}</div>
-        <div class="prediction-conf">Confidence: ${latestRec.prediction_probability||'—'}%</div>
+        <div class="prediction-value">${latestRec.predicted_performance || "—"}</div>
+        <div class="prediction-conf">Confidence: ${latestRec.prediction_probability || "—"}%</div>
       </div>
       <div style="margin-top:16px">${riskBanner(latestRec.risk_level)}</div>
     </div>
@@ -937,443 +2396,971 @@ async function viewStudentDetail(sid) {
       <canvas id="chart-trend" height="200"></canvas>
       <script>setTimeout(()=>{
         const ctx2=document.getElementById('chart-trend');
-        if(ctx2){new Chart(ctx2,{type:'line',data:{labels:${JSON.stringify(recs.map(r=>'Sem '+r.semester))},
-          datasets:[{label:'GPA',data:${JSON.stringify(recs.map(r=>r.gpa))},borderColor:'#3b82f6',tension:.4,fill:true,backgroundColor:'rgba(59,130,246,0.1)'}]},
+        if(ctx2){new Chart(ctx2,{type:'line',data:{labels:${JSON.stringify(recs.map((r) => "Sem " + r.semester))},
+          datasets:[{label:'GPA',data:${JSON.stringify(recs.map((r) => r.gpa))},borderColor:'#3b82f6',tension:.4,fill:true,backgroundColor:'rgba(59,130,246,0.1)'}]},
           options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#94a3b8'},grid:{display:false}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(99,179,237,0.06)'},min:0,max:10}},plugins:{legend:{display:false}}}});}},100)
       <\/script>
-    </div>` : '<div class="empty-state"><div class="icon">📋</div><p>No academic records yet</p></div>'}
+    </div>`
+        : '<div class="empty-state"><div class="icon">📋</div><p>No academic records yet</p></div>'
+    }
     <div style="margin-top:20px;display:flex;gap:10px">
       <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-student-detail')">Close</button>
       <button class="btn btn-sm" onclick="closeModal('modal-student-detail');openEditStudentModal('${s.student_id}')">✏️ Edit / Add Scores</button>
     </div>
   `;
-  openModal('modal-student-detail');
-}
+        openModal("modal-student-detail");
+      }
 
-function switchDetailTab(tab, el) {
-  document.querySelectorAll('#modal-student-detail .tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  ['scores','predict','trend'].forEach(t => {
-    const el2 = document.getElementById('detail-'+t);
-    if (el2) el2.style.display = t===tab?'block':'none';
-  });
-}
+      function switchDetailTab(tab, el) {
+        document
+          .querySelectorAll("#modal-student-detail .tab")
+          .forEach((t) => t.classList.remove("active"));
+        el.classList.add("active");
+        ["scores", "predict", "trend"].forEach((t) => {
+          const el2 = document.getElementById("detail-" + t);
+          if (el2) el2.style.display = t === tab ? "block" : "none";
+        });
+      }
 
-function riskBanner(risk) {
-  if (!risk) return '';
-  const icons = {High:'🔴',Medium:'🟡',Low:'🟢'};
-  const msgs = {High:'High risk of academic failure. Immediate intervention needed.',Medium:'Moderate risk. Monitor closely.',Low:'On track. Keep up the good work!'};
-  return `<div class="risk-banner ${risk.toLowerCase()}">
-    <div class="risk-icon">${icons[risk]||'ℹ️'}</div>
+      function riskBanner(risk) {
+        if (!risk) return "";
+        const icons = { High: "🔴", Medium: "🟡", Low: "🟢" };
+        const msgs = {
+          High: "High risk of academic failure. Immediate intervention needed.",
+          Medium: "Moderate risk. Monitor closely.",
+          Low: "On track. Keep up the good work!",
+        };
+        return `<div class="risk-banner ${risk.toLowerCase()}">
+    <div class="risk-icon">${icons[risk] || "ℹ️"}</div>
     <div><div class="risk-title ${risk.toLowerCase()}">Risk Level: ${risk}</div>
-    <div class="risk-reasons">${msgs[risk]||''}</div></div>
+    <div class="risk-reasons">${msgs[risk] || ""}</div></div>
   </div>`;
-}
+      }
 
-function openAddStudentModal() {
-  document.getElementById('modal-student-title').textContent = 'Add New Student';
-  ['sid','name','age','email','phone'].forEach(id => document.getElementById('f-'+id).value='');
-  document.getElementById('modal-student').dataset.mode='add';
-  document.getElementById('modal-student').dataset.sid='';
-  openModal('modal-student');
-}
+      function openAddStudentModal() {
+        document.getElementById("modal-student-title").textContent =
+          "Add New Student";
+        ["sid", "name", "age", "email", "phone"].forEach(
+          (id) => (document.getElementById("f-" + id).value = ""),
+        );
+        document.getElementById("modal-student").dataset.mode = "add";
+        document.getElementById("modal-student").dataset.sid = "";
+        openModal("modal-student");
+      }
 
-async function openEditStudentModal(sid) {
-  const res = await fetch(`${API}/students/${sid}`);
-  const data = await res.json();
-  if (!data.success) return;
-  const {student:s, records:recs} = data.data;
-  const rec = recs[recs.length-1] || {};
-  document.getElementById('modal-student-title').textContent = 'Edit Student';
-  document.getElementById('f-sid').value = s.student_id;
-  document.getElementById('f-sid').disabled = true;
-  document.getElementById('f-name').value = s.name;
-  document.getElementById('f-age').value = s.age||'';
-  document.getElementById('f-gender').value = s.gender||'Male';
-  document.getElementById('f-course').value = s.course||'Computer Science';
-  document.getElementById('f-semester').value = s.semester||1;
-  document.getElementById('f-email').value = s.email||'';
-  document.getElementById('f-phone').value = s.phone||'';
-  if (rec.attendance) document.getElementById('f-att').value = rec.attendance;
-  if (rec.study_hours) document.getElementById('f-study').value = rec.study_hours;
-  if (rec.quiz_score) document.getElementById('f-quiz').value = rec.quiz_score;
-  if (rec.assignment_score) document.getElementById('f-assign').value = rec.assignment_score;
-  if (rec.midterm_score) document.getElementById('f-mid').value = rec.midterm_score;
-  if (rec.final_score) document.getElementById('f-final').value = rec.final_score;
-  if (rec.internal_score) document.getElementById('f-internal').value = rec.internal_score;
-  document.getElementById('modal-student').dataset.mode='edit';
-  document.getElementById('modal-student').dataset.sid=sid;
-  openModal('modal-student');
-}
+      async function openEditStudentModal(sid) {
+        const res = await fetch(`${API}/students/${sid}`);
+        const data = await res.json();
+        if (!data.success) return;
+        const { student: s, records: recs } = data.data;
+        const rec = recs[recs.length - 1] || {};
+        document.getElementById("modal-student-title").textContent =
+          "Edit Student";
+        document.getElementById("f-sid").value = s.student_id;
+        document.getElementById("f-sid").disabled = true;
+        document.getElementById("f-name").value = s.name;
+        document.getElementById("f-age").value = s.age || "";
+        document.getElementById("f-gender").value = s.gender || "Male";
+        document.getElementById("f-course").value =
+          s.course || "Computer Science";
+        document.getElementById("f-semester").value = s.semester || 1;
+        document.getElementById("f-email").value = s.email || "";
+        document.getElementById("f-phone").value = s.phone || "";
+        if (rec.attendance)
+          document.getElementById("f-att").value = rec.attendance;
+        if (rec.study_hours)
+          document.getElementById("f-study").value = rec.study_hours;
+        if (rec.quiz_score)
+          document.getElementById("f-quiz").value = rec.quiz_score;
+        if (rec.assignment_score)
+          document.getElementById("f-assign").value = rec.assignment_score;
+        if (rec.midterm_score)
+          document.getElementById("f-mid").value = rec.midterm_score;
+        if (rec.final_score)
+          document.getElementById("f-final").value = rec.final_score;
+        if (rec.internal_score)
+          document.getElementById("f-internal").value = rec.internal_score;
+        document.getElementById("modal-student").dataset.mode = "edit";
+        document.getElementById("modal-student").dataset.sid = sid;
+        openModal("modal-student");
+      }
 
-async function saveStudent() {
-  const modal = document.getElementById('modal-student');
-  const mode = modal.dataset.mode;
-  const sid = mode==='edit' ? modal.dataset.sid : document.getElementById('f-sid').value.trim();
-  const studentData = {
-    student_id: sid, name: document.getElementById('f-name').value.trim(),
-    age: document.getElementById('f-age').value, gender: document.getElementById('f-gender').value,
-    course: document.getElementById('f-course').value, semester: document.getElementById('f-semester').value,
-    email: document.getElementById('f-email').value, phone: document.getElementById('f-phone').value
-  };
-  if (!studentData.name) { showToast('Name is required','error'); return; }
-  try {
-    if (mode==='add') {
-      if (!sid) { showToast('Student ID required','error'); return; }
-      const r = await fetch(`${API}/students`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(studentData)});
-      const d = await r.json();
-      if (!d.success) { showToast(d.message,'error'); return; }
-    } else {
-      await fetch(`${API}/students/${sid}`, {method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(studentData)});
-    }
-    // Save academic record if provided
-    const att = document.getElementById('f-att').value;
-    if (att) {
-      const recData = {
-        semester: studentData.semester, attendance: att,
-        study_hours: document.getElementById('f-study').value,
-        class_participation: document.getElementById('f-part').value||5,
-        homework_completion: document.getElementById('f-hw').value||70,
-        quiz_score: document.getElementById('f-quiz').value,
-        assignment_score: document.getElementById('f-assign').value,
-        midterm_score: document.getElementById('f-mid').value,
-        final_score: document.getElementById('f-final').value,
-        internal_score: document.getElementById('f-internal').value
-      };
-      await fetch(`${API}/records/${sid}`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(recData)});
-    }
-    closeModal('modal-student');
-    document.getElementById('f-sid').disabled = false;
-    showToast('Student saved successfully','success');
-    loadStudents();
-  } catch(e) { showToast('Save failed','error'); }
-}
+      async function saveStudent() {
+        const modal = document.getElementById("modal-student");
+        const mode = modal.dataset.mode;
+        const sid =
+          mode === "edit"
+            ? modal.dataset.sid
+            : document.getElementById("f-sid").value.trim();
+        const studentData = {
+          student_id: sid,
+          name: document.getElementById("f-name").value.trim(),
+          age: document.getElementById("f-age").value,
+          gender: document.getElementById("f-gender").value,
+          course: document.getElementById("f-course").value,
+          semester: document.getElementById("f-semester").value,
+          email: document.getElementById("f-email").value,
+          phone: document.getElementById("f-phone").value,
+        };
+        if (!studentData.name) {
+          showToast("Name is required", "error");
+          return;
+        }
+        try {
+          if (mode === "add") {
+            if (!sid) {
+              showToast("Student ID required", "error");
+              return;
+            }
+            const r = await fetch(`${API}/students`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(studentData),
+            });
+            const d = await r.json();
+            if (!d.success) {
+              showToast(d.message, "error");
+              return;
+            }
+          } else {
+            await fetch(`${API}/students/${sid}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(studentData),
+            });
+          }
+          // Save academic record if provided
+          const att = document.getElementById("f-att").value;
+          if (att) {
+            const recData = {
+              semester: studentData.semester,
+              attendance: att,
+              study_hours: document.getElementById("f-study").value,
+              class_participation: document.getElementById("f-part").value || 5,
+              homework_completion: document.getElementById("f-hw").value || 70,
+              quiz_score: document.getElementById("f-quiz").value,
+              assignment_score: document.getElementById("f-assign").value,
+              midterm_score: document.getElementById("f-mid").value,
+              final_score: document.getElementById("f-final").value,
+              internal_score: document.getElementById("f-internal").value,
+            };
+            await fetch(`${API}/records/${sid}`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(recData),
+            });
+          }
+          closeModal("modal-student");
+          document.getElementById("f-sid").disabled = false;
+          showToast("Student saved successfully", "success");
+          loadStudents();
+        } catch (e) {
+          showToast("Save failed", "error");
+        }
+      }
 
-async function deleteStudent(sid) {
-  if (!confirm(`Delete student ${sid}? This cannot be undone.`)) return;
-  const res = await fetch(`${API}/students/${sid}`, {method:'DELETE'});
-  const data = await res.json();
-  if (data.success) { showToast('Student deleted','success'); loadStudents(); }
-  else showToast(data.message,'error');
-}
+      async function deleteStudent(sid) {
+        if (!confirm(`Delete student ${sid}? This cannot be undone.`)) return;
+        const res = await fetch(`${API}/students/${sid}`, { method: "DELETE" });
+        const data = await res.json();
+        if (data.success) {
+          showToast("Student deleted", "success");
+          loadStudents();
+        } else showToast(data.message, "error");
+      }
 
-// ─── PREDICT ────────────────────────────────────────────────────────
-function updateSlider(key, val, unit) {
-  document.getElementById(`v-${key}`).textContent = val + unit;
-}
+      // ─── PREDICT ────────────────────────────────────────────────────────
+      function updateSlider(key, val, unit) {
+        document.getElementById(`v-${key}`).textContent = val + unit;
+      }
 
-async function loadPredict() {
-  loadFeatureImportance();
-}
+      async function loadPredict() {
+        loadFeatureImportance();
+      }
 
-async function runPrediction() {
-  const data = {
-    attendance: document.getElementById('s-att').value,
-    study_hours: document.getElementById('s-study').value,
-    class_participation: document.getElementById('s-part').value,
-    homework_completion: document.getElementById('s-hw').value,
-    quiz_score: document.getElementById('s-quiz').value,
-    assignment_score: document.getElementById('s-assign').value,
-    midterm_score: document.getElementById('s-mid').value,
-    internal_score: document.getElementById('s-int').value
-  };
-  const panel = document.getElementById('prediction-result-panel');
-  panel.innerHTML='<div class="card loading"><div class="spinner"></div></div>';
-  try {
-    const res = await fetch(`${API}/predict`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const result = await res.json();
-    if (!result.success) { showToast('Prediction failed','error'); return; }
-    const r = result.data;
-    const colorMap = {Excellent:'var(--success)',Good:'var(--accent)',Average:'var(--warning)','At Risk':'var(--danger)'};
-    const probs = r.probabilities || {};
-    panel.innerHTML = `<div class="card">
+      async function runPrediction() {
+        const data = {
+          attendance: document.getElementById("s-att").value,
+          study_hours: document.getElementById("s-study").value,
+          class_participation: document.getElementById("s-part").value,
+          homework_completion: document.getElementById("s-hw").value,
+          quiz_score: document.getElementById("s-quiz").value,
+          assignment_score: document.getElementById("s-assign").value,
+          midterm_score: document.getElementById("s-mid").value,
+          internal_score: document.getElementById("s-int").value,
+        };
+        const panel = document.getElementById("prediction-result-panel");
+        panel.innerHTML =
+          '<div class="card loading"><div class="spinner"></div></div>';
+        try {
+          const res = await fetch(`${API}/predict`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const result = await res.json();
+          if (!result.success) {
+            showToast("Prediction failed", "error");
+            return;
+          }
+          const r = result.data;
+          const colorMap = {
+            Excellent: "var(--success)",
+            Good: "var(--accent)",
+            Average: "var(--warning)",
+            "At Risk": "var(--danger)",
+          };
+          const probs = r.probabilities || {};
+          panel.innerHTML = `<div class="card">
       <div class="prediction-card" style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08))">
         <div class="prediction-label">AI Predicted Performance</div>
-        <div class="prediction-value" style="color:${colorMap[r.predicted_performance]||'var(--accent)'}">
+        <div class="prediction-value" style="color:${colorMap[r.predicted_performance] || "var(--accent)"}">
           ${r.predicted_performance}
         </div>
         <div class="prediction-conf">Confidence: ${r.confidence}%</div>
       </div>
       <div class="prob-bars" style="margin-top:20px">
         <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Probability Breakdown</div>
-        ${Object.entries(probs).map(([lbl,pct])=>`
+        ${Object.entries(probs)
+          .map(
+            ([lbl, pct]) => `
           <div class="prob-row">
             <div class="prob-label">${lbl}</div>
-            <div class="prob-track"><div class="prob-fill ${lbl.toLowerCase().replace(' ','')}" style="width:${pct}%"></div></div>
+            <div class="prob-track"><div class="prob-fill ${lbl.toLowerCase().replace(" ", "")}" style="width:${pct}%"></div></div>
             <div class="prob-pct">${pct}%</div>
-          </div>`).join('')}
+          </div>`,
+          )
+          .join("")}
       </div>
       <div style="margin-top:20px">${riskBanner(r.risk_level)}</div>
-      ${r.risk_reasons?.length ? `<div style="font-size:12px;color:var(--text2);margin-top:-8px;margin-bottom:16px">
-        ${r.risk_reasons.map(x=>`<span style="display:inline-block;margin:2px 4px 2px 0;background:rgba(239,68,68,0.1);color:var(--danger);padding:2px 8px;border-radius:4px;font-size:11px">⚠ ${x}</span>`).join('')}
-      </div>` : ''}
+      ${
+        r.risk_reasons?.length
+          ? `<div style="font-size:12px;color:var(--text2);margin-top:-8px;margin-bottom:16px">
+        ${r.risk_reasons.map((x) => `<span style="display:inline-block;margin:2px 4px 2px 0;background:rgba(239,68,68,0.1);color:var(--danger);padding:2px 8px;border-radius:4px;font-size:11px">⚠ ${x}</span>`).join("")}
+      </div>`
+          : ""
+      }
       <div style="margin-top:8px">
         <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">💡 Recommendations</div>
-        ${r.recommendations?.map(rec=>`<div class="rec-item">
+        ${
+          r.recommendations
+            ?.map(
+              (rec) => `<div class="rec-item">
           <div><span class="rec-cat">${rec.category}</span>
-          <span class="rec-priority badge badge-${rec.priority.toLowerCase()==='high'?'atrisk':rec.priority.toLowerCase()==='medium'?'average':'good'}">${rec.priority}</span></div>
+          <span class="rec-priority badge badge-${rec.priority.toLowerCase() === "high" ? "atrisk" : rec.priority.toLowerCase() === "medium" ? "average" : "good"}">${rec.priority}</span></div>
           <div class="rec-text">${rec.text}</div>
-        </div>`).join('') || ''}
+        </div>`,
+            )
+            .join("") || ""
+        }
       </div>
     </div>`;
-  } catch(e) { showToast('Prediction failed — server unreachable','error'); }
-}
+        } catch (e) {
+          showToast("Prediction failed — server unreachable", "error");
+        }
+      }
 
-async function loadFeatureImportance() {
-  const el = document.getElementById('feature-importance-panel');
-  try {
-    const res = await fetch(`${API}/analytics/feature-importance`);
-    const data = await res.json();
-    const fi = data.data || {};
-    const sorted = Object.entries(fi).sort((a,b)=>b[1]-a[1]);
-    const labels = {'Attendance':'📅 Attendance','StudyHours':'📚 Study Hours','ClassParticipation':'🙋 Participation',
-      'HomeworkCompletion':'✅ Homework','QuizScore':'📝 Quiz Score','AssignmentScore':'📋 Assignment',
-      'MidtermScore':'📖 Midterm','InternalScore':'🔬 Internal'};
-    el.innerHTML = sorted.map(([k,v])=>`<div class="fi-row">
-      <div class="fi-label">${labels[k]||k}</div>
-      <div class="fi-track"><div class="fi-fill" style="width:${Math.min(100,v*4)}%"></div></div>
+      async function loadFeatureImportance() {
+        const el = document.getElementById("feature-importance-panel");
+        try {
+          const res = await fetch(`${API}/analytics/feature-importance`);
+          const data = await res.json();
+          const fi = data.data || {};
+          const sorted = Object.entries(fi).sort((a, b) => b[1] - a[1]);
+          const labels = {
+            Attendance: "📅 Attendance",
+            StudyHours: "📚 Study Hours",
+            ClassParticipation: "🙋 Participation",
+            HomeworkCompletion: "✅ Homework",
+            QuizScore: "📝 Quiz Score",
+            AssignmentScore: "📋 Assignment",
+            MidtermScore: "📖 Midterm",
+            InternalScore: "🔬 Internal",
+          };
+          el.innerHTML = sorted
+            .map(
+              ([k, v]) => `<div class="fi-row">
+      <div class="fi-label">${labels[k] || k}</div>
+      <div class="fi-track"><div class="fi-fill" style="width:${Math.min(100, v * 4)}%"></div></div>
       <div class="fi-pct">${v.toFixed(1)}%</div>
-    </div>`).join('');
-  } catch(e) { el.innerHTML='<p style="color:var(--text2)">Feature importance unavailable</p>'; }
-}
+    </div>`,
+            )
+            .join("");
+        } catch (e) {
+          el.innerHTML =
+            '<p style="color:var(--text2)">Feature importance unavailable</p>';
+        }
+      }
 
-// ─── ANALYTICS ──────────────────────────────────────────────────────
-async function loadAnalytics() {
-  try {
-    const [statsRes, studRes] = await Promise.all([
-      fetch(`${API}/analytics/class`), fetch(`${API}/students`)
-    ]);
-    const [stats, studs] = await Promise.all([statsRes.json(), studRes.json()]);
-    const d = stats.data || {};
-    const students = studs.data || [];
+      // ─── ANALYTICS ──────────────────────────────────────────────────────
+      async function loadAnalytics() {
+        try {
+          const [statsRes, studRes] = await Promise.all([
+            fetch(`${API}/analytics/class`),
+            fetch(`${API}/students`),
+          ]);
+          const [stats, studs] = await Promise.all([
+            statsRes.json(),
+            studRes.json(),
+          ]);
+          const d = stats.data || {};
+          const students = studs.data || [];
 
-    document.getElementById('analytics-stats').innerHTML = `
-      <div class="stat-card blue"><div class="label">Avg Quiz</div><div class="value">${d.quiz_score?.mean||0}</div></div>
-      <div class="stat-card green"><div class="label">Avg Assignment</div><div class="value">${d.assignment_score?.mean||0}</div></div>
-      <div class="stat-card purple"><div class="label">Avg Midterm</div><div class="value">${d.midterm_score?.mean||0}</div></div>
-      <div class="stat-card cyan"><div class="label">Avg Attendance</div><div class="value">${d.attendance?.mean||0}%</div></div>
+          document.getElementById("analytics-stats").innerHTML = `
+      <div class="stat-card blue"><div class="label">Avg Quiz</div><div class="value">${d.quiz_score?.mean || 0}</div></div>
+      <div class="stat-card green"><div class="label">Avg Assignment</div><div class="value">${d.assignment_score?.mean || 0}</div></div>
+      <div class="stat-card purple"><div class="label">Avg Midterm</div><div class="value">${d.midterm_score?.mean || 0}</div></div>
+      <div class="stat-card cyan"><div class="label">Avg Attendance</div><div class="value">${d.attendance?.mean || 0}%</div></div>
     `;
 
-    // Scores chart
-    setTimeout(() => {
-      const ctxS = document.getElementById('chart-scores');
-      if (charts['scores']) charts['scores'].destroy();
-      charts['scores'] = new Chart(ctxS, {
-        type:'bar',
-        data:{labels:['Quiz','Assignment','Midterm','Final','Internal'],
-          datasets:[
-            {label:'Average',data:[d.quiz_score?.mean||0,d.assignment_score?.mean||0,d.midterm_score?.mean||0,d.final_score?.mean||0,d.internal_score?.mean||0],backgroundColor:'rgba(59,130,246,0.7)',borderRadius:6},
-            {label:'Max',data:[d.quiz_score?.max||0,d.assignment_score?.max||0,d.midterm_score?.max||0,d.final_score?.max||0,d.internal_score?.max||0],backgroundColor:'rgba(16,185,129,0.4)',borderRadius:6}
-          ]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8'}}},
-          scales:{x:{ticks:{color:'#94a3b8'},grid:{display:false}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(99,179,237,0.06)'},max:100}}}
-      });
+          // Scores chart
+          setTimeout(() => {
+            const ctxS = document.getElementById("chart-scores");
+            if (charts["scores"]) charts["scores"].destroy();
+            charts["scores"] = new Chart(ctxS, {
+              type: "bar",
+              data: {
+                labels: ["Quiz", "Assignment", "Midterm", "Final", "Internal"],
+                datasets: [
+                  {
+                    label: "Average",
+                    data: [
+                      d.quiz_score?.mean || 0,
+                      d.assignment_score?.mean || 0,
+                      d.midterm_score?.mean || 0,
+                      d.final_score?.mean || 0,
+                      d.internal_score?.mean || 0,
+                    ],
+                    backgroundColor: "rgba(59,130,246,0.7)",
+                    borderRadius: 6,
+                  },
+                  {
+                    label: "Max",
+                    data: [
+                      d.quiz_score?.max || 0,
+                      d.assignment_score?.max || 0,
+                      d.midterm_score?.max || 0,
+                      d.final_score?.max || 0,
+                      d.internal_score?.max || 0,
+                    ],
+                    backgroundColor: "rgba(16,185,129,0.4)",
+                    borderRadius: 6,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: "#94a3b8" } } },
+                scales: {
+                  x: { ticks: { color: "#94a3b8" }, grid: { display: false } },
+                  y: {
+                    ticks: { color: "#94a3b8" },
+                    grid: { color: "rgba(99,179,237,0.06)" },
+                    max: 100,
+                  },
+                },
+              },
+            });
 
-      const perf = d.performance_dist || {};
-      const ctxG = document.getElementById('chart-gpa-dist');
-      if (charts['gpa']) charts['gpa'].destroy();
-      charts['gpa'] = new Chart(ctxG, {
-        type:'pie',
-        data:{labels:Object.keys(perf),datasets:[{data:Object.values(perf),backgroundColor:['#10b981','#3b82f6','#f59e0b','#ef4444'],borderWidth:0}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8'}}}}
-      });
+            const perf = d.performance_dist || {};
+            const ctxG = document.getElementById("chart-gpa-dist");
+            if (charts["gpa"]) charts["gpa"].destroy();
+            charts["gpa"] = new Chart(ctxG, {
+              type: "pie",
+              data: {
+                labels: Object.keys(perf),
+                datasets: [
+                  {
+                    data: Object.values(perf),
+                    backgroundColor: [
+                      "#10b981",
+                      "#3b82f6",
+                      "#f59e0b",
+                      "#ef4444",
+                    ],
+                    borderWidth: 0,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: "#94a3b8" } } },
+              },
+            });
 
-      // Scatter (dummy without real scatter data)
-      const ctxAG = document.getElementById('chart-att-gpa');
-      if (charts['att-gpa']) charts['att-gpa'].destroy();
-      charts['att-gpa'] = new Chart(ctxAG, {
-        type:'bar',
-        data:{labels:['<50%','50-60%','60-75%','75-90%','90%+'],
-          datasets:[{label:'Avg GPA',data:[3.2,4.5,5.8,7.1,8.4],backgroundColor:'rgba(6,182,212,0.7)',borderRadius:6}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-          scales:{x:{ticks:{color:'#94a3b8'},grid:{display:false}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(99,179,237,0.06)'},max:10}}}
-      });
-    }, 100);
-  } catch(e) { console.error(e); }
-}
+            // Scatter (dummy without real scatter data)
+            const ctxAG = document.getElementById("chart-att-gpa");
+            if (charts["att-gpa"]) charts["att-gpa"].destroy();
+            charts["att-gpa"] = new Chart(ctxAG, {
+              type: "bar",
+              data: {
+                labels: ["<50%", "50-60%", "60-75%", "75-90%", "90%+"],
+                datasets: [
+                  {
+                    label: "Avg GPA",
+                    data: [3.2, 4.5, 5.8, 7.1, 8.4],
+                    backgroundColor: "rgba(6,182,212,0.7)",
+                    borderRadius: 6,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                  x: { ticks: { color: "#94a3b8" }, grid: { display: false } },
+                  y: {
+                    ticks: { color: "#94a3b8" },
+                    grid: { color: "rgba(99,179,237,0.06)" },
+                    max: 10,
+                  },
+                },
+              },
+            });
+          }, 100);
+        } catch (e) {
+          console.error(e);
+        }
+      }
 
-// ─── AT RISK ────────────────────────────────────────────────────────
-async function loadAtRisk() {
-  const el = document.getElementById('atrisk-content');
-  try {
-    const res = await fetch(`${API}/analytics/at-risk`);
-    const data = await res.json();
-    const students = data.data || [];
-    if (!students.length) {
-      el.innerHTML='<div class="empty-state"><div class="icon">✅</div><p>No at-risk students detected!</p></div>'; return;
-    }
-    el.innerHTML = `<div class="card"><div class="table-wrap"><table>
+      // ─── AT RISK ────────────────────────────────────────────────────────
+      async function loadAtRisk() {
+        const el = document.getElementById("atrisk-content");
+        try {
+          const res = await fetch(`${API}/analytics/at-risk`);
+          const data = await res.json();
+          const students = data.data || [];
+          if (!students.length) {
+            el.innerHTML =
+              '<div class="empty-state"><div class="icon">✅</div><p>No at-risk students detected!</p></div>';
+            return;
+          }
+          el.innerHTML = `<div class="card"><div class="table-wrap"><table>
       <tr><th>Student</th><th>Course</th><th>GPA</th><th>Attendance</th><th>Study Hrs</th><th>Risk Level</th><th>Prediction</th><th>Action</th></tr>
-      ${students.map(s=>`<tr>
+      ${students
+        .map(
+          (s) => `<tr>
         <td><strong>${s.name}</strong><br><span style="font-size:12px;color:var(--text3)">${s.student_id}</span></td>
-        <td>${s.course||'—'}</td>
-        <td style="font-family:'DM Mono',monospace;color:${s.gpa<4?'var(--danger)':'var(--warning)'}">${s.gpa}</td>
-        <td style="color:${s.attendance<60?'var(--danger)':s.attendance<75?'var(--warning)':'var(--success)'}">${s.attendance}%</td>
+        <td>${s.course || "—"}</td>
+        <td style="font-family:'DM Mono',monospace;color:${s.gpa < 4 ? "var(--danger)" : "var(--warning)"}">${s.gpa}</td>
+        <td style="color:${s.attendance < 60 ? "var(--danger)" : s.attendance < 75 ? "var(--warning)" : "var(--success)"}">${s.attendance}%</td>
         <td>${s.study_hours} hrs</td>
-        <td>${badge(s.risk_level,'risk')}</td>
+        <td>${badge(s.risk_level, "risk")}</td>
         <td>${badge(s.predicted_performance)}</td>
         <td><button class="btn btn-xs" onclick="viewStudentDetail('${s.student_id}')">📋 Details</button></td>
-      </tr>`).join('')}
+      </tr>`,
+        )
+        .join("")}
     </table></div></div>`;
-  } catch(e) { el.innerHTML='<div class="empty-state"><p>Failed to load at-risk data</p></div>'; }
-}
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load at-risk data</p></div>';
+        }
+      }
 
-// ─── MY PROFILE (student) ───────────────────────────────────────────
-async function loadMyProfile() {
-  const el = document.getElementById('my-profile-content');
-  const sid = currentUser.student_id;
-  if (!sid) { el.innerHTML='<div class="empty-state"><div class="icon">🔗</div><p>No student ID linked to your account. Please contact faculty.</p></div>'; return; }
-  try {
-    const res = await fetch(`${API}/students/${sid}`);
-    const data = await res.json();
-    if (!data.success) { el.innerHTML='<div class="empty-state"><p>No records found</p></div>'; return; }
-    const {student:s, records:recs} = data.data;
-    const latest = recs[recs.length-1] || {};
-    el.innerHTML = `
+      // ─── MY PROFILE (student) ───────────────────────────────────────────
+      async function loadMyProfile() {
+        const el = document.getElementById("my-profile-content");
+        const sid = currentUser.student_id;
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><div class="icon">🔗</div><p>No student ID linked to your account. Please contact faculty.</p></div>';
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/students/${sid}`);
+          const data = await res.json();
+          if (!data.success) {
+            el.innerHTML =
+              '<div class="empty-state"><p>No records found</p></div>';
+            return;
+          }
+          const { student: s, records: recs } = data.data;
+          const latest = recs[recs.length - 1] || {};
+          el.innerHTML = `
       <div class="profile-header">
         <div class="profile-avatar">${s.name[0]}</div>
         <div class="profile-info">
           <h2>${s.name}</h2>
           <div class="profile-meta">
             <span>🆔 ${s.student_id}</span>
-            <span>📚 ${s.course||'—'}</span>
-            <span>📅 Semester ${s.semester||1}</span>
+            <span>📚 ${s.course || "—"}</span>
+            <span>📅 Semester ${s.semester || 1}</span>
           </div>
         </div>
-        ${latest.gpa ? `<div class="gpa-ring" style="margin-left:auto">
+        ${
+          latest.gpa
+            ? `<div class="gpa-ring" style="margin-left:auto">
           <svg width="90" height="90"><circle cx="45" cy="45" r="38" fill="none" stroke="rgba(99,179,237,0.1)" stroke-width="8"/>
           <circle cx="45" cy="45" r="38" fill="none" stroke="var(--accent)" stroke-width="8"
-            stroke-dasharray="${2*Math.PI*38}" stroke-dashoffset="${2*Math.PI*38*(1-latest.gpa/10)}" stroke-linecap="round"/></svg>
+            stroke-dasharray="${2 * Math.PI * 38}" stroke-dashoffset="${2 * Math.PI * 38 * (1 - latest.gpa / 10)}" stroke-linecap="round"/></svg>
           <div class="gpa-text"><span class="gpa-val">${latest.gpa}</span><span class="gpa-lbl">GPA</span></div>
-        </div>` : ''}
+        </div>`
+            : ""
+        }
       </div>
-      ${latest.predicted_performance ? `
+      ${
+        latest.predicted_performance
+          ? `
       <div class="grid-2">
         <div class="card">
           <div class="prediction-card">
             <div class="prediction-label">AI Predicted Performance</div>
             <div class="prediction-value">${latest.predicted_performance}</div>
-            <div class="prediction-conf">Confidence: ${latest.prediction_probability||'—'}%</div>
+            <div class="prediction-conf">Confidence: ${latest.prediction_probability || "—"}%</div>
           </div>
           ${riskBanner(latest.risk_level)}
         </div>
         <div class="card">
           <div class="card-title" style="margin-bottom:16px">📊 Score Overview</div>
-          ${[['Quiz',latest.quiz_score],['Assignment',latest.assignment_score],['Midterm',latest.midterm_score],['Final',latest.final_score]]
-            .map(([l,v])=>`<div style="margin-bottom:12px">
+          ${[
+            ["Quiz", latest.quiz_score],
+            ["Assignment", latest.assignment_score],
+            ["Midterm", latest.midterm_score],
+            ["Final", latest.final_score],
+          ]
+            .map(
+              ([l, v]) => `<div style="margin-bottom:12px">
               <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:4px">
-                <span>${l}</span><span style="color:var(--accent);font-family:'DM Mono',monospace">${(v||0).toFixed(1)}</span>
+                <span>${l}</span><span style="color:var(--accent);font-family:'DM Mono',monospace">${(v || 0).toFixed(1)}</span>
               </div>
-              <div class="progress-bar"><div class="progress-fill" style="width:${v||0}%;background:${v>=75?'var(--success)':v>=50?'var(--accent)':'var(--warning)'}"></div></div>
-            </div>`).join('')}
+              <div class="progress-bar"><div class="progress-fill" style="width:${v || 0}%;background:${v >= 75 ? "var(--success)" : v >= 50 ? "var(--accent)" : "var(--warning)"}"></div></div>
+            </div>`,
+            )
+            .join("")}
         </div>
-      </div>` : ''}
-      ${recs.length>1 ? `<div class="card">
+      </div>`
+          : ""
+      }
+      ${
+        recs.length > 1
+          ? `<div class="card">
         <div class="card-title" style="margin-bottom:16px">📈 GPA Trend</div>
         <div class="chart-container"><canvas id="chart-my-trend"></canvas></div>
-      </div>` : ''}
-      ${latest.predicted_performance ? `<div class="card">
+      </div>`
+          : ""
+      }
+      ${
+        latest.predicted_performance
+          ? `<div class="card">
         <div class="card-title" style="margin-bottom:16px">💡 AI Recommendations</div>
         <div id="my-recs-loading"><div class="loading"><div class="spinner"></div></div></div>
-      </div>` : ''}
+      </div>`
+          : ""
+      }
     `;
-    if (recs.length>1) {
-      setTimeout(() => {
-        const ctx = document.getElementById('chart-my-trend');
-        if (ctx) new Chart(ctx, {type:'line',data:{
-          labels:recs.map(r=>'Sem '+r.semester),
-          datasets:[{label:'GPA',data:recs.map(r=>r.gpa),borderColor:'#3b82f6',tension:.4,fill:true,backgroundColor:'rgba(59,130,246,0.1)'}]},
-          options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#94a3b8'},grid:{display:false}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(99,179,237,0.06)'},min:0,max:10}},plugins:{legend:{display:false}}}});
-      }, 100);
-    }
-    // Get AI recommendations
-    if (latest.attendance) {
-      const predInput = {attendance:latest.attendance,study_hours:latest.study_hours,quiz_score:latest.quiz_score,
-        assignment_score:latest.assignment_score,midterm_score:latest.midterm_score,internal_score:latest.internal_score,
-        class_participation:latest.class_participation,homework_completion:latest.homework_completion};
-      fetch(`${API}/predict`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(predInput)})
-        .then(r=>r.json()).then(d=>{
-          const el2=document.getElementById('my-recs-loading');
-          if(el2&&d.data?.recommendations) el2.innerHTML=d.data.recommendations.map(r=>`<div class="rec-item">
+          if (recs.length > 1) {
+            setTimeout(() => {
+              const ctx = document.getElementById("chart-my-trend");
+              if (ctx)
+                new Chart(ctx, {
+                  type: "line",
+                  data: {
+                    labels: recs.map((r) => "Sem " + r.semester),
+                    datasets: [
+                      {
+                        label: "GPA",
+                        data: recs.map((r) => r.gpa),
+                        borderColor: "#3b82f6",
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: "rgba(59,130,246,0.1)",
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                      x: {
+                        ticks: { color: "#94a3b8" },
+                        grid: { display: false },
+                      },
+                      y: {
+                        ticks: { color: "#94a3b8" },
+                        grid: { color: "rgba(99,179,237,0.06)" },
+                        min: 0,
+                        max: 10,
+                      },
+                    },
+                    plugins: { legend: { display: false } },
+                  },
+                });
+            }, 100);
+          }
+          // Get AI recommendations
+          if (latest.attendance) {
+            const predInput = {
+              attendance: latest.attendance,
+              study_hours: latest.study_hours,
+              quiz_score: latest.quiz_score,
+              assignment_score: latest.assignment_score,
+              midterm_score: latest.midterm_score,
+              internal_score: latest.internal_score,
+              class_participation: latest.class_participation,
+              homework_completion: latest.homework_completion,
+            };
+            fetch(`${API}/predict`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(predInput),
+            })
+              .then((r) => r.json())
+              .then((d) => {
+                const el2 = document.getElementById("my-recs-loading");
+                if (el2 && d.data?.recommendations)
+                  el2.innerHTML = d.data.recommendations
+                    .map(
+                      (r) => `<div class="rec-item">
             <div><span class="rec-cat">${r.category}</span></div><div class="rec-text">${r.text}</div>
-          </div>`).join('');
-        });
-    }
-  } catch(e) { el.innerHTML='<div class="empty-state"><p>Failed to load profile</p></div>'; }
-}
+          </div>`,
+                    )
+                    .join("");
+              });
+          }
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load profile</p></div>';
+        }
+      }
 
-// ─── IMPORT ─────────────────────────────────────────────────────────
-async function importCSV(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const el = document.getElementById('import-result');
-  el.innerHTML='<div class="loading"><div class="spinner"></div> Processing...</div>';
-  const fd = new FormData();
-  fd.append('file', file);
-  try {
-    const res = await fetch(`${API}/import/csv`, {method:'POST',body:fd});
-    const data = await res.json();
-    if (data.success) {
-      const d = data.data;
-      el.innerHTML = `<div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:14px">
+      // ─── NEW FEATURES: Alerts, forecast, study plans, peer match, attendance, simulate
+      async function loadAlerts() {
+        const selectorContainer = document.getElementById(
+          "alerts-content-selector",
+        );
+        await renderFacultyStudentSelector("alerts-content-selector");
+
+        const el = document.getElementById("alerts-content");
+        el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+
+        const sid = await getSelectedStudentId();
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><p>No student ID linked yet.</p><p>Faculty: choose a student from the dropdown above and click Load.</p><p>Student: visit "My Performance", set your student ID, then refresh this page.</p></div>';
+          return;
+        }
+
+        try {
+          const res = await fetch(`${API}/alerts/student/${sid}`);
+          const data = await res.json();
+          if (!data.success) throw new Error(data.message);
+
+          const list = data.alerts || [];
+          if (!list.length) {
+            el.innerHTML =
+              '<div class="empty-state"><p>No alerts detected. You are at low risk — keep the current consistency mode.</p></div>';
+            await renderRiskAdvice(sid, el);
+            return;
+          }
+
+          el.innerHTML = `<div class="table-wrap"><table><tr><th>Semester</th><th>Alert</th><th>Severity</th></tr>${list.map((a) => `<tr><td>${a.semester}</td><td>${a.alert}</td><td>${badge(a.severity, "risk")}</td></tr>`).join("")}</table></div>`;
+          await renderRiskAdvice(sid, el);
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load alerts</p></div>';
+        }
+      }
+
+      async function loadFuturePrediction() {
+        await renderFacultyStudentSelector("future-content-selector");
+        const el = document.getElementById("future-content");
+        el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        const sid = await getSelectedStudentId();
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><p>No student ID linked yet.</p><p>Faculty: choose a student from the dropdown above and click Load.</p><p>Student: visit "My Performance", set your student ID, then refresh this page.</p></div>';
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/predict/future/${sid}`);
+          const data = await res.json();
+          if (!data.success) throw new Error(data.message);
+          const p = data.future_prediction;
+          el.innerHTML = `<div class="card"><div class="card-title">Next semester GPA: <strong>${p.next_semester_gpa || "N/A"}</strong></div><p>Trend: <strong>${p.trend}</strong></p></div>`;
+          await renderRiskAdvice(sid, el);
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load future prediction</p></div>';
+        }
+      }
+
+      async function loadStudyPlan() {
+        await renderFacultyStudentSelector("studyplan-content-selector");
+        const el = document.getElementById("studyplan-content");
+        el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        const sid = await getSelectedStudentId();
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><p>No student ID linked yet.</p><p>Faculty: choose a student from the dropdown above and click Load.</p><p>Student: visit "My Performance", set your student ID, then refresh this page.</p></div>';
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/study-plan/${sid}`);
+          const data = await res.json();
+          if (!data.success) throw new Error(data.message);
+          const plan = data.study_plan;
+          el.innerHTML = `<div><p><strong>Weak subjects:</strong> ${plan.weak_subjects.join(", ") || "None"}</p>${plan.recommendations.map((r) => `<div class="rec-item"><div class="rec-cat">Plan</div><div class="rec-text">${r}</div></div>`).join("")}</div>`;
+          await renderRiskAdvice(sid, el);
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load study plan</p></div>';
+        }
+      }
+
+      async function loadPeerMatch() {
+        await renderFacultyStudentSelector("peermatch-content-selector");
+        const el = document.getElementById("peermatch-content");
+        el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        const sid = await getSelectedStudentId();
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><p>No student ID linked yet.</p><p>Faculty: choose a student from the dropdown above and click Load.</p><p>Student: visit "My Performance", set your student ID, then refresh this page.</p></div>';
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/peer/match/${sid}`);
+          const data = await res.json();
+          if (!data.success) {
+            el.innerHTML = `<div class="empty-state"><p>${data.message || "No match found"}</p></div>`;
+            return;
+          }
+          const m = data.peer_match;
+          el.innerHTML = `<div class="card"><div class="card-title">Mentor: ${m.name || m.mentor}</div><p>ID: ${m.mentor}</p><p>GPA: ${m.gpa}</p><p>${m.reason}</p></div>`;
+          await renderRiskAdvice(sid, el);
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load mentor match</p></div>';
+        }
+      }
+
+      async function loadAttendanceForecast() {
+        await renderFacultyStudentSelector(
+          "attendanceForecast-content-selector",
+        );
+        const el = document.getElementById("attendanceForecast-content");
+        el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        const sid = await getSelectedStudentId();
+        if (!sid) {
+          el.innerHTML =
+            '<div class="empty-state"><p>No student ID linked yet.</p><p>Faculty: choose a student from the dropdown above and click Load.</p><p>Student: visit "My Performance", set your student ID, then refresh this page.</p></div>';
+          return;
+        }
+        try {
+          const res = await fetch(`${API}/attendance/predict/${sid}`);
+          const data = await res.json();
+          if (!data.success) throw new Error(data.message);
+          const a = data.attendance_forecast;
+          el.innerHTML = `<div class="card"><p>Predicted Attendance: <strong>${a.predicted_attendance}</strong>%</p><p>Trend: <strong>${a.trend}</strong></p><p>Risk: <strong>${badge(a.risk, "risk")}</strong></p></div>`;
+          await renderRiskAdvice(sid, el);
+        } catch (e) {
+          el.innerHTML =
+            '<div class="empty-state"><p>Failed to load attendance forecast</p></div>';
+        }
+      }
+
+      function loadSimulator() {
+        document.getElementById("simulate-result").innerHTML = "";
+      }
+
+      async function runSimulation() {
+        const data = {
+          Attendance: Number(document.getElementById("sim-att").value),
+          StudyHours: Number(document.getElementById("sim-study").value),
+          QuizScore: Number(document.getElementById("sim-quiz").value),
+          MidtermScore: Number(document.getElementById("sim-mid").value),
+          ClassParticipation: Number(document.getElementById("sim-part").value),
+          HomeworkCompletion: Number(document.getElementById("sim-hw").value),
+          AssignmentScore: Number(document.getElementById("sim-assign").value),
+          InternalScore: Number(document.getElementById("sim-int").value),
+        };
+        const out = document.getElementById("simulate-result");
+        out.innerHTML =
+          '<div class="loading"><div class="spinner"></div> Calculating...</div>';
+        try {
+          const res = await fetch(`${API}/simulate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const parsed = await res.json();
+          if (!parsed.success) throw new Error(parsed.message);
+          const o = parsed.simulation.simulation_output;
+          out.innerHTML = `<div class="card"><p>Predicted Performance: <strong>${o.predicted_performance}</strong></p><p>GPA confidence: <strong>${o.confidence}%</strong></p><p>Risk Level: <strong>${o.risk_level}</strong></p></div>`;
+        } catch (e) {
+          out.innerHTML =
+            '<div class="empty-state"><p>Simulation failed</p></div>';
+        }
+      }
+
+      async function getSelectedStudentId() {
+        if (!currentUser) return null;
+        if (currentUser.role === "student") return currentUser.student_id;
+        const s = document.getElementById("faculty-student-select");
+        return s ? s.value : null;
+      }
+
+      async function renderFacultyStudentSelector(containerId) {
+        if (currentUser.role !== "faculty") return;
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        if (!allStudents.length) {
+          const res = await fetch(`${API}/students`);
+          const data = await res.json();
+          allStudents = data.data || [];
+        }
+
+        const options = allStudents
+          .map(
+            (s) =>
+              `<option value="${s.student_id}">${s.student_id} - ${s.name || "No name"} (${s.course || "N/A"})</option>`,
+          )
+          .join("");
+
+        container.innerHTML = `<div style="margin-bottom:12px; display:flex; gap:8px; align-items:center;"><label style="font-size:13px;color:var(--text2)">Select student:</label><select id="faculty-student-select" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text);min-width:220px">${options}</select><button class="btn btn-sm btn-secondary" onclick="loadCurrentPage()" style="min-width:90px">Load</button></div>`;
+      }
+
+      async function renderRiskAdvice(studentId, container) {
+        if (!studentId || !container) return;
+        const res = await fetch(`${API}/students/${studentId}`);
+        const data = await res.json();
+        if (!data.success || !data.data?.records?.length) return;
+
+        const latest = data.data.records[data.data.records.length - 1];
+        const level = latest.risk_level || "Low";
+
+        const messages = {
+          Low: "Great job! Low risk student – keep a 5-minute daily review habit for supercharged retention.",
+          Medium:
+            "Medium risk detected. Prioritize small targeted study breaks and weekly reflection logs.",
+          High: "High risk detected. Schedule immediate follow-up with faculty and begin structured coaching. Use targeted micro-goals for each weak topic.",
+        };
+
+        const color =
+          level === "High"
+            ? "var(--danger)"
+            : level === "Medium"
+              ? "var(--warning)"
+              : "var(--success)";
+
+        const box = document.createElement("div");
+        box.className = "card";
+        box.style.marginBottom = "12px";
+        box.style.borderLeft = `4px solid ${color}`;
+        box.innerHTML = `<strong>Risk insight:</strong> ${messages[level]}`;
+
+        container.prepend(box);
+      }
+
+      function loadCurrentPage() {
+        const active = document.querySelector(".page.active");
+        if (!active) return;
+        const pageId = active.id.replace("page-", "");
+        navigateTo(pageId);
+      }
+
+      // ─── IMPORT ─────────────────────────────────────────────────────────
+      async function importCSV(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const el = document.getElementById("import-result");
+        el.innerHTML =
+          '<div class="loading"><div class="spinner"></div> Processing...</div>';
+        const fd = new FormData();
+        fd.append("file", file);
+        try {
+          const res = await fetch(`${API}/import/csv`, {
+            method: "POST",
+            body: fd,
+          });
+          const data = await res.json();
+          if (data.success) {
+            const d = data.data;
+            el.innerHTML = `<div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:14px">
         <div style="color:var(--success);font-weight:700">✅ Import Complete</div>
         <div style="font-size:13px;color:var(--text2);margin-top:4px">Imported ${d.imported} records</div>
-        ${d.errors?.length ? `<div style="font-size:12px;color:var(--danger);margin-top:6px">${d.errors.join('<br>')}</div>` : ''}
+        ${d.errors?.length ? `<div style="font-size:12px;color:var(--danger);margin-top:6px">${d.errors.join("<br>")}</div>` : ""}
       </div>`;
-      showToast(`Imported ${d.imported} records!`,'success');
-    } else {
-      el.innerHTML = `<div style="color:var(--danger)">${data.message}</div>`;
-    }
-  } catch(e) { el.innerHTML='<div style="color:var(--danger)">Import failed</div>'; }
-}
+            showToast(`Imported ${d.imported} records!`, "success");
+          } else {
+            el.innerHTML = `<div style="color:var(--danger)">${data.message}</div>`;
+          }
+        } catch (e) {
+          el.innerHTML = '<div style="color:var(--danger)">Import failed</div>';
+        }
+      }
 
-function downloadSampleCSV() {
-  const csv = `StudentID,Name,Age,Gender,Course,Semester,Attendance,StudyHours,ClassParticipation,HomeworkCompletion,QuizScore,AssignmentScore,MidtermScore,FinalScore,InternalScore
+      function downloadSampleCSV() {
+        const csv = `StudentID,Name,Age,Gender,Course,Semester,Attendance,StudyHours,ClassParticipation,HomeworkCompletion,QuizScore,AssignmentScore,MidtermScore,FinalScore,InternalScore
 STU2001,Sample Student,20,Male,Computer Science,3,85,3.5,7,80,72,68,74,71,70
 STU2002,Jane Doe,21,Female,Data Science,4,92,4,8,90,85,80,88,84,82`;
-  const blob = new Blob([csv], {type:'text/csv'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href=url; a.download='student_template.csv'; a.click();
-}
+        const blob = new Blob([csv], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "student_template.csv";
+        a.click();
+      }
 
-async function retrainModel() {
-  const el = document.getElementById('retrain-result');
-  el.innerHTML='<div class="loading"><div class="spinner"></div> Retraining...</div>';
-  try {
-    const res = await fetch(`${API}/model/retrain`, {method:'POST'});
-    const data = await res.json();
-    if (data.success) {
-      el.innerHTML = `<div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:14px">
+      async function retrainModel() {
+        const el = document.getElementById("retrain-result");
+        el.innerHTML =
+          '<div class="loading"><div class="spinner"></div> Retraining...</div>';
+        try {
+          const res = await fetch(`${API}/model/retrain`, { method: "POST" });
+          const data = await res.json();
+          if (data.success) {
+            el.innerHTML = `<div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:14px">
         <div style="color:var(--accent);font-weight:700">✅ Model retrained</div>
         <div style="font-size:13px;color:var(--text2)">Accuracy: ${data.data.accuracy}%</div>
       </div>`;
-    }
-  } catch(e) { el.innerHTML='<div style="color:var(--danger)">Retraining failed</div>'; }
-}
+          }
+        } catch (e) {
+          el.innerHTML =
+            '<div style="color:var(--danger)">Retraining failed</div>';
+        }
+      }
 
-// ─── HELPERS ────────────────────────────────────────────────────────
-function badge(val, type='perf') {
-  if (!val) return '—';
-  const map = {Excellent:'excellent',Good:'good',Average:'average','At Risk':'atrisk',High:'high',Medium:'medium',Low:'low'};
-  const cls = map[val] || 'good';
-  return `<span class="badge badge-${cls}">${val}</span>`;
-}
+      // ─── HELPERS ────────────────────────────────────────────────────────
+      function badge(val, type = "perf") {
+        if (!val) return "—";
+        const map = {
+          Excellent: "excellent",
+          Good: "good",
+          Average: "average",
+          "At Risk": "atrisk",
+          High: "high",
+          Medium: "medium",
+          Low: "low",
+        };
+        const cls = map[val] || "good";
+        return `<span class="badge badge-${cls}">${val}</span>`;
+      }
 
-function openModal(id) { document.getElementById(id).classList.add('active'); }
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+      function openModal(id) {
+        document.getElementById(id).classList.add("active");
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("active");
+      }
 
-function showToast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = `toast ${type} show`;
-  setTimeout(()=>t.classList.remove('show'), 3500);
-}
+      function showToast(msg, type = "success") {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.className = `toast ${type} show`;
+        setTimeout(() => t.classList.remove("show"), 3500);
+      }
 
-// Close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(el => {
-  el.addEventListener('click', e => { if (e.target===el) el.classList.remove('active'); });
-});
-</script>
-</body>
+      // Close modals on overlay click
+      document.querySelectorAll(".modal-overlay").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          if (e.target === el) el.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
 </html>

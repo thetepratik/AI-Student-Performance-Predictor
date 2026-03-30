@@ -8,12 +8,15 @@ import json
 import csv
 import io
 from datetime import datetime
+from app_enhanced import register_all_enhanced_features
+
 
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from db import get_connection, init_db
 from ml_model import predict_performance, train_model, get_feature_importance, get_class_analytics
+
 
 app = Flask(__name__, static_folder="../frontend/dist", static_url_path="/")
 CORS(app, origins="*")
@@ -387,16 +390,18 @@ def retrain():
     result = train_model()
     return make_response_ok(result)
 
-# @app.route("/", defaults={"path": ""})
-# @app.route("/<path:path>")
-# def serve(path):
-#     dist = os.path.join(os.path.dirname(__file__), "../frontend/dist")
-#     if path and os.path.exists(os.path.join(dist, path)):
-#         return send_from_directory(dist, path)
-#     return send_from_directory(dist, "index.html")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    # Support SPA deep links (alerts/future/studyplan etc.)
+    # `api/*` are handled by other endpoints; this fallback is for frontend routes.
+    if path.startswith("api/"):
+        return "Not Found", 404
+    return render_template("index.html")
 
 if __name__ == "__main__":
     init_db()
+    register_all_enhanced_features(app)
     app.run(debug=True, port=5000)
 
 @app.route("/")
